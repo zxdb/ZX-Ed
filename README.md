@@ -56,7 +56,7 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 **ZX-Ed** depends on [OpenXava](https://sourceforge.net/projects/openxava/), that doesn't support Maven. Therefore a few "manual" steps are necessary to prepare the development environment and its dependencies:
 
-* Clone **ZX-Ed** source code.
+* Clone **ZX-Ed** repository.
 * Unzip `openxava-6.0.zip`, then copy [OpenXava](https://sourceforge.net/projects/openxava/)'s `workspace` content into **ZX-Ed**'s `workspace`.
 * Inside directory `workspace/ZX-Ed/`, execute `ant createProject` to complete creating the project.
 
