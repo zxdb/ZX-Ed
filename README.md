@@ -4,23 +4,23 @@
 
 Whenever any change is made to the database using **ZX-Ed**, its corresponding SQL statement is generated and logged into file `/tmp/ZX-Ed.sql`. This approach provides the following advantages:
 
-* The generated SQL works as "auditing" for all ZXDB changes, so the history behind every single change in the database can be preserved and revised independently.
-* It's not necessary to edit the official ZXDB instance directly. A separate ZXDB clone can be edited instead, generating the SQL file that can be revalidated later, before applying these changes to official ZXDB.
+* The generated SQL works as "auditing" for all [ZXDB](https://github.com/zxdb/ZXDB) changes, so the history behind every single change in the database can be preserved and revised independently.
+* It's not necessary to edit the official [ZXDB](https://github.com/zxdb/ZXDB) instance directly. A separate [ZXDB](https://github.com/zxdb/ZXDB) clone can be edited instead, generating the SQL file that can be revalidated later, before applying these changes to official [ZXDB](https://github.com/zxdb/ZXDB).
 
 
 ## How to run ZX-Ed
 
 #### Requirements
 
-* Install Java 6 or later (preferably Java JDK 8). Don't forget to set `JAVA_HOME`.
+* Install Java 6 or later, preferably [Java JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/). Don't forget to set `JAVA_HOME`.
 * Install [Apache Tomcat](https://tomcat.apache.org/).
 * Install [MariaDB](https://downloads.mariadb.org/) (or MySQL), setting UTF8 as default server's charset.
 
 
 #### Database creation
 
-* Download `ZXDB_mysql.sql` from [ZXDB](https://github.com/zxdb/ZXDB), then execute it using a database client (such as HeidiSQL) as UTF8. It will create database ZXDB and populate it.
-* Execute `scripts/zxed_prepare.sql` using the same database client as UTF8. It will prepare ZXDB for editing, mainly adding version control to protect against concurrent changes from multiple users (later the original ZXDB structure can be restored by executing `scripts/zxed_reindex.sql`).
+* Download `ZXDB_mysql.sql` from [ZXDB](https://github.com/zxdb/ZXDB), then execute it using a database client (such as HeidiSQL) as UTF8. It will create database [ZXDB](https://github.com/zxdb/ZXDB) and populate it.
+* Execute `scripts/zxed_prepare.sql` using the same database client as UTF8. It will prepare [ZXDB](https://github.com/zxdb/ZXDB) for editing, mainly adding version control to protect against concurrent changes from multiple users (later the original [ZXDB](https://github.com/zxdb/ZXDB) structure can be restored by executing `scripts/zxed_reindex.sql`).
 
 
 #### Tomcat preparation
@@ -54,10 +54,10 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 #### Project preparation
 
-OpenXava doesn't support Apache Maven, therefore a few "manual" steps are required to prepare the development environment and dependencies:
+**ZX-Ed** depends on [OpenXava](https://sourceforge.net/projects/openxava/), that doesn't support Maven. Therefore a few "manual" steps are necessary to prepare the development environment and its dependencies:
 
 * Clone **ZX-Ed** source code.
-* Unzip `openxava-6.0.zip`, then copy OpenXava's `workspace` content into **ZX-Ed**'s `workspace`.
+* Unzip `openxava-6.0.zip`, then copy [OpenXava](https://sourceforge.net/projects/openxava/)'s `workspace` content into **ZX-Ed**'s `workspace`.
 * Inside directory `workspace/ZX-Ed/`, execute `ant createProject` to complete creating the project.
 
 
