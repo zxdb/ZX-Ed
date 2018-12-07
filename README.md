@@ -70,7 +70,7 @@ OpenXava doesn't support Apache Maven, therefore a few "manual" steps are requir
 #### User configuration
 
 * By default, ZX-Ed recognizes users "admin" (password "admin") and "guest" (password "guest"). The latter is a special user with read-only permissions only.
-* To define different users and/or modify passwords, edit file `properties/naviox-users.properties` (either from `workspace/ZX-Ed/` prior to compilation, or directly inside `ZX-Ed*.war`).
+* To define different users and/or modify passwords, edit file `properties/naviox-users.properties` (either from `workspace/ZX-Ed/` prior to compilation, or directly inside a compiled `ZX-Ed*.war`).
 
 
 ## License
@@ -80,4 +80,4 @@ ZX-Ed is open source, freely available under the Apache 2.0 License.
 
 ## Credits
 
-ZX-Ed was created by Einar Saukas, using [OpenXava 6.0](https://sourceforge.net/projects/openxava/), [Summa Open Library](http://summabr.github.io/sol/), and [Lombok](https://projectlombok.org/).
+ZX-Ed was created by Einar Saukas using [OpenXava 6.0](https://sourceforge.net/projects/openxava/), [Summa Open Library](http://summabr.github.io/sol/), and [Lombok](https://projectlombok.org/).
