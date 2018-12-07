@@ -37,7 +37,7 @@ Whenever any change is made to the database using ZX-Ed, its corresponding SQL s
 
 #### ZX-Ed installation
 
-* Download latest release of `ZX-Ed*.war`, then copy it to `tomcat/webapps/`.
+* Download latest release of `ZX-Ed.war`, then copy it to `tomcat/webapps/`.
 * Run `tomcat/bin/startup` to start Tomcat.
 * Open http://localhost:8080/ZX-Ed/ in a browser.
 
@@ -70,7 +70,7 @@ OpenXava doesn't support Apache Maven, therefore a few "manual" steps are requir
 #### User configuration
 
 * By default, ZX-Ed recognizes users "admin" (password "admin") and "guest" (password "guest"). The latter is a special user with read-only permissions only.
-* To define different users and/or modify passwords, edit file `properties/naviox-users.properties` (either from `workspace/ZX-Ed/` prior to compilation, or directly inside a compiled `ZX-Ed*.war`).
+* To define different users and/or modify passwords, edit file `properties/naviox-users.properties` (either from `workspace/ZX-Ed/` prior to compilation, or directly inside a compiled `ZX-Ed.war`).
 
 
 ## License
