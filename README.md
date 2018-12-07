@@ -1,8 +1,8 @@
 # ZX-Ed
 
-ZX-Ed is a database editor and script generator for [ZXDB](https://github.com/zxdb/ZXDB).
+**ZX-Ed** is a database editor and script generator for [ZXDB](https://github.com/zxdb/ZXDB).
 
-Whenever any change is made to the database using ZX-Ed, its corresponding SQL statement is generated and logged into file `/tmp/ZX-Ed.sql`. This approach provides the following advantages:
+Whenever any change is made to the database using **ZX-Ed**, its corresponding SQL statement is generated and logged into file `/tmp/ZX-Ed.sql`. This approach provides the following advantages:
 
 * The generated SQL works as "auditing" for all ZXDB changes, so the history behind every single change in the database can be preserved and revised independently.
 * It's not necessary to edit the official ZXDB instance directly. A separate ZXDB clone can be edited instead, generating the SQL file that can be revalidated later, before applying these changes to official ZXDB.
@@ -26,7 +26,7 @@ Whenever any change is made to the database using ZX-Ed, its corresponding SQL s
 #### Tomcat preparation
 
 * Download [MariaDB Java Connector/J](https://downloads.mariadb.org/) 2.3.0 or later, then copy it to `tomcat/lib/`.
-* Edit `tomcat/conf/context.xml` to add ZX-Ed datasource (replacing username and password as needed):
+* Edit `tomcat/conf/context.xml` to add **ZX-Ed** datasource (replacing username and password as needed):
 ```
     <Resource name="jdbc/ZX-EdDS" auth="Container" type="javax.sql.DataSource"
               maxActive="20" maxIdle="5" maxWait="10000"
@@ -47,17 +47,17 @@ Whenever any change is made to the database using ZX-Ed, its corresponding SQL s
 #### Additional requirements
 
 * Download and install [Apache Ant](https://ant.apache.org/).
-* Download and install a Java IDE (preferably "Eclipse IDE for Java EE Developers").
+* Download and install a Java IDE, preferably [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/).
 * Download and execute [Lombok](https://projectlombok.org/) 1.18.4 or later, to install it into the IDE.
 * Download [OpenXava 6.0](https://sourceforge.net/projects/openxava/).
 
 
 #### Project preparation
 
-OpenXava doesn't support Apache Maven, therefore a few "manual" steps are required to prepare the development environment:
+OpenXava doesn't support Apache Maven, therefore a few "manual" steps are required to prepare the development environment and dependencies:
 
-* Clone ZX-Ed source code.
-* Unzip `openxava-6.0.zip`, then copy OpenXava's `workspace` content into ZX-Ed's `workspace`.
+* Clone **ZX-Ed** source code.
+* Unzip `openxava-6.0.zip`, then copy OpenXava's `workspace` content into **ZX-Ed**'s `workspace`.
 * Inside directory `workspace/ZX-Ed/`, execute `ant createProject` to complete creating the project.
 
 
@@ -69,15 +69,15 @@ OpenXava doesn't support Apache Maven, therefore a few "manual" steps are requir
 
 #### User configuration
 
-* By default, ZX-Ed recognizes users "admin" (password "admin") and "guest" (password "guest"). The latter is a special user with read-only permissions only.
+* By default, **ZX-Ed** recognizes users "admin" (password "admin") and "guest" (password "guest"). The latter is a special user with read-only permissions only.
 * To define different users and/or modify passwords, edit file `properties/naviox-users.properties` (either from `workspace/ZX-Ed/` prior to compilation, or directly inside a compiled `ZX-Ed.war`).
 
 
 ## License
 
-ZX-Ed is open source, freely available under the Apache 2.0 License.
+**ZX-Ed** is open source, freely available under the Apache 2.0 License.
 
 
 ## Credits
 
-ZX-Ed was created by Einar Saukas using [OpenXava 6.0](https://sourceforge.net/projects/openxava/), [Summa Open Library](http://summabr.github.io/sol/), and [Lombok](https://projectlombok.org/).
+**ZX-Ed** was created by Einar Saukas using [OpenXava 6.0](https://sourceforge.net/projects/openxava/), [Summa Open Library](http://summabr.github.io/sol/), and [Lombok](https://projectlombok.org/).
