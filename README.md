@@ -70,7 +70,7 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 #### User configuration
 
 * By default, **ZX-Ed** recognizes users "admin" (password "admin") and "guest" (password "guest"). The latter is a special user with read-only permissions only.
-* To define different users and/or modify passwords, edit file `properties/naviox-users.properties` (either from `workspace/ZX-Ed/` prior to compilation, or directly inside a compiled `ZX-Ed.war`).
+* To define different users and/or modify passwords, edit file `properties/naviox-users.properties` (either from `workspace/ZX-Ed/` prior to compilation, or directly inside a released `ZX-Ed.war`).
 
 
 ## License
