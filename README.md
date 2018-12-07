@@ -26,7 +26,7 @@ Whenever any change is made to the database using ZX-Ed, its corresponding SQL s
 #### Tomcat preparation
 
 * Download [MariaDB Java Connector/J](https://downloads.mariadb.org/) 2.3.0 or later, then copy it to `tomcat/lib/`.
-* Edit `tomcat/conf/context.xml` to add ZX-Ed datasource, replacing username and password as needed:
+* Edit `tomcat/conf/context.xml` to add ZX-Ed datasource (replacing username and password as needed):
 ```
     <Resource name="jdbc/ZX-EdDS" auth="Container" type="javax.sql.DataSource"
               maxActive="20" maxIdle="5" maxWait="10000"
@@ -57,13 +57,13 @@ Whenever any change is made to the database using ZX-Ed, its corresponding SQL s
 OpenXava doesn't support Apache Maven, therefore a few "manual" steps are required to prepare the development environment:
 
 * Clone ZX-Ed source code.
-* Unzip `openxava-6.0.zip`, then copy OpenXava's workspace into ZX-Ed's workspace.
-* Run `ant createProject` inside directory `workspace/ZX-Ed/`.
+* Unzip `openxava-6.0.zip`, then copy OpenXava's `workspace` content into ZX-Ed's `workspace`.
+* Inside directory `workspace/ZX-Ed/`, run `ant createProject` to complete creating the project.
 
 
 #### Application development
 
-* Open project "ZX-Ed" using a Java IDE (preferably Eclipse) to modify it.
+* Open project "ZX-Ed" using a Java IDE (preferably Eclipse) for editing.
 * Inside directory `workspace/ZX-Ed/`, run `ant compile` to recompile it, then `ant createWar` to recreate it.
 
 
