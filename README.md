@@ -42,7 +42,7 @@ Whenever any change is made to the database using ZX-Ed, its corresponding SQL s
 * Open http://localhost:8080/ZX-Ed/ in a browser.
 
 
-## How to customize ZX-Ed
+## How to compile ZX-Ed
 
 #### Additional requirements
 
