@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding = "ISO-8859-1"?>
+
+<!DOCTYPE validators SYSTEM "dtds/validators.dtd">
+
+<validators>
+    <required-validator>
+        <validator-name name="NOT_NULL"/>
+        <for-type type="java.lang.Number"/>
+    </required-validator>
+</validators>

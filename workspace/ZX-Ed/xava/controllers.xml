@@ -1,0 +1,27 @@
+<?xml version = "1.0" encoding = "ISO-8859-1"?>
+
+<!DOCTYPE controllers SYSTEM "dtds/controllers.dtd">
+
+<controllers>
+    <controller name="Native">
+        <extends controller="Typical"/>
+
+        <action name="delete" mode="detail" confirm="true"
+            class="br.com.summa.zxed.act.NativeDeleteAction"
+            icon="delete" available-on-new="false" keystroke="Control D"/>
+
+        <action name="deleteSelected" mode="list" confirm="true"
+            class="br.com.summa.zxed.act.NativeDeleteSelectedAction"
+            icon="delete" keystroke="Control D"/>
+
+        <action name="deleteRow" mode="NONE" confirm="true"
+            class="br.com.summa.zxed.act.NativeDeleteSelectedAction"
+            icon="delete" in-each-row="true"/>
+
+        <action name="save" mode="detail"
+            by-default="if-possible"
+            class="br.com.summa.zxed.act.NativeSaveAction"
+            icon="content-save" keystroke="Control S"/>
+
+    </controller>
+</controllers>
