@@ -19,8 +19,8 @@ Whenever any change is made to the database using ZX-Ed, its corresponding SQL s
 
 #### Database creation
 
-* Download `ZXDB_mysql.sql` from [ZXDB](https://github.com/zxdb/ZXDB), then run it using a database client (such as HeidiSQL) as UTF8. It will create database ZXDB and populate it.
-* Run `scripts/zxed_prepare.sql` using the same database client as UTF8. It will prepare ZXDB for editing, mainly adding version control to protect against concurrent changes from multiple users (later the original ZXDB structure can be restored by executing `scripts/zxed_reindex.sql`).
+* Download `ZXDB_mysql.sql` from [ZXDB](https://github.com/zxdb/ZXDB), then execute it using a database client (such as HeidiSQL) as UTF8. It will create database ZXDB and populate it.
+* Execute `scripts/zxed_prepare.sql` using the same database client as UTF8. It will prepare ZXDB for editing, mainly adding version control to protect against concurrent changes from multiple users (later the original ZXDB structure can be restored by executing `scripts/zxed_reindex.sql`).
 
 
 #### Tomcat preparation
@@ -58,13 +58,13 @@ OpenXava doesn't support Apache Maven, therefore a few "manual" steps are requir
 
 * Clone ZX-Ed source code.
 * Unzip `openxava-6.0.zip`, then copy OpenXava's `workspace` content into ZX-Ed's `workspace`.
-* Inside directory `workspace/ZX-Ed/`, run `ant createProject` to complete creating the project.
+* Inside directory `workspace/ZX-Ed/`, execute `ant createProject` to complete creating the project.
 
 
 #### Application development
 
 * Open project "ZX-Ed" using a Java IDE (preferably Eclipse) for editing.
-* Inside directory `workspace/ZX-Ed/`, run `ant compile` to recompile it, then `ant createWar` to recreate it.
+* Inside directory `workspace/ZX-Ed/`, execute `ant compile` to recompile it, then execute `ant createWar` to recreate it.
 
 
 #### User configuration
@@ -80,4 +80,4 @@ ZX-Ed is open source, freely available under the Apache 2.0 License.
 
 ## Credits
 
-ZX-Ed was created by Einar Saukas, using [OpenXava 6.0](https://sourceforge.net/projects/openxava/), [SOL](http://summabr.github.io/sol/), and [Lombok](https://projectlombok.org/).
+ZX-Ed was created by Einar Saukas, using [OpenXava 6.0](https://sourceforge.net/projects/openxava/), [Summa Open Library](http://summabr.github.io/sol/), and [Lombok](https://projectlombok.org/).
