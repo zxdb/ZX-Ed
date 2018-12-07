@@ -80,4 +80,4 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 ## Credits
 
-**ZX-Ed** was created by Einar Saukas using [OpenXava 6.0](https://sourceforge.net/projects/openxava/), [Summa Open Library](http://summabr.github.io/sol/), and [Lombok](https://projectlombok.org/).
+**ZX-Ed** was created by Einar Saukas using [OpenXava 6.0](https://sourceforge.net/projects/openxava/), [Lombok](https://projectlombok.org/), and [SOL](http://summabr.github.io/sol/).
