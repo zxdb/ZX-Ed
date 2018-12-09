@@ -3,13 +3,6 @@
 
 USE zxdb;
 
-ALTER TABLE search_by_authors DROP FOREIGN KEY IF EXISTS fk_by_author_entry;
-ALTER TABLE search_by_authors DROP FOREIGN KEY IF EXISTS fk_by_author_label;
-ALTER TABLE search_by_names DROP FOREIGN KEY IF EXISTS fk_by_name;
-ALTER TABLE search_by_publishers DROP FOREIGN KEY IF EXISTS fk_by_publisher_entry;
-ALTER TABLE search_by_publishers DROP FOREIGN KEY IF EXISTS fk_by_publisher_label;
-ALTER TABLE search_by_titles DROP FOREIGN KEY IF EXISTS fk_by_title;
-
 ALTER TABLE aliases ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE authors ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE availabletypes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
@@ -41,6 +34,7 @@ ALTER TABLE magazines ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE magfiles ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE magrefs ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE members ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
+ALTER TABLE nvgs ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE origintypes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE permissions ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE permissiontypes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
