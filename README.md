@@ -12,9 +12,9 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 #### Requirements
 
-* Install Java 6 or later, preferably [Java JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/). Don't forget to set `JAVA_HOME`.
-* Install [Apache Tomcat](https://tomcat.apache.org/).
-* Install [MariaDB](https://downloads.mariadb.org/) (or MySQL), setting UTF8 as default server's charset.
+* Download and install Java 6 or later, preferably [Java JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/). Don't forget to set `JAVA_HOME`.
+* Download and install [Apache Tomcat](https://tomcat.apache.org/).
+* Download and install [MariaDB](https://downloads.mariadb.org/) (or MySQL), setting UTF8 as default server's charset.
 
 
 #### Database creation
@@ -48,8 +48,7 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 * Download and install [Apache Ant](https://ant.apache.org/).
 * Download and install a Java IDE, preferably [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/).
-* Download and execute [Lombok](https://projectlombok.org/) 1.18.4 or later, to install it into the IDE.
-* Download [OpenXava 6.0](https://sourceforge.net/projects/openxava/).
+* Download and install [Lombok](https://projectlombok.org/) 1.18.4 or later, to configure it into the Java IDE.
 
 
 #### Project preparation
@@ -57,7 +56,7 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 **ZX-Ed** depends on [OpenXava](https://sourceforge.net/projects/openxava/), that doesn't support Maven. Therefore a few "manual" steps are necessary to prepare the development environment and its dependencies:
 
 * Clone **ZX-Ed** repository.
-* Unzip `openxava-6.0.zip`, then copy [OpenXava](https://sourceforge.net/projects/openxava/)'s `workspace` content into **ZX-Ed**'s `workspace`.
+* Download `openxava-6.0.zip` from [OpenXava](https://sourceforge.net/projects/openxava/), unzip it, then copy OpenXava's `workspace` content into **ZX-Ed**'s `workspace`.
 * Inside directory `workspace/ZX-Ed/`, execute `ant createProject` to complete creating the project.
 
 
