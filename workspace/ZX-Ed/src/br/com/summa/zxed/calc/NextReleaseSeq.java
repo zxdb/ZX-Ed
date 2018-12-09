@@ -17,6 +17,6 @@ public class NextReleaseSeq implements ICalculator {
     public Object calculate() throws Exception {
         Query query = XPersistence.getManager().createQuery("select max(releaseSeq) from Release where entry.id = :entryId");
         query.setParameter("entryId", entryId);
-        return Nullables.coalesce((Integer)query.getSingleResult()+1, 0);
+        return Nullables.coalesce((Integer)query.getSingleResult(), -1)+1;
     }
 }

@@ -16,6 +16,6 @@ public class NextId implements ICalculator {
     @Override
     public Object calculate() throws Exception {
         Query query = XPersistence.getManager().createQuery("select max(id) from "+modelName);
-        return Nullables.coalesce((Integer)query.getSingleResult()+1, 1);
+        return Nullables.coalesce((Integer)query.getSingleResult(), 0)+1;
     }
 }

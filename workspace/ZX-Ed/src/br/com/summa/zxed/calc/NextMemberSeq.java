@@ -19,7 +19,7 @@ public class NextMemberSeq implements ICalculator {
         if ("S".equals(grouptypeId)) {
             Query query = XPersistence.getManager().createQuery("select max(seriesSeq) from Member where group.id = :groupId");
             query.setParameter("groupId", groupId);
-            return Nullables.coalesce((Integer)query.getSingleResult()+1, 1);
+            return Nullables.coalesce((Integer)query.getSingleResult(), 0)+1;
         }
         return null;
     }

@@ -19,6 +19,6 @@ public class NextPublisherSeq implements ICalculator {
         Query query = XPersistence.getManager().createQuery("select max(publisherSeq) from Publisher where entry.id = :entryId and releaseSeq = :releaseSeq");
         query.setParameter("entryId", entryId);
         query.setParameter("releaseSeq", releaseSeq);
-        return Nullables.coalesce((Integer)query.getSingleResult()+1, 1);
+        return Nullables.coalesce((Integer)query.getSingleResult(), 0)+1;
     }
 }

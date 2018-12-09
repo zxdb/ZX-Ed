@@ -16,6 +16,6 @@ public class NextGroupId implements ICalculator {
     public Object calculate() throws Exception {
         Query query = XPersistence.getManager().createQuery("select max(id) from Group where grouptype.id = :grouptypeId");
         query.setParameter("grouptypeId", grouptypeId);
-        return Nullables.coalesce((Integer)query.getSingleResult()+1, 1);
+        return Nullables.coalesce((Integer)query.getSingleResult(), 0)+1;
     }
 }

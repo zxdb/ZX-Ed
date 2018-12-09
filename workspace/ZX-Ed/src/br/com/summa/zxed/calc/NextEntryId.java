@@ -16,11 +16,11 @@ public class NextEntryId implements ICalculator {
     private Integer machinetypeId;
 
     public Object calculate() throws Exception {
-        int maxId = (machinetypeId != null && machinetypeId >= 11 && machinetypeId <= 13) ? 8000000 :
-            (genretypeId != null && genretypeId >= 84 && genretypeId <= 90) ? 4000000 :
-            (genretypeId != null && genretypeId >= 91 && genretypeId <= 108) ? 2000000 : 1000000;
+        int baseId = (machinetypeId != null && machinetypeId >= 11 && machinetypeId <= 13) ? 4000000 :
+            (genretypeId != null && genretypeId >= 84 && genretypeId <= 90) ? 2000000 :
+            (genretypeId != null && genretypeId >= 91 && genretypeId <= 108) ? 1000000 : 0;
         Query query = XPersistence.getManager().createQuery("select max(id) from Entry where id < :maxId");
-        query.setParameter("maxId", maxId);
-        return Nullables.coalesce((Integer)query.getSingleResult()+1, 1);
+        query.setParameter("maxId", baseId+1000000);
+        return Nullables.coalesce((Integer)query.getSingleResult(), baseId)+1;
     }
 }

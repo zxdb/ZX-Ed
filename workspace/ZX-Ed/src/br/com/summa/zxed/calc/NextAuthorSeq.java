@@ -17,6 +17,6 @@ public class NextAuthorSeq implements ICalculator {
     public Object calculate() throws Exception {
         Query query = XPersistence.getManager().createQuery("select max(authorSeq) from Author where entry.id = :entryId");
         query.setParameter("entryId", entryId);
-        return Nullables.coalesce((Integer)query.getSingleResult()+1, 1);
+        return Nullables.coalesce((Integer)query.getSingleResult(), 0)+1;
     }
 }
