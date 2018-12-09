@@ -1,5 +1,7 @@
 package br.com.summa.zxed.model;
 
+import java.util.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -33,6 +35,11 @@ public class Author {
     @Min(1)
     private Integer authorSeq;
 
+    @ListProperties("roletype.text")
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="author")
+    private Collection<Role> roles;
+    
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;

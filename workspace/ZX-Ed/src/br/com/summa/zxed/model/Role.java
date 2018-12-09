@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
-@Tab(properties="entry.id,entry.title,label.id,label.name,roletype.text",defaultOrder="${entry.title} asc, ${label.name} asc, ${roletype.id} asc")
+@Tab(properties="author.entry.id,author.entry.title,author.authorSeq,author.label.id,author.label.name,roletype.text",
+	 defaultOrder="${author.entry.title} asc, ${author.authorSeq} asc, ${roletype.id} asc")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -13,13 +14,7 @@ public class Role {
 
     @Id
     @ManyToOne(optional=false)
-    @ReferenceView("Compact")
-    private Entry entry;
-
-    @Id
-    @ManyToOne(optional=false)
-    @ReferenceView("Compact")
-    private Label label;
+    private Author author;
 
     @Id
     @ManyToOne(optional=false)

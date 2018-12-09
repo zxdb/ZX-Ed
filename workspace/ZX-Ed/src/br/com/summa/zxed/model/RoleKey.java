@@ -7,7 +7,6 @@ import java.io.*;
 public class RoleKey implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Entry entry;
-	private Label label;
+	private Author author;
 	private Roletype roletype;
 }
