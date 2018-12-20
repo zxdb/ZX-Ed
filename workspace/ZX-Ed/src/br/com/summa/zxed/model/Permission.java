@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
+@Tab(properties="website.name,label.id,label.name,permissiontype.text,text",
+     defaultOrder="${website.id}, ${label.name}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

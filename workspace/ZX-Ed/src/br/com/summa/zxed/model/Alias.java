@@ -8,7 +8,7 @@ import org.openxava.calculators.*;
 import br.com.summa.zxed.calc.*;
 
 @Tab(properties="id,entry.id,entry.title,releaseSeq,idiom.text,title,libraryTitle",
-     defaultOrder="${entry.title} asc, ${releaseSeq} asc")
+     defaultOrder="${entry.id}, ${releaseSeq}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

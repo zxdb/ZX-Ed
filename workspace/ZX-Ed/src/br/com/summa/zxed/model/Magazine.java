@@ -9,6 +9,7 @@ import org.openxava.annotations.*;
 import br.com.summa.zxed.calc.*;
 import br.com.summa.zxed.sql.*;
 
+@Tab(properties="id,name,isElectronic,idiom.text,linkMask,archiveMask")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

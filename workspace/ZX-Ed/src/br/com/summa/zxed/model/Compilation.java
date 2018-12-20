@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
+@Tab(properties="compilation.id,compilation.title,tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,variationtype.text",
+     defaultOrder="${compilation.id}, ${tapeSeq}, ${tapeSide}, ${progSeq}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

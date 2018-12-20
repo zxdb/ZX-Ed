@@ -6,6 +6,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
+@Tab(properties="id,name,licensetype.text,licenseLink")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

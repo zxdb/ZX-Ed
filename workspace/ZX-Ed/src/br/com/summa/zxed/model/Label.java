@@ -6,6 +6,8 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
+@Tab(properties="id,name,spotName,spotComment,country.text,country2.text,from.id,from.name,owner.id,owner.name,wasRenamed, deceased, linkWikipedia, linkSite, labeltype.text",
+     defaultOrder="${name}")
 @View(name="Compact", members="id,name")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
