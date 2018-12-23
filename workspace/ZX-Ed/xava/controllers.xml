@@ -23,5 +23,8 @@
             class="br.com.summa.zxed.act.NativeSaveAction"
             icon="content-save" keystroke="Control S"/>
 
+        <action name="saveInCollection"
+			class="br.com.summa.zxed.act.NativeSaveElementInCollectionAction"/>
+
     </controller>
 </controllers>

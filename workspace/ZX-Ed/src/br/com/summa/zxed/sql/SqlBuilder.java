@@ -44,7 +44,7 @@ public class SqlBuilder {
             String fieldName = entry.getKey();
             Object fieldValue = entry.getValue();
             if (fieldValue instanceof Map) {
-                convertFieldsToColumns(columns, prefix+fieldName+".", (Map<String, Object>)fieldValue);
+                convertFieldsToColumns(columns, fieldName+".", (Map<String, Object>)fieldValue);
             } else {
                 columns.put(getColumnName(prefix+fieldName), quoteValue(fieldValue));
             }

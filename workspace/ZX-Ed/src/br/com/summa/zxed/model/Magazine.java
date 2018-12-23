@@ -39,9 +39,10 @@ public class Magazine {
     @Column(length=300)
     private String archiveMask;
 
-    @ListProperties("id")
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="magazine")
+    @ListProperties("id,dateYear,dateMonth,dateDay,volume,number,special")
+    @SaveAction("Native.saveInCollection")
     private Collection<Issue> issues;
 
     @lombok.ToString.Exclude

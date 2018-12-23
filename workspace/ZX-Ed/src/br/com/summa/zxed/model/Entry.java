@@ -139,7 +139,8 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry")
-    @ListProperties("releaseSeq")
+    @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,releasePrice,budgetPrice")
+    @SaveAction("Native.saveInCollection")
     private Collection<Release> releases;
 
     @lombok.ToString.Exclude

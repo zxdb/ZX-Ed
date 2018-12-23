@@ -35,9 +35,10 @@ public class Author {
     @Min(1)
     private Integer authorSeq;
 
-    @ListProperties("roletype.text")
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="author")
+    @ListProperties("roletype.text")
+    @SaveAction("Native.saveInCollection")
     private Collection<Role> roles;
     
     @lombok.ToString.Exclude
