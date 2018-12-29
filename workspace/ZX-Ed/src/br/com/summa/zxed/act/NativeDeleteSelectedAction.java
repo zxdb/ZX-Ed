@@ -6,13 +6,12 @@ import org.openxava.actions.*;
 
 import br.com.summa.zxed.sql.*;
 
-@lombok.Setter
 public class NativeDeleteSelectedAction extends TabBaseAction {
 
     @Override
     public void execute() throws Exception {
         for (Map<String, Object> keys : getSelectedKeys()) {
-            NativeManager.delete(getTab().getModelName(), keys, Collections.EMPTY_MAP);
+            NativeManager.delete(getTab().getModelName(), keys, keys);
         }
         getTab().deselectAll();
         resetDescriptionsCache();

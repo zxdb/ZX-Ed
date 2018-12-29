@@ -45,8 +45,12 @@ public class SqlBuilder {
             Object fieldValue = entry.getValue();
             if (fieldValue instanceof Map) {
                 convertFieldsToColumns(columns, fieldName+".", (Map<String, Object>)fieldValue);
-            } else {
-                columns.put(getColumnName(prefix+fieldName), quoteValue(fieldValue));
+            } else if (!fieldName.equals("__MODEL_NAME__")) {
+                if (fieldName.equals(getVersionName()) && !prefix.isEmpty()) {
+                    // FIXME: HACK!!!
+                } else {
+                    columns.put(getColumnName(prefix+fieldName), quoteValue(fieldValue));
+                }
             }
         }
     }
@@ -98,8 +102,9 @@ public class SqlBuilder {
     }
 
     public String delete(boolean versioned) {
-        // Use key and version columns only
+        // Use key columns only
         String versionName = getVersionName();
+        keyColumns.remove(versionName);
         String versionValue = oldColumns.get(versionName);
 
         // Build sql

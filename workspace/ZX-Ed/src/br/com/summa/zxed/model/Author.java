@@ -36,11 +36,13 @@ public class Author {
     private Integer authorSeq;
 
     @lombok.ToString.Exclude
-    @OneToMany(mappedBy="author")
+    @OneToMany(mappedBy="author", cascade=CascadeType.REMOVE)
     @ListProperties("roletype.text")
-    @SaveAction("Native.saveInCollection")
+    @SaveAction("NativeCollection.save")
+    @RemoveAction("NativeCollection.remove")
+    @RemoveSelectedAction("NativeCollection.removeSelected")
     private Collection<Role> roles;
-    
+
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;

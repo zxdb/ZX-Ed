@@ -10,7 +10,6 @@ import org.openxava.validators.*;
 
 import br.com.summa.zxed.sql.*;
 
-@lombok.Setter
 public class NativeSaveAction extends SaveAction {
 
     public void execute() throws Exception {

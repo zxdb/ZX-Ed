@@ -138,9 +138,11 @@ public class Entry {
     private String hardwareFeature;
 
     @lombok.ToString.Exclude
-    @OneToMany(mappedBy="entry")
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,releasePrice,budgetPrice")
-    @SaveAction("Native.saveInCollection")
+    @SaveAction("NativeCollection.save")
+    @RemoveAction("NativeCollection.remove")
+    @RemoveSelectedAction("NativeCollection.removeSelected")
     private Collection<Release> releases;
 
     @lombok.ToString.Exclude

@@ -31,7 +31,7 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
     <Resource name="jdbc/ZX-EdDS" auth="Container" type="javax.sql.DataSource"
               maxActive="20" maxIdle="5" maxWait="10000"
               username="root" password="password" driverClassName="org.mariadb.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/zxdb" />
+              url="jdbc:mysql://localhost:3306/zxdb"/>
 ```
 
 

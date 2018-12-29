@@ -4,7 +4,6 @@ import org.openxava.actions.*;
 
 import br.com.summa.zxed.sql.*;
 
-@lombok.Setter
 public class NativeDeleteAction extends ViewBaseAction implements IAction {
 
     @Override

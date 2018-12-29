@@ -40,9 +40,11 @@ public class Magazine {
     private String archiveMask;
 
     @lombok.ToString.Exclude
-    @OneToMany(mappedBy="magazine")
+    @OneToMany(mappedBy="magazine", cascade=CascadeType.REMOVE)
     @ListProperties("id,dateYear,dateMonth,dateDay,volume,number,special")
-    @SaveAction("Native.saveInCollection")
+    @SaveAction("NativeCollection.save")
+    @RemoveAction("NativeCollection.remove")
+    @RemoveSelectedAction("NativeCollection.removeSelected")
     private Collection<Issue> issues;
 
     @lombok.ToString.Exclude

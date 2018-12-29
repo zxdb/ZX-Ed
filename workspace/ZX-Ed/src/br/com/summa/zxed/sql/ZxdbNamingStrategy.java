@@ -18,7 +18,7 @@ public class ZxdbNamingStrategy extends ImprovedNamingStrategy {
     }
 
     public String foreignKeyColumnName(String propertyName, String propertyEntityName, String propertyTableName, String referencedColumnName) {
-        return referencedColumnName.contains("_") ? referencedColumnName : 
-        	super.foreignKeyColumnName(propertyName, propertyEntityName, propertyTableName, referencedColumnName) + "_" + referencedColumnName;
+        return referencedColumnName.contains("_") ? referencedColumnName :
+            super.foreignKeyColumnName(propertyName, propertyEntityName, propertyTableName, referencedColumnName) + "_" + referencedColumnName;
     }
 }
