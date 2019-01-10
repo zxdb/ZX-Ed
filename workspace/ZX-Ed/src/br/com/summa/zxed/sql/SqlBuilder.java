@@ -90,7 +90,7 @@ public class SqlBuilder {
         // If version column was modified, then someone else changed it
         String versionName = getVersionName();
         if (allColumns.containsKey(versionName)) {
-            throw new XavaException("zxed_concurrency");
+            throw new XavaException("concurrency_error");
         }
         String versionValue = oldColumns.get(versionName);
 

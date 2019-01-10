@@ -47,7 +47,7 @@ public class NativeManager {
         }
         int i = XPersistence.getManager().createNativeQuery(sql).executeUpdate();
         if (i != 1) {
-            throw new XavaException("zxed_concurrency");
+            throw new XavaException("concurrency_error");
         }
         XPersistence.commit();
     }

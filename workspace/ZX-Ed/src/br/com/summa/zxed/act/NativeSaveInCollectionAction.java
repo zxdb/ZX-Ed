@@ -6,10 +6,19 @@ import javax.ejb.*;
 
 import org.openxava.actions.*;
 import org.openxava.model.*;
+import org.openxava.util.*;
+import org.openxava.view.*;
 
 import br.com.summa.zxed.sql.*;
 
 public class NativeSaveInCollectionAction extends SaveElementInCollectionAction {
+
+    protected Map<String, Object> saveIfNotExists(View view) throws Exception {
+        if (getView() == view ? view.isKeyEditable() : view.getKeyValuesWithValue().isEmpty()) {
+            throw new XavaException("zxed_parent_not_saved");
+        }
+        return view.getKeyValues();
+    }
 
     protected void saveCollectionElement(Map containerKey) throws Exception {
         if (getCollectionElementView().isEditable()) {
