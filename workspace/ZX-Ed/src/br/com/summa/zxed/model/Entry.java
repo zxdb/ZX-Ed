@@ -140,6 +140,7 @@ public class Entry {
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,releasePrice,budgetPrice")
+    @NewAction("NativeCollection.new")
     @SaveAction("NativeCollection.save")
     @RemoveAction("NativeCollection.remove")
     @RemoveSelectedAction("NativeCollection.removeSelected")

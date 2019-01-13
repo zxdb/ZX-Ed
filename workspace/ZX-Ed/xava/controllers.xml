@@ -27,6 +27,10 @@
     <controller name="NativeCollection">
         <extends controller="Collection"/>
 
+        <action name="new" image="create_new.gif"
+            icon="library-plus"
+            class="br.com.summa.zxed.act.NativeCreateNewInCollectionAction"/>
+
         <action name="save"
             class="br.com.summa.zxed.act.NativeSaveInCollectionAction"/>
 

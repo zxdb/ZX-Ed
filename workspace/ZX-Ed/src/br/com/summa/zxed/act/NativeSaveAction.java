@@ -29,7 +29,7 @@ public class NativeSaveAction extends SaveAction {
         }
     }
 
-    private void updateView2(Map<String, Object> values, boolean resetAfter) {
+    protected void updateView2(Map<String, Object> values, boolean resetAfter) {
         if (resetAfter) {
             getView().setKeyEditable(true);
             commit();
@@ -42,7 +42,7 @@ public class NativeSaveAction extends SaveAction {
         }
     }
 
-    private Map<String, Object> modify2() throws Exception {
+    protected Map<String, Object> modify2() throws Exception {
         Map<String, Object> keyValues = getView().getKeyValues();
         NativeManager.update(getModelName(), keyValues, getValuesToSave());
         addMessage("entity_modified", getModelName());
@@ -53,7 +53,7 @@ public class NativeSaveAction extends SaveAction {
         return null;
     }
 
-    private Map<String, Object> create2() throws Exception {
+    protected Map<String, Object> create2() throws Exception {
         NativeManager.insert(getModelName(), getView().getKeyValues(), getValuesToSave());
         addMessage("entity_created", getModelName());
         getTab().reset();

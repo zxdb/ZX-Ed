@@ -38,6 +38,7 @@ public class Author {
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="author", cascade=CascadeType.REMOVE)
     @ListProperties("roletype.text")
+    @NewAction("NativeCollection.new")
     @SaveAction("NativeCollection.save")
     @RemoveAction("NativeCollection.remove")
     @RemoveSelectedAction("NativeCollection.removeSelected")
