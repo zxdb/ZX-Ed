@@ -21,7 +21,9 @@
         <action name="save" mode="detail"
             by-default="if-possible"
             class="br.com.summa.zxed.act.NativeSaveAction"
-            icon="content-save" keystroke="Control S"/>
+            icon="content-save" keystroke="Control S">
+            <set property="resetAfter" value="false"/>
+        </action>
     </controller>
 
     <controller name="NativeCollection">

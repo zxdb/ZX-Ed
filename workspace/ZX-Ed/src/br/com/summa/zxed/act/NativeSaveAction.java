@@ -46,17 +46,15 @@ public class NativeSaveAction extends SaveAction {
         Map<String, Object> keyValues = getView().getKeyValues();
         NativeManager.update(getModelName(), keyValues, getValuesToSave());
         addMessage("entity_modified", getModelName());
-        if (!isResetAfterOnModify() && isRefreshAfter()) {
-            getView().clear();
-            return MapFacade.getValues(getModelName(), keyValues, getView().getMembersNamesWithHidden());
-        }
-        return null;
+        getView().clear();
+        return MapFacade.getValues(getModelName(), keyValues, getView().getMembersNamesWithHidden());
     }
 
     protected Map<String, Object> create2() throws Exception {
-        NativeManager.insert(getModelName(), getView().getKeyValues(), getValuesToSave());
+        Map<String, Object> keyValues = getView().getKeyValues();
+        NativeManager.insert(getModelName(), keyValues, getValuesToSave());
         addMessage("entity_created", getModelName());
-        getTab().reset();
-        return null;
+        getView().clear();
+        return MapFacade.getValues(getModelName(), keyValues, getView().getMembersNamesWithHidden());
     }
 }
