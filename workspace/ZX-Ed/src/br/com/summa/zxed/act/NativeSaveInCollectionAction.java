@@ -5,7 +5,6 @@ import java.util.*;
 import javax.ejb.*;
 
 import org.openxava.actions.*;
-import org.openxava.model.*;
 
 import br.com.summa.zxed.sql.*;
 
@@ -16,15 +15,14 @@ public class NativeSaveInCollectionAction extends SaveElementInCollectionAction 
             boolean isEntity = isEntityReferencesCollection();
             Map<String, Object> values = getValuesToSave();
             try {
-                MapFacade.setValues(getCollectionElementView().getModelName(), getCollectionElementView().getKeyValues(), values);
+                NativeManager.update(getCollectionElementView().getModelName(), getCollectionElementView().getKeyValues(), values);
                 addMessage(isEntity?"entity_modified":"aggregate_modified", getCollectionElementView().getModelName());
             } catch (ObjectNotFoundException ex) {
                 create2(values, isEntity, containerKey);
             }
         } else {
-            validateMaximum(1);
-            associateEntity(getCollectionElementView().getKeyValues());
-            addMessage("entity_associated" , getCollectionElementView().getModelName(), getCollectionElementView().getParent().getModelName());
+            // unreachable code?
+            throw new RuntimeException();
         }
     }
 
@@ -34,10 +32,6 @@ public class NativeSaveInCollectionAction extends SaveElementInCollectionAction 
         keyValues.put(getMetaCollection().getMetaReference().getRole(), containerKey);
         values.put(getMetaCollection().getMetaReference().getRole(), containerKey);
         NativeManager.insert(getCollectionElementView().getModelName(), keyValues, values);
-        if (isEntity) {
-            addMessage("entity_created_and_associated", getCollectionElementView().getModelName(), getCollectionElementView().getParent().getModelName());
-        } else {
-            addMessage("aggregate_created",	getCollectionElementView().getModelName(), getCollectionElementView().getParent().getModelName());
-        }
+        addMessage(isEntity?"entity_created_and_associated":"aggregate_created", getCollectionElementView().getModelName(), getCollectionElementView().getParent().getModelName());
     }
 }
