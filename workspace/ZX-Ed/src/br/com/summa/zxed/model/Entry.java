@@ -73,18 +73,6 @@ public class Entry {
     @DescriptionsList(descriptionProperties="text")
     private Publicationtype publicationtype;
 
-    @Column(length=50)
-    private String spanishPrice;
-
-    @Column(length=80)
-    private String microdrivePrice;
-
-    @Column(length=80)
-    private String diskPrice;
-
-    @Column(length=50)
-    private String cartridgePrice;
-
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
     private Availabletype availabletype;
@@ -139,7 +127,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,releasePrice,budgetPrice")
+    @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,releasePrice,budgetPrice,spanishPrice,microdrivePrice,diskPrice,cartridgePrice")
     @NewAction("NativeCollection.new")
     @SaveAction("NativeCollection.save")
     @RemoveAction("NativeCollection.remove")

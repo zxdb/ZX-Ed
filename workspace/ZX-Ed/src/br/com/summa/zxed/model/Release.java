@@ -37,6 +37,18 @@ public class Release {
     @Column(length=150)
     private String budgetPrice;
 
+    @Column(length=80)
+    private String spanishPrice;
+
+    @Column(length=80)
+    private String microdrivePrice;
+
+    @Column(length=80)
+    private String diskPrice;
+
+    @Column(length=80)
+    private String cartridgePrice;
+
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;
