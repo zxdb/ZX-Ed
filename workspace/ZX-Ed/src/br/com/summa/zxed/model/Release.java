@@ -38,9 +38,6 @@ public class Release {
     private String budgetPrice;
 
     @Column(length=80)
-    private String spanishPrice;
-
-    @Column(length=80)
     private String microdrivePrice;
 
     @Column(length=80)
