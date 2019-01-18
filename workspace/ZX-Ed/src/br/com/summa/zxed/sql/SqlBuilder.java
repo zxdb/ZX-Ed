@@ -9,6 +9,10 @@ import br.com.summa.sol.util.*;
 import br.com.summa.sol.util.Maps;
 
 public class SqlBuilder {
+    public static final Set<String> excludedFields = Sets.asHashSet(
+            "__MODEL_NAME__",
+            "authorRoles");
+
     private final Map<String, String> allColumns = new TreeMap<String, String>();
     private final Map<String, String> keyColumns = new TreeMap<String, String>();
     private final Map<String, String> oldColumns = new TreeMap<String, String>();
@@ -45,7 +49,7 @@ public class SqlBuilder {
             Object fieldValue = entry.getValue();
             if (fieldValue instanceof Map) {
                 convertFieldsToColumns(columns, fieldName+".", (Map<String, Object>)fieldValue);
-            } else if (!fieldName.equals("__MODEL_NAME__")) {
+            } else if (!excludedFields.contains(fieldName)) {
                 if (fieldName.equals(getVersionName()) && !prefix.isEmpty()) {
                     // FIXME: HACK!!!
                 } else {

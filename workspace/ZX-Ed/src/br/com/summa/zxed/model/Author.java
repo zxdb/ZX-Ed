@@ -47,4 +47,14 @@ public class Author {
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;
+
+    @Transient
+    @Depends("roles")
+    public String getAuthorRoles() {
+        StringJoiner sj = new StringJoiner("; ");
+        for (Role role : roles) {
+            sj.add(role.getRoletype().getText());
+        }
+        return sj.toString();
+    }
 }

@@ -130,6 +130,15 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("label.id,label.name,team.id,team.name,authorSeq,authorRoles")
+    @NewAction("NativeCollection.new")
+    @SaveAction("NativeCollection.save")
+    @RemoveAction("NativeCollection.remove")
+    @RemoveSelectedAction("NativeCollection.removeSelected")
+    private Collection<Author> authors;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice")
     @NewAction("NativeCollection.new")
     @SaveAction("NativeCollection.save")
