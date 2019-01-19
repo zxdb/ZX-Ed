@@ -130,7 +130,8 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("label.id,label.name,team.id,team.name,authorSeq,authorRoles")
+    @ListProperties("authorSeq,label.id,label.name,team.id,team.name,authorRoles")
+    @XOrderBy("authorSeq")
     @NewAction("NativeCollection.new")
     @SaveAction("NativeCollection.save")
     @RemoveAction("NativeCollection.remove")
