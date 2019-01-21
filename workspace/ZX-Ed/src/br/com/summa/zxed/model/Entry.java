@@ -148,6 +148,25 @@ public class Entry {
     private Collection<Release> releases;
 
     @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("util.id,util.title")
+    @NewAction("NativeCollection.new")
+    @SaveAction("NativeCollection.save")
+    @RemoveAction("NativeCollection.remove")
+    @RemoveSelectedAction("NativeCollection.removeSelected")
+    private Collection<Framework> frameworks;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("group.grouptype.text,group.id,group.name,seriesSeq")
+    @XOrderBy("group.grouptype.text,group.id")
+    @NewAction("NativeCollection.new")
+    @SaveAction("NativeCollection.save")
+    @RemoveAction("NativeCollection.remove")
+    @RemoveSelectedAction("NativeCollection.removeSelected")
+    private Collection<Member> members;
+
+    @lombok.ToString.Exclude
     @Version
     private Integer zxed;
 }

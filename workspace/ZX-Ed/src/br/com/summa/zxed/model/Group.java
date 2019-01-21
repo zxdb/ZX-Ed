@@ -1,12 +1,15 @@
 package br.com.summa.zxed.model;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,name,grouptype.text,link,comments")
+@Tab(properties="grouptype.text,id,name,link,comments")
+@View(name="Compact", members="grouptype,id,name")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -22,7 +25,7 @@ public class Group {
     @Required
     private String name;
 
-    @ManyToOne(fetch=FetchType.LAZY, optional=false)
+    @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Grouptype grouptype;
 
@@ -32,6 +35,15 @@ public class Group {
     @Column
     @Stereotype("MEMO")
     private String comments;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="group", cascade=CascadeType.REMOVE)
+    @ListProperties("entry.id,entry.libraryTitle,seriesSeq")
+    @NewAction("NativeCollection.new")
+    @SaveAction("NativeCollection.save")
+    @RemoveAction("NativeCollection.remove")
+    @RemoveSelectedAction("NativeCollection.removeSelected")
+    private Collection<Member> members;
 
     @lombok.ToString.Exclude
     @Version
