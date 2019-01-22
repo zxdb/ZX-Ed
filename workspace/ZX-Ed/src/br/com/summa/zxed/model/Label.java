@@ -1,5 +1,7 @@
 package br.com.summa.zxed.model;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
@@ -62,6 +64,15 @@ public class Label {
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
     private Labeltype labeltype;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="label", cascade=CascadeType.REMOVE)
+    @ListProperties("link,title,idiom.text,interviewer,interviewYear")
+    @NewAction("NativeCollection.new")
+    @SaveAction("NativeCollection.save")
+    @RemoveAction("NativeCollection.remove")
+    @RemoveSelectedAction("NativeCollection.removeSelected")
+    private Collection<Interview> interviews;
 
     @lombok.ToString.Exclude
     @Version
