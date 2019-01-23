@@ -1,0 +1,11 @@
+<?xml version = "1.0" encoding = "ISO-8859-1"?>
+ 
+<!DOCTYPE tabs-default-values SYSTEM "dtds/tabs-default-values.dtd">
+ 
+<tabs-default-values>
+
+    <tab editors="List">
+        <for-all-models/>
+    </tab>
+
+</tabs-default-values>
