@@ -1,3 +1,5 @@
+/* [ZX-Ed] Avoid displaying "First Steps" in main menu */
+
 #FirstSteps_module {
     display: none;
 }

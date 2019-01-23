@@ -39,10 +39,6 @@ public class Group {
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="group", cascade=CascadeType.REMOVE)
     @ListProperties("entry.id,entry.libraryTitle,seriesSeq")
-    @NewAction("NativeCollection.new")
-    @SaveAction("NativeCollection.save")
-    @RemoveAction("NativeCollection.remove")
-    @RemoveSelectedAction("NativeCollection.removeSelected")
     private Collection<Member> members;
 
     @lombok.ToString.Exclude

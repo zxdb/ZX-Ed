@@ -3,6 +3,10 @@
 <!DOCTYPE controllers SYSTEM "dtds/controllers.dtd">
 
 <controllers>
+
+    <!-- [ZX-Ed] These controllers will be executed by default, when managing
+         elements from the main table of each module.
+    -->
     <controller name="Native">
         <extends controller="Navigation"/>
         <extends controller="CRUD"/>
@@ -28,21 +32,36 @@
         </action>
     </controller>
 
-    <controller name="NativeCollection">
-        <extends controller="Collection"/>
-
-        <action name="new" image="create_new.gif"
-            icon="library-plus"
+    <!-- [ZX-Ed] These controllers will be executed by default, when managing
+         elements from embedded collections within each module.
+    -->
+    <controller name="Collection">
+        <action name="new" image="create_new.gif" icon="library-plus"
             class="br.com.summa.zxed.act.NativeCreateNewInCollectionAction"/>
+
+        <action name="add" image="create_new.gif" icon="table-row-plus-after"
+            class="org.openxava.actions.GoAddElementsToCollectionAction"/>
+
+        <action name="hideDetail"
+            class="org.openxava.actions.HideDetailElementInCollectionAction"/>
 
         <action name="save"
             class="br.com.summa.zxed.act.NativeSaveInCollectionAction"/>
 
+        <action name="saveAndStay"
+            class="org.openxava.actions.SaveAndStayElementInCollectionAction"/>
+
         <action name="remove" confirm="true"
             class="br.com.summa.zxed.act.NativeRemoveInCollectionAction"/>
 
-        <action name="removeSelected" confirm="true"
-            icon="delete" image="delete.gif" in-each-row="true"
+        <action name="edit" image="edit.gif" icon="pencil"
+            class="org.openxava.actions.EditElementInCollectionAction"/>
+
+        <action name="view" image="view.gif" icon="eye"
+            class="org.openxava.actions.ViewElementInCollectionAction"/>
+
+        <action name="removeSelected" confirm="true" icon="delete"
+            image="delete.gif" in-each-row="true"
             class="br.com.summa.zxed.act.NativeRemoveSelectedInCollectionAction"/>
     </controller>
 </controllers>

@@ -1,11 +1,14 @@
 <?xml version = "1.0" encoding = "ISO-8859-1"?>
  
 <!DOCTYPE tabs-default-values SYSTEM "dtds/tabs-default-values.dtd">
- 
-<tabs-default-values>
 
+<!-- [ZX-Ed] By default, users can choose to visualize all table content as 
+     List, Chards or Cards. This configuration disables the last 2 options
+     in order to provide a "cleaner" user interface.
+-->
+
+<tabs-default-values>
     <tab editors="List">
         <for-all-models/>
     </tab>
-
 </tabs-default-values>

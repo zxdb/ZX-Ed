@@ -1,1 +1,1 @@
-<?xml version = "1.0" encoding = "ISO-8859-1"?><!DOCTYPE application SYSTEM "dtds/application.dtd"><application name="ZX-Ed">    <default-module>        <controller name="Native"/>    </default-module></application>
+<?xml version = "1.0" encoding = "ISO-8859-1"?><!DOCTYPE application SYSTEM "dtds/application.dtd"><!-- [ZX-Ed] Configure OpenXava to use our "Native" set of controllers by default.--><application name="ZX-Ed">    <default-module>        <controller name="Native"/>    </default-module></application>

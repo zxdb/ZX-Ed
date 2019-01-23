@@ -2,6 +2,11 @@
 
 <!DOCTYPE validators SYSTEM "dtds/validators.dtd">
 
+<!-- [ZX-Ed] By default, OpenXava does not accept assigning value zero to 
+     required numeric fields. A different validator was configured here in
+     order to change this behavior.
+-->
+
 <validators>
     <required-validator>
         <validator-name name="NOT_NULL"/>

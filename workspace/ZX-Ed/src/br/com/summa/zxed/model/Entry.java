@@ -132,38 +132,22 @@ public class Entry {
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("authorSeq,label.id,label.name,team.id,team.name,authorRoles")
     @XOrderBy("authorSeq")
-    @NewAction("NativeCollection.new")
-    @SaveAction("NativeCollection.save")
-    @RemoveAction("NativeCollection.remove")
-    @RemoveSelectedAction("NativeCollection.removeSelected")
     private Collection<Author> authors;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice")
-    @NewAction("NativeCollection.new")
-    @SaveAction("NativeCollection.save")
-    @RemoveAction("NativeCollection.remove")
-    @RemoveSelectedAction("NativeCollection.removeSelected")
     private Collection<Release> releases;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("util.id,util.title")
-    @NewAction("NativeCollection.new")
-    @SaveAction("NativeCollection.save")
-    @RemoveAction("NativeCollection.remove")
-    @RemoveSelectedAction("NativeCollection.removeSelected")
     private Collection<Framework> frameworks;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("group.grouptype.text,group.id,group.name,seriesSeq")
     @XOrderBy("group.grouptype.text,group.id")
-    @NewAction("NativeCollection.new")
-    @SaveAction("NativeCollection.save")
-    @RemoveAction("NativeCollection.remove")
-    @RemoveSelectedAction("NativeCollection.removeSelected")
     private Collection<Member> members;
 
     @lombok.ToString.Exclude
