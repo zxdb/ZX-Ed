@@ -68,6 +68,7 @@ public class Label {
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="label", cascade=CascadeType.REMOVE)
     @ListProperties("link,title,idiom.text,interviewer,interviewYear")
+    @XOrderBy("interviewYear,link")
     @NewAction("NativeCollection.new")
     @SaveAction("NativeCollection.save")
     @RemoveAction("NativeCollection.remove")
