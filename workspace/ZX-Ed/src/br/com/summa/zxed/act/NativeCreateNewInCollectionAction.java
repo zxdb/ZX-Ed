@@ -5,8 +5,9 @@ import org.openxava.view.*;
 
 public class NativeCreateNewInCollectionAction extends CreateNewElementInCollectionAction {
 
+	@Override
     public void execute() throws Exception {
-        if (isParentSaved2()) {
+		if (isParentSaved2()) {
             super.execute();
         } else {
             addError("zxed_parent_not_saved");

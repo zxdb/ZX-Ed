@@ -13,6 +13,7 @@ public class NextGroupId implements ICalculator {
 
     private String grouptypeId;
 
+    @Override
     public Object calculate() throws Exception {
         Query query = XPersistence.getManager().createQuery("select max(id) from Group where grouptype.id = :grouptypeId");
         query.setParameter("grouptypeId", grouptypeId);

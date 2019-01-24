@@ -7,6 +7,7 @@ import br.com.summa.zxed.sql.*;
 
 public class NativeRemoveInCollectionAction extends RemoveElementFromCollectionAction {
 
+    @Override
     public void execute() throws Exception {
         try {
             if (!getCollectionElementView().getKeyValuesWithValue().isEmpty()) {

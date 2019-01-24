@@ -13,10 +13,21 @@ public class ZxdbNamingStrategy extends ImprovedNamingStrategy {
                 name + "s").toLowerCase();
     }
 
+    @Override
     public String classToTableName(String className) {
         return plural(super.classToTableName(className));
     }
 
+    @Override
+    public String columnName(String columnName) {
+    	int i = columnName.lastIndexOf('.', columnName.lastIndexOf('.')-1);
+    	if (i != -1) {
+    		columnName = columnName.substring(i+1);
+    	}
+    	return super.columnName(columnName);
+    }
+
+    @Override
     public String foreignKeyColumnName(String propertyName, String propertyEntityName, String propertyTableName, String referencedColumnName) {
         return referencedColumnName.contains("_") ? referencedColumnName :
             super.foreignKeyColumnName(propertyName, propertyEntityName, propertyTableName, referencedColumnName) + "_" + referencedColumnName;

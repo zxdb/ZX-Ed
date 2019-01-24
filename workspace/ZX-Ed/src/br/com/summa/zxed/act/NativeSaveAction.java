@@ -12,6 +12,7 @@ import br.com.summa.zxed.sql.*;
 
 public class NativeSaveAction extends SaveAction {
 
+    @Override
     public void execute() throws Exception {
         try {
             if (getView().isKeyEditable()) {

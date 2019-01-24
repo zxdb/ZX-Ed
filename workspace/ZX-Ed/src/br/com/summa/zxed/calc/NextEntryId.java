@@ -15,6 +15,7 @@ public class NextEntryId implements ICalculator {
     private Integer genretypeId;
     private Integer machinetypeId;
 
+    @Override
     public Object calculate() throws Exception {
         int baseId = (machinetypeId != null && machinetypeId >= 11 && machinetypeId <= 13) ? 4000000 :
             (genretypeId != null && genretypeId >= 84 && genretypeId <= 90) ? 2000000 :

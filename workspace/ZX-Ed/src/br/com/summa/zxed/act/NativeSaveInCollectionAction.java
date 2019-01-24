@@ -10,6 +10,7 @@ import br.com.summa.zxed.sql.*;
 
 public class NativeSaveInCollectionAction extends SaveElementInCollectionAction {
 
+    @Override
     protected void saveCollectionElement(Map containerKey) throws Exception {
         if (getCollectionElementView().isEditable()) {
             boolean isEntity = isEntityReferencesCollection();

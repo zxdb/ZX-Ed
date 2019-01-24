@@ -27,7 +27,7 @@ public class SqlBuilder {
     }
 
     private String getColumnName(String fieldName) {
-        return ZxdbNamingStrategy.INSTANCE.columnName(fieldName);
+    	return ZxdbNamingStrategy.INSTANCE.columnName(fieldName);
     }
 
     private String getVersionName() {
@@ -50,10 +50,10 @@ public class SqlBuilder {
             if (fieldValue instanceof Map) {
                 convertFieldsToColumns(columns, fieldName+".", (Map<String, Object>)fieldValue);
             } else if (!excludedFields.contains(fieldName)) {
-                if (fieldName.equals(getVersionName()) && !prefix.isEmpty()) {
+            	if (fieldName.equals(getVersionName()) && !prefix.isEmpty()) {
                     // FIXME: HACK!!!
                 } else {
-                    columns.put(getColumnName(prefix+fieldName), quoteValue(fieldValue));
+                	columns.put(getColumnName(prefix+fieldName), quoteValue(fieldValue));
                 }
             }
         }
