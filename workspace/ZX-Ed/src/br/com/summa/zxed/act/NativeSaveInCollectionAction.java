@@ -15,7 +15,7 @@ public class NativeSaveInCollectionAction extends SaveElementInCollectionAction 
         if (getCollectionElementView().isEditable()) {
             boolean isEntity = isEntityReferencesCollection();
             Map<String, Object> values = getValuesToSave();
-            try {
+			try {
                 NativeManager.update(getCollectionElementView().getModelName(), getCollectionElementView().getKeyValues(), values);
                 addMessage(isEntity?"entity_modified":"aggregate_modified", getCollectionElementView().getModelName());
             } catch (ObjectNotFoundException ex) {

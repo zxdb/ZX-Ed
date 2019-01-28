@@ -1,4 +1,4 @@
-/* [ZX-Ed] Avoid displaying "First Steps" in main menu */
+/* [ZX-Ed] Avoid displaying "First steps" in main menu */
 
 #FirstSteps_module {
     display: none;
