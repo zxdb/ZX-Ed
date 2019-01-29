@@ -1,5 +1,7 @@
 package br.com.summa.zxed.model;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
@@ -28,6 +30,11 @@ public class License {
 
     @Column(length=200)
     private String licenseLink;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="license", cascade=CascadeType.REMOVE)
+    @ListProperties("label.id,label.name")
+    private Collection<Licensor> licensors;
 
     @lombok.ToString.Exclude
     @Version
