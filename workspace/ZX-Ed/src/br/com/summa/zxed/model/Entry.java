@@ -151,6 +151,12 @@ public class Entry {
     private Collection<Member> members;
 
     @lombok.ToString.Exclude
+    @OneToMany(mappedBy="compilation", cascade=CascadeType.REMOVE)
+    @ListProperties("tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,variationtype.text")
+    @XOrderBy("tapeSeq,tapeSide,progSeq,entry.id")
+    private Collection<Compilation> compilationContents;
+
+    @lombok.ToString.Exclude
     @Version
     private Integer zxed;
 }
