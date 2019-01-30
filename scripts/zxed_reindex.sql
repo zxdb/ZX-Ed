@@ -43,6 +43,7 @@ alter table ports drop column if exists zxed;
 alter table publicationtypes drop column if exists zxed;
 alter table publishers drop column if exists zxed;
 alter table referencetypes drop column if exists zxed;
+alter table relatedlicenses drop column if exists zxed;
 alter table relatedlinks drop column if exists zxed;
 alter table releases drop column if exists zxed;
 alter table remakes drop column if exists zxed;

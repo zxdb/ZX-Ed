@@ -43,6 +43,7 @@ ALTER TABLE ports ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE publicationtypes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE publishers ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE referencetypes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
+ALTER TABLE relatedlicenses ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE relatedlinks ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE releases ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE remakes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;

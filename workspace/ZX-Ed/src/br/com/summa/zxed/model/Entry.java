@@ -52,9 +52,6 @@ public class Entry {
     private NullableBoolean wasInspired;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    private License license;
-
-    @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
     private Machinetype machinetype;
 
@@ -141,6 +138,12 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("license.id,license.name,license.licensetype.text,isOfficial")
+    @XOrderBy("license.licensetype.text,license.name")
+    private Collection<Relatedlicense> relatedLicenses;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("util.id,util.title")
     private Collection<Framework> frameworks;
 
@@ -148,7 +151,7 @@ public class Entry {
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("group.grouptype.text,group.id,group.name,seriesSeq")
     @XOrderBy("group.grouptype.text,group.id")
-    private Collection<Member> members;
+    private Collection<Member> groupMembers;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="compilation", cascade=CascadeType.REMOVE)
