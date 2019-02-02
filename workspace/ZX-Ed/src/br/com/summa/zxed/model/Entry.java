@@ -29,6 +29,7 @@ public class Entry {
 
     @Column(length=250)
     @Required
+    @DefaultValueCalculator(value=LibTitle.class, properties=@PropertyValue(name="title"))
     private String libraryTitle;
 
     @ManyToOne(fetch=FetchType.LAZY)
