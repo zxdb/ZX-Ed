@@ -3,6 +3,7 @@ package br.com.summa.zxed.model;
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
+import org.openxava.calculators.*;
 
 @Tab(properties="compilation.id,compilation.title,tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,variationtype.text",
      defaultOrder="${compilation.id}, ${tapeSeq}, ${tapeSide}, ${progSeq}")
@@ -17,10 +18,12 @@ public class Compilation {
     private Entry compilation;
 
     @Id
+    @DefaultValueCalculator(value=ZeroIntegerCalculator.class)
     private Integer tapeSeq;
 
     @Id
     @Column(length=1)
+	@DefaultValueCalculator(value=StringCalculator.class, properties=@PropertyValue(name="string", value="*"))
     private String tapeSide;
 
     @Id
