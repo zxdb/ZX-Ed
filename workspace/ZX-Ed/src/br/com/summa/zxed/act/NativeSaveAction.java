@@ -8,6 +8,7 @@ import org.openxava.actions.*;
 import org.openxava.model.*;
 import org.openxava.validators.*;
 
+import br.com.summa.zxed.ex.*;
 import br.com.summa.zxed.sql.*;
 
 public class NativeSaveAction extends SaveAction {
@@ -45,8 +46,12 @@ public class NativeSaveAction extends SaveAction {
 
     protected Map<String, Object> modify2() throws Exception {
         Map<String, Object> keyValues = getView().getKeyValues();
-        NativeManager.update(getModelName(), keyValues, getValuesToSave());
-        addMessage("entity_modified", getModelName());
+        try {
+			NativeManager.update(getModelName(), keyValues, getValuesToSave());
+			addMessage("entity_modified", getModelName());
+		} catch (NothingToSaveException ex) {
+			addMessage("zxed_nothing_to_save");
+		}
         getView().clear();
         return MapFacade.getValues(getModelName(), keyValues, getView().getMembersNamesWithHidden());
     }

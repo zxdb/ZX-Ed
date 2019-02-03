@@ -6,6 +6,7 @@ import javax.ejb.*;
 
 import org.openxava.actions.*;
 
+import br.com.summa.zxed.ex.*;
 import br.com.summa.zxed.sql.*;
 
 public class NativeSaveInCollectionAction extends SaveElementInCollectionAction {
@@ -19,6 +20,8 @@ public class NativeSaveInCollectionAction extends SaveElementInCollectionAction 
                 String modelName = getCollectionElementView().getModelName();
 				NativeManager.update(modelName, getCollectionElementView().getKeyValues(), values);
                 addMessage(isEntity ? "entity_modified" : "aggregate_modified", modelName);
+            } catch (NothingToSaveException ex) {
+    			addMessage("zxed_nothing_to_save");
             } catch (ObjectNotFoundException ex) {
                 create2(values, isEntity, containerKey);
             }

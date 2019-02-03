@@ -7,6 +7,7 @@ import org.openxava.util.*;
 
 import br.com.summa.sol.util.*;
 import br.com.summa.sol.util.Maps;
+import br.com.summa.zxed.ex.*;
 
 public class SqlBuilder {
     public static final Set<String> excludedFields = Sets.asHashSet(
@@ -87,13 +88,13 @@ public class SqlBuilder {
         return "INSERT INTO "+getTableName()+"("+columnNames+") VALUES ("+columnValues+")";
     }
 
-    public String update(boolean versioned) {
+    public String update(boolean versioned) throws Exception {
         // Only modified columns should be updated
         Maps.removeAll(allColumns, oldColumns);
 
-        // If there's nothing to save then stop
+        // If there's nothing to save then exit
         if (allColumns.size() == 0) {
-        	throw new XavaException("zxed_nothing_to_save");
+        	throw new NothingToSaveException();
         }
 
         // If version column was modified, then someone else changed it
