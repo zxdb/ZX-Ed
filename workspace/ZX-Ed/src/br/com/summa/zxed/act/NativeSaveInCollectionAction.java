@@ -16,8 +16,9 @@ public class NativeSaveInCollectionAction extends SaveElementInCollectionAction 
             boolean isEntity = isEntityReferencesCollection();
             Map<String, Object> values = getValuesToSave();
 			try {
-                NativeManager.update(getCollectionElementView().getModelName(), getCollectionElementView().getKeyValues(), values);
-                addMessage(isEntity?"entity_modified":"aggregate_modified", getCollectionElementView().getModelName());
+                String modelName = getCollectionElementView().getModelName();
+				NativeManager.update(modelName, getCollectionElementView().getKeyValues(), values);
+                addMessage(isEntity ? "entity_modified" : "aggregate_modified", modelName);
             } catch (ObjectNotFoundException ex) {
                 create2(values, isEntity, containerKey);
             }
@@ -32,7 +33,8 @@ public class NativeSaveInCollectionAction extends SaveElementInCollectionAction 
         Map<String, Object> keyValues = getCollectionElementView().getKeyValues();
         keyValues.put(getMetaCollection().getMetaReference().getRole(), containerKey);
         values.put(getMetaCollection().getMetaReference().getRole(), containerKey);
-        NativeManager.insert(getCollectionElementView().getModelName(), keyValues, values);
-        addMessage(isEntity?"entity_created_and_associated":"aggregate_created", getCollectionElementView().getModelName(), getCollectionElementView().getParent().getModelName());
+        String modelName = getCollectionElementView().getModelName();
+		NativeManager.insert(modelName, keyValues, values);
+        addMessage(isEntity?"entity_created_and_associated" : "aggregate_created", modelName, getCollectionElementView().getParent().getModelName());
     }
 }

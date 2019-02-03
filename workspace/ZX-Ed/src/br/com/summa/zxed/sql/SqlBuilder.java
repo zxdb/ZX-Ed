@@ -91,6 +91,11 @@ public class SqlBuilder {
         // Only modified columns should be updated
         Maps.removeAll(allColumns, oldColumns);
 
+        // If there's nothing to save then stop
+        if (allColumns.size() == 0) {
+        	throw new XavaException("zxed_nothing_to_save");
+        }
+
         // If version column was modified, then someone else changed it
         String versionName = getVersionName();
         if (allColumns.containsKey(versionName)) {
