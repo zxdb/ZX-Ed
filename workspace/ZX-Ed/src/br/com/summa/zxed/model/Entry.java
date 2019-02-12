@@ -7,8 +7,8 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
-import br.com.summa.zxed.sql.*;
 
+@Tab(properties="id,title,libraryTitle,original.id,original.title,isMod,isXrated,isCrap,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,idiom.text")
 @View(name="Compact", members="id,title")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -47,10 +47,6 @@ public class Entry {
     @Column
     @Required
     private Boolean isCrap;
-
-    @Enumerated(EnumType.ORDINAL)
-    @Column(length = 1)
-    private NullableBoolean wasInspired;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
@@ -114,15 +110,15 @@ public class Entry {
     @Stereotype("MEMO")
     private String comments;
 
-    @Column
+    @Column(length=1000)
     @Stereotype("MEMO")
     private String spotComments;
 
-    @Column
+    @Column(length=1000)
     @Stereotype("MEMO")
     private String hardwareBlurb;
 
-    @Column
+    @Column(length=300)
     @Stereotype("MEMO")
     private String hardwareFeature;
 

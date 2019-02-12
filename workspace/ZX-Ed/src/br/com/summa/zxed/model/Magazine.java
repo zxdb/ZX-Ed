@@ -9,7 +9,7 @@ import org.openxava.annotations.*;
 import br.com.summa.zxed.calc.*;
 import br.com.summa.zxed.sql.*;
 
-@Tab(properties="id,name,isElectronic,idiom.text,linkMask,archiveMask")
+@Tab(properties="id,name,isElectronic,idiom.text,label.id,label.name,label2.id,label2.name,originalPrice,republishPrice,topic.id,linkMask,archiveMask")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -33,10 +33,28 @@ public class Magazine {
     @DescriptionsList(descriptionProperties="text")
     private Idiom idiom;
 
-    @Column(length=300)
+    @ManyToOne
+    @ReferenceView("Compact")
+    private Label label;
+
+    @ManyToOne
+    @ReferenceView("Compact")
+    private Label label2;
+
+    @Column(length=80)
+    private String originalPrice;
+
+    @Column(length=80)
+    private String republishPrice;
+
+    @ManyToOne
+    @ReferenceView("Compact")
+    private Topic topic;
+
+    @Column(length=250)
     private String linkMask;
 
-    @Column(length=300)
+    @Column(length=250)
     private String archiveMask;
 
     @lombok.ToString.Exclude
