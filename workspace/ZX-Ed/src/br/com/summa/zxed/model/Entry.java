@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,title,libraryTitle,original.id,original.title,isMod,isXrated,isCrap,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,idiom.text")
+@Tab(properties="id,title,original.id,original.title,isMod,isXrated,isCrap,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,idiom.text,firstPublisher")
 @View(name="Compact", members="id,title")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -131,7 +131,15 @@ public class Entry {
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice")
+    @XOrderBy("releaseSeq")
     private Collection<Release> releases;
+
+    // FIXME: There's a bug in OpenXava 6.0.2 that prevents defining publishers within releases
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("releaseSeq,publisherSeq,label.id,label.name")
+    @XOrderBy("releaseSeq,publisherSeq")
+    private Collection<Publisher> publishers;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
@@ -157,6 +165,24 @@ public class Entry {
     private Collection<Compilation> compilationContents;
 
     @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("website.name,idiom.text,link")
+    @XOrderBy("website.name,link")
+    private Collection<Relatedlink> relatedLinks;
+
+    @lombok.ToString.Exclude
     @Version
     private Integer zxed;
+
+    @Transient
+    @Depends("publishers")
+    public String getFirstPublisher() {
+        StringJoiner sj = new StringJoiner("; ");
+        for (Publisher publisher : publishers) {
+        	if (publisher.getReleaseSeq() == 0) {
+        		sj.add(publisher.getLabel().getName());
+        	}
+        }
+        return sj.toString();
+    }
 }
