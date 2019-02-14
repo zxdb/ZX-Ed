@@ -46,25 +46,23 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 **ZX-Ed** is a C.R.U.D. application to edit [ZXDB](https://github.com/zxdb/ZXDB) data. Every page in **ZX-Ed** (listed in the left side menu) corresponds to a table in [ZXDB](https://github.com/zxdb/ZXDB).
 
-Each page in **ZX-Ed** has multiple use modes:
-
-* **_List mode_**: Whenever you select a page from the left side menu, it will always start in **_List mode_**. From here, you can locate an existing record on this table, then click either `EDIT` or `DELETE`. Or you can start to create a new record clicking `NEW`.
+Each page in **ZX-Ed** has multiple use modes. See images below:
 
 ![Group (List mode)](images/list.png)
 
-* **_New mode_**: Whenever you click `NEW`, it will enter **_New mode_**. It will typically start with a blank page, except for certain fields automatically filled with default values. Now you can freely input new content, then click `SAVE` to insert this record into the database. If the record is created successfully, the page will automatically change to **_Edit mode_**.
+**_List mode_**: Whenever you select a page from the left side menu, it will always start in **_List mode_**. From here, you can locate an existing record on this table, then click either `EDIT` or `DELETE`. Or you can start to create a new record clicking `NEW`.
 
 ![Group (New mode)](images/new.png)
 
-* **_Edit mode_**: The **_Edit mode_** is almost identical to **_New mode_**, except it's for modifying an existing record in the database (instead of creating a new record). The most visible difference is that, when you are editing a record that already exists, you also get the option to remove it from the database clicking `DELETE`. Or you can make changes, then click `SAVE` to update the record in the database.
+**_New mode_**: Whenever you click `NEW`, it will enter **_New mode_**. It will typically start with a blank page, except for certain fields automatically filled with default values. Now you can freely input new content, then click `SAVE` to insert this record into the database. If the record is created successfully, the page will automatically change to **_Edit mode_**.
 
 ![Group (Edit mode)](images/edit.png)
 
-Although every table in [ZXDB](https://github.com/zxdb/ZXDB) have its own page in **ZX-Ed**, the same table may also appear as sub-list in another related table's page. In these cases, it's duplicated just for convenience, since editing data from a sub-list will produce exactly the same result.
-
-Each sub-list works independently from the rest of the page, with its own separate `NEW`, `EDIT` and `SAVE` options. The most visible difference is that each sub-list has its own independent message "`There are ? records in list`" at the bottom.
+**_Edit mode_**: The **_Edit mode_** is almost identical to **_New mode_**, except it's for modifying an existing record in the database (instead of creating a new record). The most visible difference is that, when you are editing a record that already exists, you also get the option to remove it from the database clicking `DELETE`. Or you can make changes, then click `SAVE` to update the record in the database.
 
 ![Member (Group sub-list)](images/sublist.png)
+
+**_Sub-lists_**: Although every table in [ZXDB](https://github.com/zxdb/ZXDB) have its own page in **ZX-Ed**, the same table may also appear as sub-list in another related table's page. In these cases, it's duplicated just for convenience, since editing data from a sub-list will produce exactly the same result. Each sub-list works independently from the rest of the page, with its own separate `NEW`, `EDIT` and `SAVE` options. The most visible difference is that each sub-list has its own independent message "`There are ? records in list`" at the bottom.
 
 
 ## How to recompile ZX-Ed
