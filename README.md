@@ -46,28 +46,19 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 **ZX-Ed** is a C.R.U.D. application to edit [ZXDB](https://github.com/zxdb/ZXDB) data. Every page in **ZX-Ed** (listed in the left side menu) corresponds to a table in [ZXDB](https://github.com/zxdb/ZXDB).
 
-
-#### Use modes
-
 Each page in **ZX-Ed** has multiple use modes:
-
 
 * LIST: Whenever you select a page from the left side menu, it will always start in LIST mode. From here, you can locate an existing record on this table, then click on it to either EDIT or DELETE. Or you can start to create a new record clicking NEW.
 
 ![Group (LIST mode)](images/list.png)
 
-
 * NEW: When you click NEW, it will typically start with a blank page, except for certain fields automatically filled with default values. Now you can freely input new content, then click SAVE to insert the record into the database. If the record is created successfully, the page will automatically change to EDIT mode.
 
 ![Group (NEW mode)](images/new.png)
 
-
 * EDIT: The EDIT mode is almost identical to NEW, except it's for modifying an existing record in the database (instead of creating a new record). The most visible difference is that you can also click DELETE to remove it from the database. Or you can make changes, then click SAVE to update it in the database.
 
 ![Group (EDIT mode)](images/edit.png)
-
-
-#### Sub-lists
 
 Although every table in [ZXDB](https://github.com/zxdb/ZXDB) have its own page in **ZX-Ed**, the same table may also appear as sub-list in another related table's page. In these cases, it's duplicated just for convenience, since editing data from a sub-list will produce exactly the same result.
 
