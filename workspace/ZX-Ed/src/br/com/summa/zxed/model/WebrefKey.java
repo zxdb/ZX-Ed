@@ -4,7 +4,7 @@ import java.io.*;
 
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
-public class RelatedlinkKey implements Serializable {
+public class WebrefKey implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Entry entry;

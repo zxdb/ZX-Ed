@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,title,original.id,original.title,isMod,isXrated,isCrap,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,idiom.text,firstPublisher")
+@Tab(properties="id,title,isXrated,isCrap,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,idiom.text,firstPublisher")
 @View(name="Compact", members="id,title")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -141,6 +141,13 @@ public class Entry {
     @XOrderBy("releaseSeq,publisherSeq")
     private Collection<Publisher> publishers;
 
+    // FIXME: There's a bug in OpenXava 6.0.2 that prevents defining publishers within releases
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("releaseSeq,title,idiom.text,id")
+    @XOrderBy("releaseSeq,title")
+    private Collection<Alias> aliases;
+
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("license.id,license.name,license.licensetype.text,isOfficial")
@@ -168,7 +175,7 @@ public class Entry {
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("website.name,idiom.text,link")
     @XOrderBy("website.name,link")
-    private Collection<Relatedlink> relatedLinks;
+    private Collection<Webref> webReferences;
 
     @lombok.ToString.Exclude
     @Version

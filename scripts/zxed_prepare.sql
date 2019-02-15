@@ -44,7 +44,6 @@ ALTER TABLE publicationtypes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL defa
 ALTER TABLE publishers ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE referencetypes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE relatedlicenses ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
-ALTER TABLE relatedlinks ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE releases ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE remakes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE roles ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
@@ -56,6 +55,7 @@ ALTER TABLE tools ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE topics ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE topictypes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE variationtypes ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
+ALTER TABLE webrefs ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 ALTER TABLE websites ADD COLUMN IF NOT EXISTS zxed int(11) NOT NULL default 0;
 
 -- END

@@ -44,7 +44,6 @@ alter table publicationtypes drop column if exists zxed;
 alter table publishers drop column if exists zxed;
 alter table referencetypes drop column if exists zxed;
 alter table relatedlicenses drop column if exists zxed;
-alter table relatedlinks drop column if exists zxed;
 alter table releases drop column if exists zxed;
 alter table remakes drop column if exists zxed;
 alter table roles drop column if exists zxed;
@@ -56,6 +55,7 @@ alter table tools drop column if exists zxed;
 alter table topics drop column if exists zxed;
 alter table topictypes drop column if exists zxed;
 alter table variationtypes drop column if exists zxed;
+alter table webrefs drop column if exists zxed;
 alter table websites drop column if exists zxed;
 
 

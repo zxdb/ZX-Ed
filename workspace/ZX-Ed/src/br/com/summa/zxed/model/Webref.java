@@ -8,8 +8,8 @@ import org.openxava.annotations.*;
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-@IdClass(RelatedlinkKey.class)
-public class Relatedlink {
+@IdClass(WebrefKey.class)
+public class Webref {
 
     @Id
     @ManyToOne(optional=false)
