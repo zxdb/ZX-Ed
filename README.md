@@ -46,7 +46,7 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 **ZX-Ed** is a C.R.U.D. application to edit [ZXDB](https://github.com/zxdb/ZXDB) data. Every page in **ZX-Ed** (listed in the left side menu) corresponds to a table in [ZXDB](https://github.com/zxdb/ZXDB).
 
-Each page in **ZX-Ed** has multiple use modes:
+Each page in **ZX-Ed** has multiple use modes, as detailed below.
 
 * **_List mode_**:
 
@@ -64,15 +64,15 @@ Whenever you click `NEW`, it will enter **_New mode_**. It will typically start 
 
 ![Group (Edit mode)](images/edit.png)
 
-The **_Edit mode_** is almost identical to **_New mode_**, except it's for modifying an existing record in the database (instead of creating a new record). The most visible difference is that, when you are editing a record that already exists, you also get the option to remove it from the database clicking `DELETE`. Or you can make changes, then click `SAVE` to update the record in the database.
+The **_Edit mode_** is almost identical to **_New mode_**, except it's for modifying an existing record in the database, instead of creating a new record. The most visible difference is, when you are editing a record that already exists, you will also have an option to remove it from the database clicking `DELETE`. Or you can make changes, then click `SAVE` to update the record in the database.
 
 * **_Sub-lists_**:
 
 ![Member (Group sub-list)](images/sublist.png)
 
-Although every table in [ZXDB](https://github.com/zxdb/ZXDB) have its own page in **ZX-Ed**, the same table may also appear as sub-list in another related table's page. In these cases, it's duplicated just for convenience, since editing data from a sub-list will produce exactly the same result.
+Although every table in [ZXDB](https://github.com/zxdb/ZXDB) has its own page in **ZX-Ed**, the same table may also appear as sub-list in another related table's page. However this data appears duplicated just for convenience, since editing data from a sub-list will produce exactly the same result as the original table's page.
 
-Each sub-list works independently from the rest of the page, with its own separate `NEW`, `EDIT` and `SAVE` options. The most visible difference is that each sub-list has its own independent message "`There are ? records in list`" at the bottom.
+Each sub-list works independently from the rest of the page, with separate `NEW`, `EDIT` and `SAVE` options. The most visible difference is that each sub-list has its own message "`There are ? records in list`" at the bottom.
 
 
 ## How to recompile ZX-Ed
