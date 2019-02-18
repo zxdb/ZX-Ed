@@ -50,25 +50,25 @@ Each page in **ZX-Ed** has multiple use modes, as detailed below.
 
 * **_List mode_**:
 
-![Group (List mode)](images/list.png)
+![Group (List mode)](/images/list.png)
 
 Whenever you select a page from the left side menu, it will always start in **_List mode_**. From here, you can locate an existing record on this table, then click either `EDIT` or `DELETE`. Or you can start to create a new record clicking `NEW`.
 
 * **_New mode_**:
 
-![Group (New mode)](images/new.png)
+![Group (New mode)](/images/new.png)
 
 Whenever you click `NEW`, it will enter **_New mode_**. It will typically start with a blank page, except for certain fields automatically filled with default values. Now you can freely input new content, then click `SAVE` to insert this record into the database. If the record is created successfully, the page will automatically change to **_Edit mode_**.
 
 * **_Edit mode_**:
 
-![Group (Edit mode)](images/edit.png)
+![Group (Edit mode)](/images/edit.png)
 
 The **_Edit mode_** is almost identical to **_New mode_**, except it's for modifying an existing record in the database, instead of creating a new record. The most visible difference is, when you are editing a record that already exists, you will also have an option to remove it from the database clicking `DELETE`. Or you can make changes, then click `SAVE` to update the record in the database.
 
 * **_Sub-lists_**:
 
-![Member (Group sub-list)](images/sublist.png)
+![Member (Group sub-list)](/images/sublist.png)
 
 Although every table in [ZXDB](https://github.com/zxdb/ZXDB) has its own page in **ZX-Ed**, the same table may also appear as sub-list in another related table's page. However this data appears duplicated just for convenience, since editing data from a sub-list will produce exactly the same result as the original table's page.
 
@@ -115,4 +115,4 @@ Each sub-list works independently from the rest of the page, with separate `NEW`
 **ZX-Ed** was created by Einar Saukas using [OpenXava 6.0.2](https://sourceforge.net/projects/openxava/), [Lombok](https://projectlombok.org/), and [SOL](http://summabr.github.io/sol/).
 
 
-![ZX-Ed](images/ZX-Ed_8.png)
+![ZX-Ed](/images/ZX-Ed_8.png)
