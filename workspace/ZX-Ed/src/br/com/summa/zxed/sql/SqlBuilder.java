@@ -12,7 +12,8 @@ import br.com.summa.zxed.ex.*;
 public class SqlBuilder {
     public static final Set<String> excludedFields = Sets.asHashSet(
             "__MODEL_NAME__",
-            "authorRoles");
+            "authorRoles",
+            "firstPublisher");
 
     private final Map<String, String> allColumns = new TreeMap<String, String>();
     private final Map<String, String> keyColumns = new TreeMap<String, String>();
