@@ -7,34 +7,31 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,entry.id,entry.title,releaseSeq,idiom.text,title,libraryTitle",
+@Tab(properties="entry.id,entry.title,releaseSeq,idiom.text,title,libraryTitle",
      defaultOrder="${entry.id}, ${releaseSeq}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
+@IdClass(AliasKey.class)
 public class Alias {
 
     @Id
-    @Column(length=11)
-    @DefaultValueCalculator(value=NextId.class, properties=@PropertyValue(name="modelName", value="Alias"))
-    @ReadOnly
-    private Integer id;
-
     @ManyToOne(optional=false)
     @ReferenceView("Compact")
     private Entry entry;
 
+    @Id
     @Column(length=6)
-    @Required
     @DefaultValueCalculator(value=ZeroIntegerCalculator.class)
     private Integer releaseSeq;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @Id
+    @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Idiom idiom;
 
+    @Id
     @Column(length=250)
-    @Required
     private String title;
 
     @Column(length=250)

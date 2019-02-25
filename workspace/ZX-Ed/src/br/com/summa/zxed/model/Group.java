@@ -38,7 +38,7 @@ public class Group {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="group", cascade=CascadeType.REMOVE)
-    @ListProperties("entry.id,entry.libraryTitle,seriesSeq")
+    @ListProperties("entry.id,entry.title,seriesSeq")
     @XOrderBy("seriesSeq,entry.libraryTitle")
     private Collection<Member> members;
 

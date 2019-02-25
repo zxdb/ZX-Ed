@@ -32,14 +32,6 @@ public class Entry {
     @DefaultValueCalculator(value=LibTitle.class, properties=@PropertyValue(name="title"))
     private String libraryTitle;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @ReferenceView("Compact")
-    private Entry original;
-
-    @Column
-    @Required
-    private Boolean isMod;
-
     @Column
     @Required
     private Boolean isXrated;
@@ -137,14 +129,14 @@ public class Entry {
     // FIXME: There's a bug in OpenXava 6.0.2 that prevents defining publishers within releases
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("releaseSeq,publisherSeq,label.id,label.name")
+    @ListProperties("releaseSeq,publisherSeq,label.id,label.name,label.country.text")
     @XOrderBy("releaseSeq,publisherSeq")
     private Collection<Publisher> publishers;
 
     // FIXME: There's a bug in OpenXava 6.0.2 that prevents defining publishers within releases
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("releaseSeq,title,idiom.text,id")
+    @ListProperties("releaseSeq,idiom.text,title")
     @XOrderBy("releaseSeq,title")
     private Collection<Alias> aliases;
 
@@ -156,8 +148,8 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("util.id,util.title")
-    private Collection<Framework> frameworks;
+    @ListProperties("original.id,original.title,relationtype.text,original.firstPublisher")
+    private Collection<Relation> relatedEntries;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)

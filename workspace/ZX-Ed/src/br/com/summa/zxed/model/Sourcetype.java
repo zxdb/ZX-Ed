@@ -7,17 +7,15 @@ import org.openxava.annotations.*;
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-@IdClass(FrameworkKey.class)
-public class Framework {
-    @Id
-    @ManyToOne(optional=false)
-    @ReferenceView("Compact")
-    private Entry entry;
+public class Sourcetype {
 
     @Id
-    @ManyToOne(optional=false)
-    @ReferenceView("Compact")
-    private Entry util;
+    @Column(length=1)
+    private String id;
+
+    @Column(length=50)
+    @Required
+    private String text;
 
     @lombok.ToString.Exclude
     @Version

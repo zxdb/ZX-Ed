@@ -7,7 +7,7 @@ import org.openxava.annotations.*;
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-public class Origintype {
+public class Relationtype {
 
     @Id
     @Column(length=1)
