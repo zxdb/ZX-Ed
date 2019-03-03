@@ -116,18 +116,6 @@ create table if not exists search_by_publishers (
 insert into search_by_publishers(label_id, entry_id) (select lid, eid from (select x.label_id as lid, x.entry_id as eid from publishers x union all select l2.id as lid, x.entry_id as eid from publishers x inner join labels l1 on x.label_id = l1.id inner join labels l2 on l2.id = l1.from_id or l2.id = l1.owner_id union all select l2.id as lid, x.entry_id as eid from publishers x inner join labels l1 on x.label_id = l1.id inner join labels l2 on (l1.id = l2.from_id or l1.id = l2.owner_id) and (l2.labeltype_id is null or l2.labeltype_id in ('+','-'))) as y where lid is not null group by lid, eid order by lid, eid);
 
 
--- Help identify file extensions from download files
-
-drop table if exists search_by_downloads;
-
-create table search_by_downloads (
-    download_id int(11) not null primary key,
-    extension varchar(15) not null
-);
-
-insert into search_by_downloads(download_id, extension) (select * from (select id, case when file_link like '%_SourceCode.zip' then '_SourceCode.zip' when file_link like '%_Fonts.zip' then '_Fonts.zip' when substring_index(lower(file_link), ".", -1)='zip' then substring_index(lower(file_link), ".", -2) else substring_index(lower(file_link), ".", -1) end as ext from downloads) as d where ext in (select ext from extensions));
-
-
 -- Examples
 
 select * from entries where id in (select entry_id from search_by_titles where entry_title like '%sokoban%') order by title;
