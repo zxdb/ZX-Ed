@@ -29,7 +29,7 @@ public class SqlBuilder {
     }
 
     private String getColumnName(String fieldName) {
-    	return ZxdbNamingStrategy.INSTANCE.columnName(fieldName);
+        return ZxdbNamingStrategy.INSTANCE.columnName(fieldName);
     }
 
     private String getVersionName() {
@@ -41,7 +41,7 @@ public class SqlBuilder {
         return value == null || "".equals(value) ? "null" :
             value instanceof Boolean || value instanceof Number ? value.toString() :
             value instanceof Enum<?> ? ""+((Enum<?>)value).ordinal() :
-            "'"+value.toString().replaceAll("'", "''")+"'";
+            "'"+value.toString().replaceAll("'", "''").replaceAll("\n", "#")+"'";
     }
 
     @SuppressWarnings("unchecked")
@@ -52,10 +52,10 @@ public class SqlBuilder {
             if (fieldValue instanceof Map) {
                 convertFieldsToColumns(columns, fieldName+".", (Map<String, Object>)fieldValue);
             } else if (!excludedFields.contains(fieldName)) {
-            	if (fieldName.equals(getVersionName()) && !prefix.isEmpty()) {
+                if (fieldName.equals(getVersionName()) && !prefix.isEmpty()) {
                     // FIXME: HACK!!!
                 } else {
-                	columns.put(getColumnName(prefix+fieldName), quoteValue(fieldValue));
+                    columns.put(getColumnName(prefix+fieldName), quoteValue(fieldValue));
                 }
             }
         }
@@ -95,7 +95,7 @@ public class SqlBuilder {
 
         // If there's nothing to save then exit
         if (allColumns.size() == 0) {
-        	throw new NothingToSaveException();
+            throw new NothingToSaveException();
         }
 
         // If version column was modified, then someone else changed it

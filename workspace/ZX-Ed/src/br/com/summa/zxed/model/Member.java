@@ -6,7 +6,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="group.grouptype.text,group.id,group.name,entry.id,entry.title,seriesSeq")
+@Tab(properties="group.grouptype.text,group.id,group.name,seriesSeq,entry.id,entry.title,entry.firstPublisher")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

@@ -9,7 +9,7 @@ import org.openxava.jpa.*;
 import org.openxava.model.*;
 import org.openxava.util.*;
 
-public class NativeManager {
+public final class NativeManager {
     public static final String LOG_FILE = "/tmp/ZX-Ed.sql";
     public static final String GUEST_USER = "guest";
 

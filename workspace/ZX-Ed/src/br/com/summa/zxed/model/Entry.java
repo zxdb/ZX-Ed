@@ -148,7 +148,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("original.id,original.title,relationtype.text,original.firstPublisher")
+    @ListProperties("relationtype.text,original.id,original.title,original.firstPublisher")
     private Collection<Relation> relatedEntries;
 
     @lombok.ToString.Exclude
@@ -178,9 +178,9 @@ public class Entry {
     public String getFirstPublisher() {
         StringJoiner sj = new StringJoiner("; ");
         for (Publisher publisher : publishers) {
-        	if (publisher.getReleaseSeq() == 0) {
-        		sj.add(publisher.getLabel().getName());
-        	}
+            if (publisher.getReleaseSeq() == 0) {
+                sj.add(publisher.getLabel().getName());
+            }
         }
         return sj.toString();
     }

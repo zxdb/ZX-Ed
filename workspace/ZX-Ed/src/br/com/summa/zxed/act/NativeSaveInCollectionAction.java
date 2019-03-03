@@ -3,6 +3,7 @@ package br.com.summa.zxed.act;
 import java.util.*;
 
 import javax.ejb.*;
+import javax.persistence.*;
 
 import org.openxava.actions.*;
 
@@ -12,16 +13,25 @@ import br.com.summa.zxed.sql.*;
 public class NativeSaveInCollectionAction extends SaveElementInCollectionAction {
 
     @Override
+    public void execute() throws Exception {
+        try {
+            super.execute();
+        } catch (PersistenceException ex) {
+            throw new RootCauseException(ex);
+        }
+    }
+
+    @Override
     protected void saveCollectionElement(Map containerKey) throws Exception {
         if (getCollectionElementView().isEditable()) {
             boolean isEntity = isEntityReferencesCollection();
             Map<String, Object> values = getValuesToSave();
-			try {
+            try {
                 String modelName = getCollectionElementView().getModelName();
-				NativeManager.update(modelName, getCollectionElementView().getKeyValues(), values);
+                NativeManager.update(modelName, getCollectionElementView().getKeyValues(), values);
                 addMessage(isEntity ? "entity_modified" : "aggregate_modified", modelName);
             } catch (NothingToSaveException ex) {
-    			addMessage("zxed_nothing_to_save");
+                addMessage("zxed_nothing_to_save");
             } catch (ObjectNotFoundException ex) {
                 create2(values, isEntity, containerKey);
             }
@@ -37,7 +47,7 @@ public class NativeSaveInCollectionAction extends SaveElementInCollectionAction 
         keyValues.put(getMetaCollection().getMetaReference().getRole(), containerKey);
         values.put(getMetaCollection().getMetaReference().getRole(), containerKey);
         String modelName = getCollectionElementView().getModelName();
-		NativeManager.insert(modelName, keyValues, values);
+        NativeManager.insert(modelName, keyValues, values);
         addMessage(isEntity?"entity_created_and_associated" : "aggregate_created", modelName, getCollectionElementView().getParent().getModelName());
     }
 }

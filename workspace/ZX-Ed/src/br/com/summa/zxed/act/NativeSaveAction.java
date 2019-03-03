@@ -3,6 +3,7 @@ package br.com.summa.zxed.act;
 import java.util.*;
 
 import javax.ejb.*;
+import javax.persistence.*;
 
 import org.openxava.actions.*;
 import org.openxava.model.*;
@@ -28,6 +29,8 @@ public class NativeSaveAction extends SaveAction {
             addError("no_modify_no_exists");
         } catch (DuplicateKeyException ex) {
             addError("no_create_exists");
+        } catch (PersistenceException ex) {
+            throw new RootCauseException(ex);
         }
     }
 
@@ -47,11 +50,11 @@ public class NativeSaveAction extends SaveAction {
     protected Map<String, Object> modify2() throws Exception {
         Map<String, Object> keyValues = getView().getKeyValues();
         try {
-			NativeManager.update(getModelName(), keyValues, getValuesToSave());
-			addMessage("entity_modified", getModelName());
-		} catch (NothingToSaveException ex) {
-			addMessage("zxed_nothing_to_save");
-		}
+            NativeManager.update(getModelName(), keyValues, getValuesToSave());
+            addMessage("entity_modified", getModelName());
+        } catch (NothingToSaveException ex) {
+            addMessage("zxed_nothing_to_save");
+        }
         getView().clear();
         return MapFacade.getValues(getModelName(), keyValues, getView().getMembersNamesWithHidden());
     }

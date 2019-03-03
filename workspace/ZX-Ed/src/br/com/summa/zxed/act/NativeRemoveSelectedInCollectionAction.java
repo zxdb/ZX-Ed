@@ -9,10 +9,10 @@ import br.com.summa.zxed.sql.*;
 
 public class NativeRemoveSelectedInCollectionAction extends RemoveSelectedInCollectionAction {
 
-	@Override
-	protected void removeElement(Map keys) throws Exception {
+    @Override
+    protected void removeElement(Map keys) throws Exception {
         String modelName = getCollectionElementView().getModelName();
         Map<String, Object> values = MapFacade.getValues(modelName, keys, getCollectionElementView().getMembersNamesWithHidden());
         NativeManager.delete(modelName, keys, values);
-	}
+    }
 }
