@@ -50,7 +50,6 @@ alter table roles drop column if exists zxed;
 alter table roletypes drop column if exists zxed;
 alter table schemetypes drop column if exists zxed;
 alter table scores drop column if exists zxed;
-alter table sourcetypes drop column if exists zxed;
 alter table toolfiles drop column if exists zxed;
 alter table tools drop column if exists zxed;
 alter table topics drop column if exists zxed;
