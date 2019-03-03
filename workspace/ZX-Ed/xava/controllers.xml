@@ -64,4 +64,34 @@
             image="delete.gif" in-each-row="true"
             class="br.com.summa.zxed.act.NativeRemoveSelectedInCollectionAction"/>
     </controller>
+
+    <!-- [ZX-Ed] These controllers will be executed by default, when creating a
+        new entity from a reference.
+    -->
+    <controller name="NewCreation">
+        <action name="new" hidden="true"
+            class="org.openxava.actions.NewAction"
+            keystroke="F2"/>
+
+        <action name="saveNew" by-default="almost-always"
+            class="br.com.summa.zxed.act.NativeSaveNewAction"/>
+
+        <action name="cancel"
+            class="org.openxava.actions.CancelAction"/>
+    </controller>
+
+    <!-- [ZX-Ed] These controllers will be executed by default, when editing an
+        existing entity from a reference.
+    -->
+    <controller name="Modification">
+        <action name="search" hidden="true"
+            class="org.openxava.actions.SearchByViewKeyAction"
+            keystroke="F2"/>
+
+        <action name="update" by-default="almost-always"
+            class="br.com.summa.zxed.act.NativeUpdateAction"/>
+
+        <action name="cancel"
+            class="org.openxava.actions.CancelAction"/>
+    </controller>
 </controllers>
