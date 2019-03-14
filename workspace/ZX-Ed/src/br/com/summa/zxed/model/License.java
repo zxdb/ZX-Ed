@@ -32,10 +32,20 @@ public class License {
     @Column(length=200)
     private String licenseLink;
 
+    @Column(length=500)
+    @Stereotype("MEMO")
+    private String comments;
+
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="license", cascade=CascadeType.REMOVE)
     @ListProperties("label.id,label.name")
     private Collection<Licensor> licensors;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="license", cascade=CascadeType.REMOVE)
+    @ListProperties("entry.id,entry.title,entry.firstPublisher,isOfficial")
+    @XOrderBy("isOfficial desc,entry.title,entry.id")
+    private Collection<Relatedlicense> relatedEntries;
 
     @lombok.ToString.Exclude
     @Version

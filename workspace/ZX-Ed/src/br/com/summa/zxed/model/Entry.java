@@ -59,9 +59,6 @@ public class Entry {
     @DescriptionsList(descriptionProperties="text")
     private Publicationtype publicationtype;
 
-    @Column(length=50)
-    private String spanishPrice;
-
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
     private Availabletype availabletype;
@@ -153,8 +150,8 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("group.grouptype.text,group.id,group.name,seriesSeq")
-    @XOrderBy("group.grouptype.text,group.id")
+    @ListProperties("group.grouptype.text,group.id,group.name,group.link,seriesSeq")
+    @XOrderBy("group.grouptype.text,group.name")
     private Collection<Member> groupMembers;
 
     @lombok.ToString.Exclude
