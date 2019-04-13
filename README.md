@@ -12,7 +12,7 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 #### Requirements
 
-* Download and install Java 6 or later, preferably [Java JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/). Don't forget to set environment variable `JAVA_HOME`. You better also set environment variable `JAVA_TOOL_OPTIONS` to value `-Dfile.encoding=UTF8` otherwise certain special characters (such as €) won't work properly.
+* Download and install Java 6 or later, preferably [Java JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/). Don't forget to set environment variable `JAVA_HOME`. You better also set environment variable `JAVA_TOOL_OPTIONS` with value `-Dfile.encoding=UTF8` otherwise certain special characters (such as €) won't work properly.
 * Download and install [Apache Tomcat](https://tomcat.apache.org/).
 * Download and install [MariaDB](https://downloads.mariadb.org/) (or MySQL), setting UTF8 as default server's charset.
 

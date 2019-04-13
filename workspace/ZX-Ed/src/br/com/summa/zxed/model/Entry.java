@@ -91,11 +91,7 @@ public class Entry {
     @Column(length=50)
     private String bookPages;
 
-    @Column
-    @Stereotype("MEMO")
-    private String knownErrors;
-
-    @Column
+    @Column(length=5000)
     @Stereotype("MEMO")
     private String comments;
 
@@ -107,9 +103,13 @@ public class Entry {
     @Stereotype("MEMO")
     private String hardwareBlurb;
 
-    @Column(length=300)
+    @Column(length=250)
     @Stereotype("MEMO")
     private String hardwareFeature;
+
+    @Column(length=45000)
+    @Stereotype("MEMO")
+    private String knownErrors;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)

@@ -40,7 +40,7 @@ public class Compilation {
     @Column(length=250)
     private String alias;
 
-    @ManyToOne(fetch=FetchType.LAZY, optional=false)
+    @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Variationtype variationtype;
 

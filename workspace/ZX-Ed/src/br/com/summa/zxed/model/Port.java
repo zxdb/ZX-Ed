@@ -20,7 +20,7 @@ public class Port {
     @ReferenceView("Compact")
     private Entry entry;
 
-    @ManyToOne(fetch=FetchType.LAZY, optional=false)
+    @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Platform platform;
 

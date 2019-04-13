@@ -32,7 +32,7 @@ public class Group {
     @Column(length=200)
     private String link;
 
-    @Column
+    @Column(length=1500)
     @Stereotype("MEMO")
     private String comments;
 

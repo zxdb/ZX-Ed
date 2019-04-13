@@ -21,11 +21,12 @@ public class Permission {
     @ReferenceView("Compact")
     private Label label;
 
-    @ManyToOne(fetch=FetchType.LAZY, optional=false)
+    @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Permissiontype permissiontype;
 
     @Column(length=300)
+    @Stereotype("MEMO")
     private String text;
 
     @lombok.ToString.Exclude

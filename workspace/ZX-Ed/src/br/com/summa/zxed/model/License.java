@@ -25,7 +25,7 @@ public class License {
     @Required
     private String name;
 
-    @ManyToOne(fetch=FetchType.LAZY, optional=false)
+    @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Licensetype licensetype;
 
