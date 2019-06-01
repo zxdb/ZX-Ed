@@ -52,6 +52,9 @@ public class Magref {
     @Column(length=250)
     private String link2;
 
+    @Column(length=20)
+    private String score;
+
     @ManyToOne(optional=false)
     private Feature feature;
 

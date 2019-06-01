@@ -23,7 +23,7 @@ public class Compilation {
 
     @Id
     @Column(length=1)
-	@DefaultValueCalculator(value=StringCalculator.class, properties=@PropertyValue(name="string", value="0"))
+    @DefaultValueCalculator(value=StringCalculator.class, properties=@PropertyValue(name="string", value="0"))
     private String tapeSide;
 
     @Id
