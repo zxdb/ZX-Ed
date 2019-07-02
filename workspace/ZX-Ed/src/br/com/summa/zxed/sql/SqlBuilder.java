@@ -44,6 +44,17 @@ public class SqlBuilder {
             "'"+value.toString().replaceAll("'", "''").replaceAll("\n", "#")+"'";
     }
 
+    // FIXME: HACK!!!
+    public static Map<String, String> nullColumnsWithIds(Map<String, String> columns) {
+    	Map<String, String> map = new HashMap<String, String>();
+    	for (Map.Entry<String, String> column : columns.entrySet()) {
+    		if ("null".equals(column.getValue())) {
+    			map.put(column.getKey()+"_id", column.getValue());
+    		}
+    	}
+    	return map;
+    }
+
     @SuppressWarnings("unchecked")
     private void convertFieldsToColumns(Map<String, String> columns, String prefix, Map<String, Object> fields) {
         for (Map.Entry<String, Object> entry : fields.entrySet()) {
@@ -92,6 +103,9 @@ public class SqlBuilder {
     public String update(boolean versioned) throws Exception {
         // Only modified columns should be updated
         Maps.removeAll(allColumns, oldColumns);
+
+        // FIXME: HACK!!!
+        Maps.removeAll(allColumns, nullColumnsWithIds(oldColumns));
 
         // If there's nothing to save then exit
         if (allColumns.size() == 0) {
