@@ -105,7 +105,7 @@ insert into search_by_authors(label_id, entry_id) (select lid, eid from (select 
 
 drop table if exists search_by_publishers;
 
-create table if not exists search_by_publishers (
+create table search_by_publishers (
     label_id integer not null,
     entry_id integer not null,
     primary key (label_id, entry_id),
