@@ -20,7 +20,7 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 #### Database creation
 
 * Download `ZXDB_mysql.sql` from [ZXDB](https://github.com/zxdb/ZXDB), then execute it using a database client (such as HeidiSQL) as UTF8. It will create database [ZXDB](https://github.com/zxdb/ZXDB) and populate it.
-* Execute `scripts/zxed_prepare.sql` using the same database client as UTF8. It will prepare [ZXDB](https://github.com/zxdb/ZXDB) for editing, mainly adding version control to protect against concurrent changes from multiple users (later the original [ZXDB](https://github.com/zxdb/ZXDB) structure can be restored by executing `scripts/zxed_reindex.sql`).
+* Execute `scripts/zxed_prepare.sql` using the same database client as UTF8. It will prepare [ZXDB](https://github.com/zxdb/ZXDB) for editing, adding version control to protect against concurrent changes from multiple users (later the original [ZXDB](https://github.com/zxdb/ZXDB) structure can be restored by executing `scripts/zxed_reset.sql`).
 
 
 #### Tomcat preparation
