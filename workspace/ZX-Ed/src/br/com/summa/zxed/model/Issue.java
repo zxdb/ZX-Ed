@@ -6,6 +6,8 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
+import org.openxava.calculators.IntegerCalculator;
+
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -38,6 +40,11 @@ public class Issue {
 
     @Column(length=100)
     private String special;
+
+    @Column(length=6)
+    @Required
+	@DefaultValueCalculator(value=IntegerCalculator.class, properties={ @PropertyValue(name="value", value="1")})
+    private Integer coverPage;
 
     @lombok.ToString.Exclude
     @Version
