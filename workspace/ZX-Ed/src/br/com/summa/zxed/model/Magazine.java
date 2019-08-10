@@ -7,9 +7,8 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
-import br.com.summa.zxed.sql.*;
 
-@Tab(properties="id,name,isElectronic,idiom.text,label.id,label.name,label2.id,label2.name,originalPrice,republishPrice,topic.id,linkMask,archiveMask")
+@Tab(properties="id,name,idiom.text,linkSite,label.id,label.name,label2.id,label2.name,originalPrice,republishPrice,topic.id,linkMask,archiveMask")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -25,13 +24,12 @@ public class Magazine {
     @Required
     private String name;
 
-    @Enumerated(EnumType.ORDINAL)
-    @Column(length = 1)
-    private NullableBoolean isElectronic;
-
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
     private Idiom idiom;
+
+    @Column(length=200)
+    private String linkSite;
 
     @ManyToOne
     @ReferenceView("Compact")

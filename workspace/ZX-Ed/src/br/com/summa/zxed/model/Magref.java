@@ -7,6 +7,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
+@Tab(properties="id,referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,issue.id,page,isSupplement,score,feature.id,feature.name")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -45,12 +46,6 @@ public class Magref {
     @Column
     @Required
     private Boolean isSupplement;
-
-    @Column(length=250)
-    private String link;
-
-    @Column(length=250)
-    private String link2;
 
     @Column(length=20)
     private String score;

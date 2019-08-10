@@ -33,9 +33,6 @@ public class Feature {
     @ReferenceView("Compact")
     private Label label2;
 
-    @ManyToOne
-    private Host host;
-
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;
