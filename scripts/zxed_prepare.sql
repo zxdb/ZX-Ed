@@ -32,6 +32,7 @@ alter table machinetypes add column if not exists zxed int(11) not null default 
 alter table magazines add column if not exists zxed int(11) not null default 0;
 alter table magfiles add column if not exists zxed int(11) not null default 0;
 alter table magrefs add column if not exists zxed int(11) not null default 0;
+alter table magreflinks add column if not exists zxed int(11) not null default 0;
 alter table members add column if not exists zxed int(11) not null default 0;
 alter table nvgs add column if not exists zxed int(11) not null default 0;
 alter table permissions add column if not exists zxed int(11) not null default 0;

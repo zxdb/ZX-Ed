@@ -32,6 +32,7 @@ alter table machinetypes drop column if exists zxed;
 alter table magazines drop column if exists zxed;
 alter table magfiles drop column if exists zxed;
 alter table magrefs drop column if exists zxed;
+alter table magreflinks drop column if exists zxed;
 alter table members drop column if exists zxed;
 alter table nvgs drop column if exists zxed;
 alter table permissions drop column if exists zxed;

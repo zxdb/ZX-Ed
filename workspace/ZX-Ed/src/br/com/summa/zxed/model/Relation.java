@@ -15,14 +15,14 @@ public class Relation {
     @ReferenceView("Compact")
     private Entry entry;
 
+    @ManyToOne(optional=false)
+    @DescriptionsList(descriptionProperties="text")
+    private Relationtype relationtype;
+
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")
     private Entry original;
-
-    @ManyToOne(optional=false)
-    @DescriptionsList(descriptionProperties="text")
-    private Relationtype relationtype;
 
     @lombok.ToString.Exclude
     @Version

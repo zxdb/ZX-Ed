@@ -60,7 +60,8 @@ public class Entry {
     private Publicationtype publicationtype;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @DescriptionsList(descriptionProperties="text")
+    // FIXME: There's a bug in OpenXava 6.1.2 that corrupts data when @DescriptionsList is used here
+    // @DescriptionsList(descriptionProperties="text")
     private Availabletype availabletype;
 
     @Column
@@ -130,7 +131,7 @@ public class Entry {
     @XOrderBy("releaseSeq,publisherSeq")
     private Collection<Publisher> publishers;
 
-    // FIXME: There's a bug in OpenXava 6.0.2 that prevents defining publishers within releases
+    // FIXME: There's a bug in OpenXava 6.0.2 that prevents defining aliases within releases
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("releaseSeq,idiom.text,title")

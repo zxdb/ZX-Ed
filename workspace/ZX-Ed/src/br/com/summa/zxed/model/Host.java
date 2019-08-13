@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
+import br.com.summa.zxed.calc.*;
+
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -11,6 +13,8 @@ public class Host {
 
     @Id
     @Column(length=4)
+    @DefaultValueCalculator(value=NextId.class, properties=@PropertyValue(name="modelName", value="Host"))
+    @ReadOnly
     private Integer id;
 
     @Column(length=150)
@@ -25,7 +29,7 @@ public class Host {
     @Required
     private String admin;
 
-    @ManyToOne(optional=false)
+    @ManyToOne
     @DescriptionsList
     private Magazine magazine;
 
