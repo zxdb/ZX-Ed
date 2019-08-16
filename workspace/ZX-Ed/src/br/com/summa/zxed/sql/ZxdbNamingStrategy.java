@@ -1,11 +1,13 @@
 package br.com.summa.zxed.sql;
 
+import org.hibernate.boot.model.naming.*;
 import org.hibernate.cfg.*;
+import org.hibernate.engine.jdbc.env.spi.*;
 
-public class ZxdbNamingStrategy extends ImprovedNamingStrategy {
+public class ZxdbNamingStrategy extends PhysicalNamingStrategyStandardImpl {
     private static final long serialVersionUID = 1L;
 
-    public static final ZxdbNamingStrategy INSTANCE = new ZxdbNamingStrategy();
+    public static final PhysicalNamingStrategyStandardImpl INSTANCE = new ZxdbNamingStrategy();
 
     public static String plural(String name) {
         return (name.endsWith("y") ? name.substring(0, name.length()-1) + "ies" :
@@ -14,22 +16,17 @@ public class ZxdbNamingStrategy extends ImprovedNamingStrategy {
     }
 
     @Override
-    public String classToTableName(String className) {
-        return plural(super.classToTableName(className));
+    public Identifier toPhysicalTableName(Identifier name, JdbcEnvironment jdbcEnvironment) {
+        return new Identifier(plural(name.getText()), name.isQuoted());
     }
 
     @Override
-    public String columnName(String columnName) {
-    	int i = columnName.lastIndexOf('.', columnName.lastIndexOf('.')-1);
-    	if (i != -1) {
-    		columnName = columnName.substring(i+1);
-    	}
-    	return super.columnName(columnName);
-    }
-
-    @Override
-    public String foreignKeyColumnName(String propertyName, String propertyEntityName, String propertyTableName, String referencedColumnName) {
-        return referencedColumnName.contains("_") ? referencedColumnName :
-            super.foreignKeyColumnName(propertyName, propertyEntityName, propertyTableName, referencedColumnName) + "_" + referencedColumnName;
+    public Identifier toPhysicalColumnName(Identifier name, JdbcEnvironment jdbcEnvironment) {
+        String columnName = name.getText();
+        int i = columnName.lastIndexOf('_', columnName.lastIndexOf('_')-1);
+        if (i != -1) {
+            columnName = columnName.substring(i+1);
+        }
+        return new Identifier(ImprovedNamingStrategy.INSTANCE.columnName(columnName), name.isQuoted());
     }
 }

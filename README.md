@@ -12,7 +12,7 @@ Whenever any change is made to the database using **ZX-Ed**, its corresponding S
 
 #### Requirements
 
-* Download and install Java 6 or later, preferably [Java JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/). Don't forget to set environment variable `JAVA_HOME`. You better also set environment variable `JAVA_TOOL_OPTIONS` with value `-Dfile.encoding=UTF8` otherwise certain special characters (such as €) won't work properly.
+* Download and install Java 8 or later, preferably [Java JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/). Don't forget to set environment variable `JAVA_HOME`. You better also set environment variable `JAVA_TOOL_OPTIONS` with value `-Dfile.encoding=UTF8` otherwise certain special characters (such as €) won't work properly.
 * Download and install [Apache Tomcat](https://tomcat.apache.org/).
 * Download and install [MariaDB](https://downloads.mariadb.org/) (or MySQL), setting UTF8 as default server's charset.
 
@@ -89,7 +89,7 @@ Each sub-list works independently from the rest of the page, with separate `NEW`
 **ZX-Ed** depends on [OpenXava](https://sourceforge.net/projects/openxava/), that doesn't support Maven. Therefore a few "manual" steps are necessary to prepare the development environment and its dependencies:
 
 * Clone **ZX-Ed** repository.
-* Download `openxava-6.0.2.zip` from [OpenXava](https://sourceforge.net/projects/openxava/), unzip it, then copy its `workspace` content into **ZX-Ed**'s `workspace`.
+* Download `openxava-6.1.2.zip` from [OpenXava](https://sourceforge.net/projects/openxava/), unzip it, then copy its `workspace` content into **ZX-Ed**'s `workspace`.
 * Inside directory `workspace/ZX-Ed/`, execute `ant createProject` to complete creating the project.
 
 
@@ -112,7 +112,7 @@ Each sub-list works independently from the rest of the page, with separate `NEW`
 
 ## Credits
 
-**ZX-Ed** was created by Einar Saukas using [OpenXava 6.0.2](https://sourceforge.net/projects/openxava/), [Lombok](https://projectlombok.org/), and [SOL](http://summabr.github.io/sol/).
+**ZX-Ed** was created by Einar Saukas using [OpenXava 6.1.2](https://sourceforge.net/projects/openxava/), [Lombok](https://projectlombok.org/), and [SOL](http://summabr.github.io/sol/).
 
 
 ![ZX-Ed](/images/ZX-Ed_8.png)

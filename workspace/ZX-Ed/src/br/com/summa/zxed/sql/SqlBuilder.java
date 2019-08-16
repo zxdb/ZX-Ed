@@ -2,6 +2,7 @@ package br.com.summa.zxed.sql;
 
 import java.util.*;
 
+import org.hibernate.cfg.*;
 import org.openxava.model.meta.*;
 import org.openxava.util.*;
 
@@ -25,11 +26,15 @@ public class SqlBuilder {
     }
 
     private String getTableName() {
-        return ZxdbNamingStrategy.INSTANCE.classToTableName(modelName);
+        return ZxdbNamingStrategy.plural(ImprovedNamingStrategy.INSTANCE.classToTableName(modelName));
     }
 
     private String getColumnName(String fieldName) {
-        return ZxdbNamingStrategy.INSTANCE.columnName(fieldName);
+        int i = fieldName.lastIndexOf('.', fieldName.lastIndexOf('.')-1);
+        if (i != -1) {
+            fieldName = fieldName.substring(i+1);
+        }
+        return ImprovedNamingStrategy.INSTANCE.columnName(fieldName);
     }
 
     private String getVersionName() {
@@ -46,13 +51,13 @@ public class SqlBuilder {
 
     // FIXME: HACK!!!
     public static Map<String, String> nullColumnsWithIds(Map<String, String> columns) {
-    	Map<String, String> map = new HashMap<String, String>();
-    	for (Map.Entry<String, String> column : columns.entrySet()) {
-    		if ("null".equals(column.getValue())) {
-    			map.put(column.getKey()+"_id", column.getValue());
-    		}
-    	}
-    	return map;
+        Map<String, String> map = new HashMap<String, String>();
+        for (Map.Entry<String, String> column : columns.entrySet()) {
+            if ("null".equals(column.getValue())) {
+                map.put(column.getKey()+"_id", column.getValue());
+            }
+        }
+        return map;
     }
 
     @SuppressWarnings("unchecked")
