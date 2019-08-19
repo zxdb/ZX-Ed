@@ -104,10 +104,6 @@ public class Entry {
     @Stereotype("MEMO")
     private String hardwareBlurb;
 
-    @Column(length=250)
-    @Stereotype("MEMO")
-    private String hardwareFeature;
-
     @Column(length=45000)
     @Stereotype("MEMO")
     private String knownErrors;
