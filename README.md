@@ -89,7 +89,7 @@ Each sub-list works independently from the rest of the page, with separate `NEW`
 **ZX-Ed** depends on [OpenXava](https://sourceforge.net/projects/openxava/), that doesn't support Maven. Therefore a few "manual" steps are necessary to prepare the development environment and its dependencies:
 
 * Clone **ZX-Ed** repository.
-* Download `openxava-6.1.2.zip` from [OpenXava](https://sourceforge.net/projects/openxava/), unzip it, then copy its `workspace` content into **ZX-Ed**'s `workspace`.
+* Download `openxava-6.2.zip` from [OpenXava](https://sourceforge.net/projects/openxava/), unzip it, then copy its `workspace` content into **ZX-Ed**'s `workspace`.
 * Inside directory `workspace/ZX-Ed/`, execute `ant createProject` to complete creating the project.
 
 
@@ -112,7 +112,7 @@ Each sub-list works independently from the rest of the page, with separate `NEW`
 
 ## Credits
 
-**ZX-Ed** was created by Einar Saukas using [OpenXava 6.1.2](https://sourceforge.net/projects/openxava/), [Lombok](https://projectlombok.org/), and [SOL](http://summabr.github.io/sol/).
+**ZX-Ed** was created by Einar Saukas using [OpenXava 6.2](https://sourceforge.net/projects/openxava/), [Lombok](https://projectlombok.org/), and [SOL](http://summabr.github.io/sol/).
 
 
 ![ZX-Ed](/images/ZX-Ed_8.png)

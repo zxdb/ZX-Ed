@@ -73,7 +73,7 @@
 	<!-- [ZX-Ed] Adapted from OpenXavaTemplate/CreateNewProject.xml except without overwriting existing files -->
 	<target name="createProject">
 		<copy todir=".">
-			<fileset dir="${openxava.base.dir}/OpenXavaTemplate" excludes="CreateNewProject.xml src/src.txt **/*.template">
+			<fileset dir="${openxava.base.dir}/OpenXava/project-templates/en" excludes="src/** **/*.template">
 				<present targetdir="." present="srconly"/>
 			</fileset>
 			<filterset>
@@ -83,6 +83,7 @@
 		</copy>
 		<delete dir="bin" failonerror="false"/>
 		<ant antfile="${openxava.base.dir}/OpenXava/build.xml" target="updateOX"/>
+		<delete file="src/_run/_Run_ZX-Ed.java"/>
 	</target>
 
 </project>

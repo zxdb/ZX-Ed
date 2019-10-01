@@ -12,7 +12,6 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <non-jta-data-source>java://comp/env/jdbc/ZX-EdDS</non-jta-data-source>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.physical_naming_strategy" value="br.com.summa.zxed.sql.ZxdbNamingStrategy"/>
         </properties>
     </persistence-unit>
