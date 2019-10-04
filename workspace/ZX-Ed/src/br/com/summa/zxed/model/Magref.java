@@ -50,7 +50,9 @@ public class Magref {
     @Column(length=20)
     private String score;
 
+    // FIXME: There's a bug in OpenXava 6.2 that does not work with id=0 unless @DescriptionsList is used here
     @ManyToOne(optional=false)
+    @DescriptionsList(descriptionProperties="id,name")
     private Feature feature;
 
     @lombok.ToString.Exclude
