@@ -81,7 +81,7 @@ Each sub-list works independently from the rest of the page, with separate `NEW`
 
 * Download and install [Apache Ant](https://ant.apache.org/).
 * Download and install a Java IDE, preferably [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/).
-* Download and install [Lombok](https://projectlombok.org/) 1.18.8 or later, to configure it into the Java IDE.
+* Download and install [Lombok](https://projectlombok.org/) 1.18.10 or later, to configure it into the Java IDE.
 
 
 #### Project preparation
