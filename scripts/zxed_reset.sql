@@ -53,6 +53,7 @@ alter table schemetypes drop column if exists zxed;
 alter table scores drop column if exists zxed;
 alter table toolfiles drop column if exists zxed;
 alter table tools drop column if exists zxed;
+alter table tooltypes drop column if exists zxed;
 alter table topics drop column if exists zxed;
 alter table topictypes drop column if exists zxed;
 alter table variationtypes drop column if exists zxed;

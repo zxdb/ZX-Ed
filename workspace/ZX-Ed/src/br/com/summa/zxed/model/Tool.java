@@ -6,6 +6,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
+@Tab(properties="id,tooltype.text,platform.text,title,authors,link,latestDate,comments")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -16,6 +17,10 @@ public class Tool {
     @DefaultValueCalculator(value=NextId.class, properties=@PropertyValue(name="modelName", value="Tool"))
     @ReadOnly
     private Integer id;
+
+    @ManyToOne(optional=false)
+    @DescriptionsList(descriptionProperties="text")
+    private Tooltype tooltype;
 
     @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")

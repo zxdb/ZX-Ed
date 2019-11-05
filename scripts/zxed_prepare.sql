@@ -53,6 +53,7 @@ alter table schemetypes add column if not exists zxed int(11) not null default 0
 alter table scores add column if not exists zxed int(11) not null default 0;
 alter table toolfiles add column if not exists zxed int(11) not null default 0;
 alter table tools add column if not exists zxed int(11) not null default 0;
+alter table tooltypes add column if not exists zxed int(11) not null default 0;
 alter table topics add column if not exists zxed int(11) not null default 0;
 alter table topictypes add column if not exists zxed int(11) not null default 0;
 alter table variationtypes add column if not exists zxed int(11) not null default 0;
