@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,title,isXrated,isCrap,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,idiom.text,firstPublisher")
+@Tab(properties="id,title,isXrated,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,idiom.text,firstPublisher")
 @View(name="Compact", members="id,title")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -35,10 +35,6 @@ public class Entry {
     @Column
     @Required
     private Boolean isXrated;
-
-    @Column
-    @Required
-    private Boolean isCrap;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
