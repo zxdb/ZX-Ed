@@ -15,6 +15,7 @@ public class Relation {
     @ReferenceView("Compact")
     private Entry entry;
 
+    @Id
     @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Relationtype relationtype;
