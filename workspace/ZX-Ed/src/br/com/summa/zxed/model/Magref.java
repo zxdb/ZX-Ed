@@ -1,5 +1,7 @@
 package br.com.summa.zxed.model;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
@@ -7,7 +9,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,issue.id,page,isSupplement,score,feature.id,feature.name")
+@Tab(properties="id,referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,issue.id,page,isSupplement,score")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -50,10 +52,11 @@ public class Magref {
     @Column(length=20)
     private String score;
 
-    // FIXME: There's a bug in OpenXava 6.2 that does not work with id=0 unless @DescriptionsList is used here
-    @ManyToOne(optional=false)
-    @DescriptionsList(descriptionProperties="id,name")
-    private Feature feature;
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="magref", cascade=CascadeType.REMOVE)
+    @ListProperties("feature.id,feature.name,feature.version")
+    @XOrderBy("feature.id,feature.name,feature.version")
+    private Collection<Magreffeat> magreffeats;
 
     @lombok.ToString.Exclude
     @Version
