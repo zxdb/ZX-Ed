@@ -21,7 +21,10 @@ public class Website {
     @Required
     private String name;
 
-    @Column(length=200)
+    @Column(length=100)
+    private String comments;
+
+    @Column(length=100)
     private String link;
 
     @Column(length=100)
