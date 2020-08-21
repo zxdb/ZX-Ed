@@ -12,6 +12,7 @@ import org.openxava.calculators.*;
 @Entity
 @IdClass(CompilationKey.class)
 public class Compilation {
+
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")

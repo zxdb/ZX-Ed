@@ -34,6 +34,8 @@ alter table magreffeats drop column if exists zxed;
 alter table magreflinks drop column if exists zxed;
 alter table magrefs drop column if exists zxed;
 alter table members drop column if exists zxed;
+alter table notes drop column if exists zxed;
+alter table notetypes drop column if exists zxed;
 alter table nvgs drop column if exists zxed;
 alter table permissions drop column if exists zxed;
 alter table permissiontypes drop column if exists zxed;
@@ -58,5 +60,9 @@ alter table topictypes drop column if exists zxed;
 alter table variationtypes drop column if exists zxed;
 alter table webrefs drop column if exists zxed;
 alter table websites drop column if exists zxed;
+alter table zxsr_awards drop column if exists zxed;
+alter table zxsr_captions drop column if exists zxed;
+alter table zxsr_reviews drop column if exists zxed;
+alter table zxsr_scores drop column if exists zxed;
 
 -- END

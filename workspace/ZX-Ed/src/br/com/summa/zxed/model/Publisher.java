@@ -13,6 +13,7 @@ import br.com.summa.zxed.calc.*;
 @Entity
 @IdClass(PublisherKey.class)
 public class Publisher {
+
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")

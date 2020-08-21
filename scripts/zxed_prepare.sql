@@ -34,6 +34,8 @@ alter table magreffeats add column if not exists zxed int(11) not null default 0
 alter table magreflinks add column if not exists zxed int(11) not null default 0;
 alter table magrefs add column if not exists zxed int(11) not null default 0;
 alter table members add column if not exists zxed int(11) not null default 0;
+alter table notes add column if not exists zxed int(11) not null default 0;
+alter table notetypes add column if not exists zxed int(11) not null default 0;
 alter table nvgs add column if not exists zxed int(11) not null default 0;
 alter table permissions add column if not exists zxed int(11) not null default 0;
 alter table permissiontypes add column if not exists zxed int(11) not null default 0;
@@ -58,5 +60,9 @@ alter table topictypes add column if not exists zxed int(11) not null default 0;
 alter table variationtypes add column if not exists zxed int(11) not null default 0;
 alter table webrefs add column if not exists zxed int(11) not null default 0;
 alter table websites add column if not exists zxed int(11) not null default 0;
+alter table zxsr_awards add column if not exists zxed int(11) not null default 0;
+alter table zxsr_captions add column if not exists zxed int(11) not null default 0;
+alter table zxsr_reviews add column if not exists zxed int(11) not null default 0;
+alter table zxsr_scores add column if not exists zxed int(11) not null default 0;
 
 -- END

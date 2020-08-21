@@ -9,7 +9,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,issue.id,page,isSupplement,score")
+@Tab(properties="id,referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,issue.id,page,isSupplement")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -49,14 +49,27 @@ public class Magref {
     @Required
     private Boolean isSupplement;
 
-    @Column(length=20)
-    private String score;
+    @Column(length=100)
+    @Required
+    private String scoreGroup;
+
+    @ManyToOne
+    private Zxsr_review review;
+
+    @ManyToOne
+    private Zxsr_award award;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="magref", cascade=CascadeType.REMOVE)
     @ListProperties("feature.id,feature.name,feature.version")
     @XOrderBy("feature.id,feature.name,feature.version")
     private Collection<Magreffeat> magreffeats;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="magref", cascade=CascadeType.REMOVE)
+    @ListProperties("host.id,host.title,link")
+    @XOrderBy("host.id,host.title,link")
+    private Collection<Magreflink> magreflinks;
 
     @lombok.ToString.Exclude
     @Version

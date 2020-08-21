@@ -11,6 +11,7 @@ import org.openxava.calculators.*;
 @Entity
 @IdClass(BooktypeinKey.class)
 public class Booktypein {
+
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")

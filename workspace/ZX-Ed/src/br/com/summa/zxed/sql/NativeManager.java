@@ -53,7 +53,7 @@ public final class NativeManager {
     }
 
     private static void audit(String msg, String sql) throws Exception {
-        String s = "\n-- ["+Users.getCurrent()+"] "+msg+"\n"+sql+";\n";
+        String s = "\n-- ["+Users.getCurrent()+"] "+msg.replaceAll("\n", "\\\\n")+"\n"+sql+";\n";
         File log = new File(LOG_FILE).getAbsoluteFile();
         log.getParentFile().mkdirs();
         Files.write(log.toPath(), s.getBytes("UTF-8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);

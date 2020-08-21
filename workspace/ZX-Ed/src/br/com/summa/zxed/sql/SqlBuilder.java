@@ -14,7 +14,8 @@ public class SqlBuilder {
     public static final Set<String> excludedFields = Sets.asHashSet(
             "__MODEL_NAME__",
             "authorRoles",
-            "firstPublisher");
+            "firstPublisher",
+            "beginText");
 
     private final Map<String, String> allColumns = new TreeMap<String, String>();
     private final Map<String, String> keyColumns = new TreeMap<String, String>();
@@ -46,7 +47,7 @@ public class SqlBuilder {
         return value == null || "".equals(value) ? "null" :
             value instanceof Boolean || value instanceof Number ? value.toString() :
             value instanceof Enum<?> ? ""+((Enum<?>)value).ordinal() :
-            "'"+value.toString().replaceAll("'", "''").replaceAll("\n", "#")+"'";
+            "'"+value.toString().replaceAll("'", "''").replaceAll("\n", "\\\\n")+"'";
     }
 
     // FIXME: HACK!!!

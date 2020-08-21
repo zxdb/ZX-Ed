@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
+import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
@@ -41,6 +42,8 @@ public class Entry {
     private Machinetype machinetype;
 
     @Column(length=4)
+    @Required
+	@DefaultValueCalculator(value=IntegerCalculator.class, properties=@PropertyValue(name="value", value="1"))
     private Integer maxPlayers;
 
     @ManyToOne(fetch=FetchType.LAZY)
@@ -88,21 +91,11 @@ public class Entry {
     @Column(length=50)
     private String bookPages;
 
-    @Column(length=5000)
-    @Stereotype("MEMO")
-    private String comments;
-
-    @Column(length=1000)
-    @Stereotype("MEMO")
-    private String spotComments;
-
-    @Column(length=1000)
-    @Stereotype("MEMO")
-    private String hardwareBlurb;
-
-    @Column(length=45000)
-    @Stereotype("MEMO")
-    private String knownErrors;
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("id,notetype.text,section,beginText,isZxsr")
+    @XOrderBy("id")
+    private Collection<Note> notes;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)

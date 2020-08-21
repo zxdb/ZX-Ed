@@ -16,6 +16,7 @@ import br.com.summa.zxed.calc.*;
 @Entity
 @IdClass(AuthorKey.class)
 public class Author {
+
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")
