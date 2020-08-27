@@ -7,7 +7,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="entry.id,entry.title,releaseSeq,idiom.text,title,libraryTitle",
+@Tab(properties="entry.id,entry.title,releaseSeq,language.text,title,libraryTitle",
      defaultOrder="${entry.id}, ${releaseSeq}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -28,7 +28,7 @@ public class Alias {
     @Id
     @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
-    private Idiom idiom;
+    private Language language;
 
     @Id
     @Column(length=250)

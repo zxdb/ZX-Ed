@@ -70,7 +70,7 @@ public class Label {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="label", cascade=CascadeType.REMOVE)
-    @ListProperties("link,title,idiom.text,interviewer,interviewYear")
+    @ListProperties("link,title,language.text,interviewer,interviewYear")
     @XOrderBy("interviewYear,link")
     private Collection<Interview> interviews;
 

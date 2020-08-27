@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
-@Tab(properties="magref.id,magref.referencetype.text,magref.entry.id,magref.entry.title,magref.label.id,magref.label.name,magref.topic.id,magref.topic.name,magref.issue.id,magref.page,magref.isSupplement,feature.id,feature.name")
+@Tab(properties="magref.id,magref.referencetype.text,magref.entry.id,magref.entry.title,magref.label.id,magref.label.name,magref.topic.id,magref.topic.name,magref.issue.id,magref.page,feature.id,feature.name")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

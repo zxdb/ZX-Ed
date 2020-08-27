@@ -9,7 +9,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,issue.id,page,isSupplement")
+@Tab(properties="id,referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,issue.id,page")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -45,10 +45,6 @@ public class Magref {
     @DefaultValueCalculator(value=ZeroIntegerCalculator.class)
     private Integer page;
 
-    @Column
-    @Required
-    private Boolean isSupplement;
-
     @Column(length=100)
     @Required
     private String scoreGroup;
@@ -70,6 +66,12 @@ public class Magref {
     @ListProperties("host.id,host.title,link")
     @XOrderBy("host.id,host.title,link")
     private Collection<Magreflink> magreflinks;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="magref", cascade=CascadeType.REMOVE)
+    @ListProperties("scoreSeq,category,isOverall,score")
+    @XOrderBy("scoreSeq")
+    private Collection<Zxsr_score> scores;
 
     @lombok.ToString.Exclude
     @Version

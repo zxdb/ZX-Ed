@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
-@Tab(properties="entry.id,entry.libraryTitle,idiom.text,link,website.name")
+@Tab(properties="entry.id,entry.libraryTitle,language.text,link,website.name")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -26,7 +26,7 @@ public class Webref {
 
     @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
-    private Idiom idiom;
+    private Language language;
 
     @lombok.ToString.Exclude
     @Version

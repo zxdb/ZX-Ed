@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
-@Tab(properties="label.id,label.name,link,title,idiom.text,interviewer,interviewYear",
+@Tab(properties="label.id,label.name,link,title,language.text,interviewer,interviewYear",
 	 defaultOrder="${label.name}, ${interviewYear}, ${link}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -26,7 +26,7 @@ public class Interview {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
-    private Idiom idiom;
+    private Language language;
 
     @Column(length=200)
     private String interviewer;

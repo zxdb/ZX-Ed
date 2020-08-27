@@ -7,7 +7,7 @@ import org.openxava.annotations.*;
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-public class Idiom {
+public class Language {
 
     @Id
     @Column(length=2)

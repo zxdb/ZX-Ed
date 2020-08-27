@@ -9,7 +9,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,title,isXrated,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,idiom.text,firstPublisher")
+@Tab(properties="id,title,isXrated,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,language.text,firstPublisher")
 @View(name="Compact", members="id,title")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -77,7 +77,7 @@ public class Entry {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
-    private Idiom idiom;
+    private Language language;
 
     @Column(length=4)
     private String magRatings;
@@ -119,7 +119,7 @@ public class Entry {
     // FIXME: There's a bug in OpenXava 6.0.2 that prevents defining aliases within releases
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("releaseSeq,idiom.text,title")
+    @ListProperties("releaseSeq,language.text,title")
     @XOrderBy("releaseSeq,title")
     private Collection<Alias> aliases;
 
@@ -148,7 +148,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("website.name,idiom.text,link")
+    @ListProperties("website.name,language.text,link")
     @XOrderBy("website.name,link")
     private Collection<Webref> webReferences;
 
