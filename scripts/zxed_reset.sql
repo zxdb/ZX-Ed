@@ -12,7 +12,6 @@ alter table countries drop column if exists zxed;
 alter table downloads drop column if exists zxed;
 alter table entries drop column if exists zxed;
 alter table extensions drop column if exists zxed;
-alter table extras drop column if exists zxed;
 alter table features drop column if exists zxed;
 alter table files drop column if exists zxed;
 alter table filetypes drop column if exists zxed;

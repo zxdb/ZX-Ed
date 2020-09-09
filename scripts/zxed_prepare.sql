@@ -12,7 +12,6 @@ alter table countries add column if not exists zxed int(11) not null default 0;
 alter table downloads add column if not exists zxed int(11) not null default 0;
 alter table entries add column if not exists zxed int(11) not null default 0;
 alter table extensions add column if not exists zxed int(11) not null default 0;
-alter table extras add column if not exists zxed int(11) not null default 0;
 alter table features add column if not exists zxed int(11) not null default 0;
 alter table files add column if not exists zxed int(11) not null default 0;
 alter table filetypes add column if not exists zxed int(11) not null default 0;

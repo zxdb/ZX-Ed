@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,name,comments,country.text,country2.text,from.id,from.name,owner.id,owner.name,wasRenamed, deceased, linkWikipedia, linkSite, labeltype.text",
+@Tab(properties="id,name,country.text,country2.text,from.id,from.name,owner.id,owner.name,wasRenamed, deceased, linkWikipedia, linkSite, labeltype.text",
      defaultOrder="${name}")
 @View(name="Compact", members="id,name")
 @lombok.Data
@@ -25,9 +25,6 @@ public class Label {
     @Column(length=100)
     @Required
     private String name;
-
-    @Column(length=250)
-    private String comments;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
