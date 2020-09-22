@@ -61,6 +61,12 @@ public class Label {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="label", cascade=CascadeType.REMOVE)
+    @ListProperties("id,notetype.text,section,beginText,isZxsr")
+    @XOrderBy("id")
+    private Collection<Note> notes;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="label", cascade=CascadeType.REMOVE)
     @ListProperties("website.name,permissiontype.text,text")
     @XOrderBy("website.id")
     private Collection<Permission> permissions;
