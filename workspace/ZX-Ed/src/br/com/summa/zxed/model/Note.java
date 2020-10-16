@@ -40,10 +40,6 @@ public class Note {
     @Stereotype("MEMO")
     private String text;
 
-    @Column
-    @Required
-    private Boolean isZxsr;
-
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;

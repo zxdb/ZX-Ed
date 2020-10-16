@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,name,country.text,country2.text,from.id,from.name,owner.id,owner.name,wasRenamed, deceased, linkWikipedia, linkSite, labeltype.text",
+@Tab(properties="id,name,country.text,country2.text,from.id,from.name,owner.id,owner.name,wasRenamed,deceased,linkWikipedia,linkSite,labeltype.text",
      defaultOrder="${name}")
 @View(name="Compact", members="id,name")
 @lombok.Data
@@ -61,7 +61,7 @@ public class Label {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="label", cascade=CascadeType.REMOVE)
-    @ListProperties("id,notetype.text,section,beginText,isZxsr")
+    @ListProperties("id,notetype.text,section,beginText")
     @XOrderBy("id")
     private Collection<Note> notes;
 

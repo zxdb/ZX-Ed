@@ -5,7 +5,7 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 import org.openxava.calculators.*;
 
-@Tab(properties="compilation.id,compilation.title,tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,variationtype.text",
+@Tab(properties="compilation.id,compilation.title,tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,isOriginal,variationtype.text",
      defaultOrder="${compilation.id}, ${tapeSeq}, ${tapeSide}, ${progSeq}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -40,6 +40,10 @@ public class Compilation {
 
     @Column(length=250)
     private String alias;
+
+    @Column
+    @Required
+    private Boolean isOriginal;
 
     @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")

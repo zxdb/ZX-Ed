@@ -93,7 +93,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("id,notetype.text,section,beginText,isZxsr")
+    @ListProperties("id,notetype.text,section,beginText")
     @XOrderBy("id")
     private Collection<Note> notes;
 
@@ -142,7 +142,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="compilation", cascade=CascadeType.REMOVE)
-    @ListProperties("tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,variationtype.text")
+    @ListProperties("tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,,isOriginal,variationtype.text")
     @XOrderBy("tapeSeq,tapeSide,progSeq,entry.id")
     private Collection<Compilation> compilationContents;
 
