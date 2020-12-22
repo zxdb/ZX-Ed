@@ -1,11 +1,11 @@
 package br.com.summa.zxed.calc;
 
+import static br.com.summa.sol.util.Nullables.*;
+
 import javax.persistence.*;
 
 import org.openxava.calculators.*;
 import org.openxava.jpa.*;
-
-import br.com.summa.sol.util.*;
 
 @lombok.Setter
 public class NextReleaseSeq implements ICalculator {
@@ -17,6 +17,6 @@ public class NextReleaseSeq implements ICalculator {
     public Object calculate() throws Exception {
         Query query = XPersistence.getManager().createQuery("select max(releaseSeq) from Release where entry.id = :entryId");
         query.setParameter("entryId", entryId);
-        return Nullables.coalesce((Integer)query.getSingleResult(), -1)+1;
+        return coalesce((Integer)query.getSingleResult(), -1)+1;
     }
 }

@@ -142,9 +142,15 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="compilation", cascade=CascadeType.REMOVE)
-    @ListProperties("tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,,isOriginal,variationtype.text")
+    @ListProperties("tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,isOriginal,variationtype.text")
     @XOrderBy("tapeSeq,tapeSide,progSeq,entry.id")
     private Collection<Compilation> compilationContents;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("compilation.title,compilation.id,isOriginal,alias,variationtype.text")
+    @XOrderBy("compilation.libraryTitle,compilation.id")
+    private Collection<Compilation> compilations;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
@@ -160,10 +166,19 @@ public class Entry {
     @Depends("publishers")
     public String getFirstPublisher() {
         StringJoiner sj = new StringJoiner("; ");
-        for (Publisher publisher : publishers) {
-            if (publisher.getReleaseSeq() == 0) {
-                sj.add(publisher.getLabel().getName());
-            }
+        publishers.stream()
+        	.filter(p -> p.getReleaseSeq() == 0)
+        	.sorted(Comparator.comparingInt(Publisher::getPublisherSeq))
+        	.forEach(p -> sj.add(p.getLabel().getName()));
+        if (sj.length() == 0) {
+        	for (Compilation compilation : compilations) {
+        		if (compilation.getIsOriginal()) {
+        			String firstPublisher = compilation.getCompilation().getFirstPublisher();
+        			if (!firstPublisher.isEmpty()) {
+        				return firstPublisher+" - within \""+compilation.getCompilation().getTitle()+"\"";
+        			}
+        		}
+        	}
         }
         return sj.toString();
     }

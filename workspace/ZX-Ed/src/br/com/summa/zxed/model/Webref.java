@@ -16,7 +16,7 @@ public class Webref {
     @ReferenceView("Compact")
     private Entry entry;
 
-	@Id
+    @Id
     @Column(length=200)
     private String link;
 

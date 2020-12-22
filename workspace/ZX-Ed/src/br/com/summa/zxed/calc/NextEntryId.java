@@ -1,11 +1,11 @@
 package br.com.summa.zxed.calc;
 
+import static br.com.summa.sol.util.Nullables.*;
+
 import javax.persistence.*;
 
 import org.openxava.calculators.*;
 import org.openxava.jpa.*;
-
-import br.com.summa.sol.util.*;
 
 @lombok.Setter
 public class NextEntryId implements ICalculator {
@@ -22,6 +22,6 @@ public class NextEntryId implements ICalculator {
             (genretypeId != null && genretypeId >= 91 && genretypeId <= 108) ? 1000000 : 0;
         Query query = XPersistence.getManager().createQuery("select max(id) from Entry where id < :maxId");
         query.setParameter("maxId", baseId+1000000);
-        return Nullables.coalesce((Integer)query.getSingleResult(), baseId)+1;
+        return coalesce((Integer)query.getSingleResult(), baseId)+1;
     }
 }

@@ -1,11 +1,11 @@
 package br.com.summa.zxed.calc;
 
+import static br.com.summa.sol.util.Nullables.*;
+
 import javax.persistence.*;
 
 import org.openxava.calculators.*;
 import org.openxava.jpa.*;
-
-import br.com.summa.sol.util.*;
 
 @lombok.Setter
 public class NextMemberSeq implements ICalculator {
@@ -19,7 +19,7 @@ public class NextMemberSeq implements ICalculator {
         if ("S".equals(grouptypeId)) {
             Query query = XPersistence.getManager().createQuery("select max(seriesSeq) from Member where group.id = :groupId");
             query.setParameter("groupId", groupId);
-            return Nullables.coalesce((Integer)query.getSingleResult(), 0)+1;
+            return coalesce((Integer)query.getSingleResult(), 0)+1;
         }
         return null;
     }
