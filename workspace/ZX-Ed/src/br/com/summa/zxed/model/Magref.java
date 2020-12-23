@@ -47,6 +47,7 @@ public class Magref {
 
     @Column(length=100)
     @Required
+	@DefaultValueCalculator(value=StringCalculator.class, properties={ @PropertyValue(name="string", value=" ")})
     private String scoreGroup;
 
     @ManyToOne
