@@ -59,7 +59,8 @@ public class Entry {
     private Publicationtype publicationtype;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    // FIXME: There's a bug in OpenXava 6.1.2 that corrupts data when @DescriptionsList is used here
+    // FIXME: There's a bug in OpenXava 6.1.2 that corrupts data when @DescriptionsList is used here.
+    // See https://sourceforge.net/p/openxava/discussion/419691/thread/9f397933c4/
     // @DescriptionsList(descriptionProperties="text")
     private Availabletype availabletype;
 
@@ -110,6 +111,8 @@ public class Entry {
     private Collection<Release> releases;
 
     // FIXME: There's a bug in OpenXava 6.0.2 that prevents defining publishers within releases
+    // See: https://sourceforge.net/p/openxava/discussion/419691/thread/e16eca0cea/
+    // See: https://sourceforge.net/p/openxava/discussion/419691/thread/500a67d5ac/
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("releaseSeq,publisherSeq,label.id,label.name,label.country.text")
@@ -117,6 +120,8 @@ public class Entry {
     private Collection<Publisher> publishers;
 
     // FIXME: There's a bug in OpenXava 6.0.2 that prevents defining aliases within releases
+    // See: https://sourceforge.net/p/openxava/discussion/419691/thread/e16eca0cea/
+    // See: https://sourceforge.net/p/openxava/discussion/419691/thread/500a67d5ac/
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("releaseSeq,language.text,title")
