@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
+import br.com.summa.zxed.calc.*;
 import br.com.summa.zxed.sql.*;
 
 @Tab(properties="id,entry.id,entry.title,platform.text,isOfficial,linkSystem")
@@ -14,6 +15,8 @@ public class Port {
 
     @Id
     @Column(length=11)
+    @DefaultValueCalculator(value=NextId.class, properties=@PropertyValue(name="modelName", value="Port"))
+    @ReadOnly
     private Integer id;
 
     @ManyToOne(fetch=FetchType.LAZY, optional=false)
