@@ -5,7 +5,6 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
-import br.com.summa.zxed.sql.*;
 
 @Tab(properties="id,entry.id,entry.title,platform.text,isOfficial,linkSystem")
 @lombok.Data
@@ -27,9 +26,9 @@ public class Port {
     @DescriptionsList(descriptionProperties="text")
     private Platform platform;
 
-    @Enumerated(EnumType.ORDINAL)
-    @Column(length = 1)
-    private NullableBoolean isOfficial;
+    @Column
+    @Required
+    private Boolean isOfficial;
 
     @Column(length=200)
     private String linkSystem;
