@@ -57,7 +57,7 @@ public class Magazine {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="magazine", cascade=CascadeType.REMOVE)
-    @ListProperties("id,dateYear,dateMonth,dateDay,volume,number,special")
+    @ListProperties("id,dateYear,dateMonth,dateDay,volume,number,special,supplement")
     private Collection<Issue> issues;
 
     @lombok.ToString.Exclude
