@@ -106,7 +106,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice")
+    @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,currency.symbol,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice")
     @XOrderBy("releaseSeq")
     private Collection<Release> releases;
 

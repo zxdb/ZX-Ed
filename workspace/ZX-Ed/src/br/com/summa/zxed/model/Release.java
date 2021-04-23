@@ -31,6 +31,9 @@ public class Release {
     @Column(length=2)
     private Integer releaseDay;
 
+    @ManyToOne(optional=true)
+    private Currency currency;
+
     @Column(length=150)
     private String releasePrice;
 

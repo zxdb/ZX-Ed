@@ -9,6 +9,7 @@ alter table availabletypes add column if not exists zxed int(11) not null defaul
 alter table booktypeins add column if not exists zxed int(11) not null default 0;
 alter table compilations add column if not exists zxed int(11) not null default 0;
 alter table countries add column if not exists zxed int(11) not null default 0;
+alter table currencies add column if not exists zxed int(11) not null default 0;
 alter table downloads add column if not exists zxed int(11) not null default 0;
 alter table entries add column if not exists zxed int(11) not null default 0;
 alter table extensions add column if not exists zxed int(11) not null default 0;

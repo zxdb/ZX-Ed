@@ -32,7 +32,6 @@ public class Note {
     private Notetype notetype;
 
     @Column(length=100)
-    @Required
     private String section;
 
     @Column(length=50000)

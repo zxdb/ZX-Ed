@@ -9,6 +9,7 @@ alter table availabletypes drop column if exists zxed;
 alter table booktypeins drop column if exists zxed;
 alter table compilations drop column if exists zxed;
 alter table countries drop column if exists zxed;
+alter table currencies drop column if exists zxed;
 alter table downloads drop column if exists zxed;
 alter table entries drop column if exists zxed;
 alter table extensions drop column if exists zxed;
