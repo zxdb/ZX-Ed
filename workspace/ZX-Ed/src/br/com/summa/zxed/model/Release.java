@@ -1,5 +1,7 @@
 package br.com.summa.zxed.model;
 
+import java.math.*;
+
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
@@ -34,20 +36,20 @@ public class Release {
     @ManyToOne(optional=true)
     private Currency currency;
 
-    @Column(length=150)
-    private String releasePrice;
+    @Column
+    private BigDecimal releasePrice;
 
-    @Column(length=150)
-    private String budgetPrice;
+    @Column
+    private BigDecimal budgetPrice;
 
-    @Column(length=80)
-    private String microdrivePrice;
+    @Column
+    private BigDecimal microdrivePrice;
 
-    @Column(length=80)
-    private String diskPrice;
+    @Column
+    private BigDecimal diskPrice;
 
-    @Column(length=80)
-    private String cartridgePrice;
+    @Column
+    private BigDecimal cartridgePrice;
 
     @lombok.ToString.Exclude
     @Version

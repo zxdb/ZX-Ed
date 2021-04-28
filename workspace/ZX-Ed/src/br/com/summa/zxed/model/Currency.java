@@ -17,7 +17,7 @@ public class Currency {
     @Required
     private String name;
 
-    @Column(length=10)
+    @Column(length=20)
     @Required
     private String symbol;
 
