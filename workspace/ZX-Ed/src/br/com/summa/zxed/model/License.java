@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,name,licensetype.text,licenseLink",
+@Tab(properties="id,name,licensetype.text,linkWikipedia,linkSite",
      defaultOrder="${licensetype.text},${name}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -30,7 +30,10 @@ public class License {
     private Licensetype licensetype;
 
     @Column(length=200)
-    private String licenseLink;
+    private String linkWikipedia;
+
+    @Column(length=200)
+    private String linkSite;
 
     @Column(length=500)
     @Stereotype("MEMO")
