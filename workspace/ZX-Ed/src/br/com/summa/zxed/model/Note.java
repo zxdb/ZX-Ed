@@ -46,6 +46,6 @@ public class Note {
     @Transient
     @Depends("text")
     public String getBeginText() {
-    	return text.length() > 180 ? text.substring(0, 180)+"..." : text;
+        return (text.length() > 180 ? text.substring(0, 180)+"..." : text).replace("\n", "&diams;");
     }
 }

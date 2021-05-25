@@ -43,7 +43,7 @@ public class Entry {
 
     @Column(length=4)
     @Required
-	@DefaultValueCalculator(value=IntegerCalculator.class, properties=@PropertyValue(name="value", value="1"))
+    @DefaultValueCalculator(value=IntegerCalculator.class, properties=@PropertyValue(name="value", value="1"))
     private Integer maxPlayers;
 
     @ManyToOne(fetch=FetchType.LAZY)
@@ -87,9 +87,6 @@ public class Entry {
     private Issue issue;
 
     @Column(length=50)
-    private String bookIsbn;
-
-    @Column(length=50)
     private String bookPages;
 
     @lombok.ToString.Exclude
@@ -106,7 +103,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,currency.symbol,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice")
+    @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,currency.symbol,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice,bookIsbn")
     @XOrderBy("releaseSeq")
     private Collection<Release> releases;
 
@@ -159,6 +156,12 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("referencetype.text,issue.magazine.name,issue.id,issue.number,page")
+    @XOrderBy("referencetype.text,issue.magazine.name,issue.id,issue.number,page")
+    private Collection<Magref> magReferences;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("website.name,language.text,link")
     @XOrderBy("website.name,link")
     private Collection<Webref> webReferences;
@@ -172,18 +175,18 @@ public class Entry {
     public String getFirstPublisher() {
         StringJoiner sj = new StringJoiner("; ");
         publishers.stream()
-        	.filter(p -> p.getReleaseSeq() == 0)
-        	.sorted(Comparator.comparingInt(Publisher::getPublisherSeq))
-        	.forEach(p -> sj.add(p.getLabel().getName()));
+            .filter(p -> p.getReleaseSeq() == 0)
+            .sorted(Comparator.comparingInt(Publisher::getPublisherSeq))
+            .forEach(p -> sj.add(p.getLabel().getName()));
         if (sj.length() == 0) {
-        	for (Compilation compilation : compilations) {
-        		if (compilation.getIsOriginal()) {
-        			String firstPublisher = compilation.getCompilation().getFirstPublisher();
-        			if (!firstPublisher.isEmpty()) {
-        				return firstPublisher+" - within \""+compilation.getCompilation().getTitle()+"\"";
-        			}
-        		}
-        	}
+            for (Compilation compilation : compilations) {
+                if (compilation.getIsOriginal()) {
+                    String firstPublisher = compilation.getCompilation().getFirstPublisher();
+                    if (!firstPublisher.isEmpty()) {
+                        return firstPublisher+" - within \""+compilation.getCompilation().getTitle()+"\"";
+                    }
+                }
+            }
         }
         return sj.toString();
     }

@@ -51,6 +51,9 @@ public class Release {
     @Column
     private BigDecimal cartridgePrice;
 
+    @Column(length=50)
+    private String bookIsbn;
+
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;
