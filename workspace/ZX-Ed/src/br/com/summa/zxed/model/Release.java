@@ -54,6 +54,9 @@ public class Release {
     @Column(length=50)
     private String bookIsbn;
 
+    @Column
+    private Integer bookPages;
+
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;

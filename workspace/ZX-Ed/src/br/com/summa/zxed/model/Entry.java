@@ -86,9 +86,6 @@ public class Entry {
     @ManyToOne(fetch=FetchType.LAZY)
     private Issue issue;
 
-    @Column(length=50)
-    private String bookPages;
-
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("id,notetype.text,section,beginText")
@@ -103,7 +100,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,currency.symbol,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice,bookIsbn")
+    @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,currency.symbol,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice,bookIsbn,bookPages")
     @XOrderBy("releaseSeq")
     private Collection<Release> releases;
 

@@ -6,7 +6,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,entry.id,entry.title,platform.text,isOfficial,linkSystem")
+@Tab(properties="id,title,entry.id,entry.title,platform.text,isOfficial,linkSystem")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -17,6 +17,9 @@ public class Port {
     @DefaultValueCalculator(value=NextId.class, properties=@PropertyValue(name="modelName", value="Port"))
     @ReadOnly
     private Integer id;
+
+    @Column(length=250)
+    private String title;
 
     @ManyToOne(fetch=FetchType.LAZY, optional=false)
     @ReferenceView("Compact")
