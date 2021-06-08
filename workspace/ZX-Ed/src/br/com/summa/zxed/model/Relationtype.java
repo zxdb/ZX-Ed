@@ -17,6 +17,13 @@ public class Relationtype {
     @Required
     private String text;
 
+    @Column(length=50)
+    @Required
+    private String reciprocal;
+
+    @Column(length=250)
+    private String comments;
+
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;

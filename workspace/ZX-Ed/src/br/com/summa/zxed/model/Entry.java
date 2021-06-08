@@ -56,13 +56,11 @@ public class Entry {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
-    private Publicationtype publicationtype;
+    private Availabletype availabletype;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    // FIXME: There's a bug in OpenXava 6.1.2 that corrupts data when @DescriptionsList is used here.
-    // See https://sourceforge.net/p/openxava/discussion/419691/thread/9f397933c4/
-    // @DescriptionsList(descriptionProperties="text")
-    private Availabletype availabletype;
+    @DescriptionsList(descriptionProperties="text")
+    private Publicationtype publicationtype;
 
     @Column
     @Required
