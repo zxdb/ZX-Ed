@@ -4,6 +4,8 @@
 USE zxdb;
 
 alter table aliases drop column if exists zxed;
+alter table articles drop column if exists zxed;
+alter table articletypes drop column if exists zxed;
 alter table authors drop column if exists zxed;
 alter table availabletypes drop column if exists zxed;
 alter table booktypeins drop column if exists zxed;
@@ -17,10 +19,7 @@ alter table features drop column if exists zxed;
 alter table files drop column if exists zxed;
 alter table filetypes drop column if exists zxed;
 alter table genretypes drop column if exists zxed;
-alter table groups drop column if exists zxed;
-alter table grouptypes drop column if exists zxed;
 alter table hosts drop column if exists zxed;
-alter table interviews drop column if exists zxed;
 alter table issues drop column if exists zxed;
 alter table labels drop column if exists zxed;
 alter table labeltypes drop column if exists zxed;
@@ -53,6 +52,8 @@ alter table roles drop column if exists zxed;
 alter table roletypes drop column if exists zxed;
 alter table schemetypes drop column if exists zxed;
 alter table scores drop column if exists zxed;
+alter table tags drop column if exists zxed;
+alter table tagtypes drop column if exists zxed;
 alter table tools drop column if exists zxed;
 alter table tooltypes drop column if exists zxed;
 alter table topics drop column if exists zxed;

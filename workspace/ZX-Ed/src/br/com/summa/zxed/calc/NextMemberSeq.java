@@ -11,14 +11,14 @@ import org.openxava.jpa.*;
 public class NextMemberSeq implements ICalculator {
     private static final long serialVersionUID = 1L;
 
-    private Integer groupId;
-    private String grouptypeId;
+    private Integer tagId;
+    private String tagtypeId;
 
     @Override
     public Object calculate() throws Exception {
-        if ("S".equals(grouptypeId)) {
-            Query query = XPersistence.getManager().createQuery("select max(seriesSeq) from Member where group.id = :groupId");
-            query.setParameter("groupId", groupId);
+        if ("S".equals(tagtypeId)) {
+            Query query = XPersistence.getManager().createQuery("select max(seriesSeq) from Member where tag.id = :tagId");
+            query.setParameter("tagId", tagId);
             return coalesce((Integer)query.getSingleResult(), 0)+1;
         }
         return null;

@@ -9,7 +9,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,issue.id,page")
+@Tab(properties="id,referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,issue.id,page,isOriginal")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -45,9 +45,13 @@ public class Magref {
     @DefaultValueCalculator(value=ZeroIntegerCalculator.class)
     private Integer page;
 
+    @Column
+    @Required
+    private Boolean isOriginal;
+
     @Column(length=100)
     @Required
-	@DefaultValueCalculator(value=StringCalculator.class, properties={ @PropertyValue(name="string", value=" ")})
+    @DefaultValueCalculator(value=StringCalculator.class, properties={ @PropertyValue(name="string", value=" ")})
     private String scoreGroup;
 
     @ManyToOne

@@ -7,7 +7,7 @@ import org.openxava.annotations.*;
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity 
-public class Grouptype {
+public class Tagtype {
 
 	@Id  
 	@Column(length=1)

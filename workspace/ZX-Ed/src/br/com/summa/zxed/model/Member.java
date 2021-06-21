@@ -6,7 +6,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="group.grouptype.text,group.id,group.name,seriesSeq,entry.id,entry.title,entry.firstPublisher")
+@Tab(properties="tag.tagtype.text,tag.id,tag.name,seriesSeq,entry.id,entry.title,entry.firstPublisher")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -16,7 +16,7 @@ public class Member {
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")
-    private Group group;
+    private Tag tag;
 
     @Id
     @ManyToOne(optional=false)
@@ -24,7 +24,7 @@ public class Member {
     private Entry entry;
 
     @Column(length=6)
-    @DefaultValueCalculator(value=NextMemberSeq.class, properties={@PropertyValue(name="groupId", from="group.id"),@PropertyValue(name="grouptypeId", from="group.grouptype.id")})
+    @DefaultValueCalculator(value=NextMemberSeq.class, properties={@PropertyValue(name="tagId", from="tag.id"),@PropertyValue(name="tagtypeId", from="tag.tagtype.id")})
     private Integer seriesSeq;
 
     @lombok.ToString.Exclude

@@ -4,6 +4,8 @@
 USE zxdb;
 
 alter table aliases add column if not exists zxed int(11) not null default 0;
+alter table articles add column if not exists zxed int(11) not null default 0;
+alter table articletypes add column if not exists zxed int(11) not null default 0;
 alter table authors add column if not exists zxed int(11) not null default 0;
 alter table availabletypes add column if not exists zxed int(11) not null default 0;
 alter table booktypeins add column if not exists zxed int(11) not null default 0;
@@ -17,10 +19,7 @@ alter table features add column if not exists zxed int(11) not null default 0;
 alter table files add column if not exists zxed int(11) not null default 0;
 alter table filetypes add column if not exists zxed int(11) not null default 0;
 alter table genretypes add column if not exists zxed int(11) not null default 0;
-alter table groups add column if not exists zxed int(11) not null default 0;
-alter table grouptypes add column if not exists zxed int(11) not null default 0;
 alter table hosts add column if not exists zxed int(11) not null default 0;
-alter table interviews add column if not exists zxed int(11) not null default 0;
 alter table issues add column if not exists zxed int(11) not null default 0;
 alter table labels add column if not exists zxed int(11) not null default 0;
 alter table labeltypes add column if not exists zxed int(11) not null default 0;
@@ -53,6 +52,8 @@ alter table roles add column if not exists zxed int(11) not null default 0;
 alter table roletypes add column if not exists zxed int(11) not null default 0;
 alter table schemetypes add column if not exists zxed int(11) not null default 0;
 alter table scores add column if not exists zxed int(11) not null default 0;
+alter table tags add column if not exists zxed int(11) not null default 0;
+alter table tagtypes add column if not exists zxed int(11) not null default 0;
 alter table tools add column if not exists zxed int(11) not null default 0;
 alter table tooltypes add column if not exists zxed int(11) not null default 0;
 alter table topics add column if not exists zxed int(11) not null default 0;

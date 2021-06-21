@@ -73,9 +73,9 @@ public class Label {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="label", cascade=CascadeType.REMOVE)
-    @ListProperties("link,title,language.text,interviewer,interviewYear")
-    @XOrderBy("interviewYear,link")
-    private Collection<Interview> interviews;
+    @ListProperties("link,articletype.text,title,language.text,writer,dateYear")
+    @XOrderBy("dateYear,link")
+    private Collection<Article> articles;
 
     @lombok.ToString.Exclude
     @Version

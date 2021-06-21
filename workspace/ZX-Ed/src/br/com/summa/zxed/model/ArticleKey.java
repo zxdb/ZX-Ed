@@ -4,7 +4,7 @@ import java.io.*;
 
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
-public class InterviewKey implements Serializable {
+public class ArticleKey implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Label label;

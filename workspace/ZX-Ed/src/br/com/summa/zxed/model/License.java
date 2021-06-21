@@ -9,7 +9,7 @@ import org.openxava.annotations.*;
 import br.com.summa.zxed.calc.*;
 
 @Tab(properties="id,name,licensetype.text,linkWikipedia,linkSite",
-     defaultOrder="${licensetype.text},${name}")
+     defaultOrder="${licensetype.text}, ${name}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

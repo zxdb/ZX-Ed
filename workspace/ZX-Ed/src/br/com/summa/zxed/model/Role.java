@@ -5,7 +5,7 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 
 @Tab(properties="author.entry.id,author.entry.libraryTitle,author.authorSeq,author.label.id,author.label.name,roletype.text",
-     defaultOrder="${author.entry.libraryTitle},${author.authorSeq},${roletype.id}")
+     defaultOrder="${author.entry.libraryTitle}, ${author.authorSeq}, ${roletype.id}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

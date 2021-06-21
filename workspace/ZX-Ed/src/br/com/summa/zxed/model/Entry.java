@@ -133,9 +133,9 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("group.grouptype.text,group.id,group.name,group.link,seriesSeq")
-    @XOrderBy("group.grouptype.text,group.name")
-    private Collection<Member> groupMembers;
+    @ListProperties("tag.tagtype.text,tag.id,tag.name,tag.link,seriesSeq")
+    @XOrderBy("tag.tagtype.text,tag.name")
+    private Collection<Member> tagMembers;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="compilation", cascade=CascadeType.REMOVE)
@@ -151,7 +151,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("referencetype.text,issue.magazine.name,issue.id,issue.number,page")
+    @ListProperties("referencetype.text,issue.magazine.name,issue.id,issue.number,page,isOriginal")
     @XOrderBy("referencetype.text,issue.magazine.name,issue.id,issue.number,page")
     private Collection<Magref> magReferences;
 
@@ -181,6 +181,12 @@ public class Entry {
                         return firstPublisher+" - within \""+compilation.getCompilation().getTitle()+"\"";
                     }
                 }
+            }
+            for (Magref magref : magReferences) {
+                if (magref.getIsOriginal()) {
+                    return magref.getIssue().getMagazine().getName() + " - within magazine";
+                }
+
             }
         }
         return sj.toString();

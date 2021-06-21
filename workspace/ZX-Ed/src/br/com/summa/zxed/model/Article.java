@@ -4,13 +4,13 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
-@Tab(properties="label.id,label.name,link,title,language.text,interviewer,interviewYear",
-	 defaultOrder="${label.name}, ${interviewYear}, ${link}")
+@Tab(properties="label.id,label.name,link,articletype.text,title,language.text,writer,dateYear",
+defaultOrder="${articletype.text}, ${label.name}, ${dateYear}, ${link}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-@IdClass(InterviewKey.class)
-public class Interview {
+@IdClass(ArticleKey.class)
+public class Article {
 
     @Id
     @ManyToOne(optional=false)
@@ -21,6 +21,10 @@ public class Interview {
     @Column(length=200)
     private String link;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @DescriptionsList(descriptionProperties="text")
+    private Articletype articletype;
+
     @Column(length=200)
     private String title;
 
@@ -29,10 +33,10 @@ public class Interview {
     private Language language;
 
     @Column(length=200)
-    private String interviewer;
+    private String writer;
 
     @Column(length=6)
-    private Integer interviewYear;
+    private Integer dateYear;
 
     @lombok.ToString.Exclude
     @Version

@@ -8,17 +8,17 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="grouptype.text,id,name,link,comments")
-@View(name="Compact", members="grouptype,id,name")
+@Tab(properties="tagtype.text,id,name,link,comments")
+@View(name="Compact", members="tagtype,id,name")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-public class Group {
+public class Tag {
 
     @Id
     @Column(length=11)
     @ReadOnly
-    @DefaultValueCalculator(value=NextGroupId.class, properties=@PropertyValue(name="grouptypeId", from="grouptype.id"))
+    @DefaultValueCalculator(value=NextTagId.class, properties=@PropertyValue(name="tagtypeId", from="tagtype.id"))
     private Integer id;
 
     @Column(length=100)
@@ -27,7 +27,7 @@ public class Group {
 
     @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
-    private Grouptype grouptype;
+    private Tagtype tagtype;
 
     @Column(length=200)
     private String link;
@@ -37,7 +37,7 @@ public class Group {
     private String comments;
 
     @lombok.ToString.Exclude
-    @OneToMany(mappedBy="group", cascade=CascadeType.REMOVE)
+    @OneToMany(mappedBy="tag", cascade=CascadeType.REMOVE)
     @ListProperties("entry.id,entry.title,entry.firstPublisher,seriesSeq")
     @XOrderBy("seriesSeq,entry.libraryTitle,entry.id")
     private Collection<Member> members;
