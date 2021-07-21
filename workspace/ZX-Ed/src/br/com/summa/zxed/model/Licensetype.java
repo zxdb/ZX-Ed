@@ -6,16 +6,16 @@ import org.openxava.annotations.*;
 
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
-@Entity 
+@Entity
 public class Licensetype {
 
-	@Id  
-	@Column(length=1)
-	private String id;
+    @Id
+    @Column(length=1)
+    private String id;
 
-	@Column(length=50)  
-	@Required  
-	private String text;
+    @Column(length=50)
+    @Required
+    private String text;
 
     @lombok.ToString.Exclude
     @Version

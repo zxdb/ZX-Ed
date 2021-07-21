@@ -157,6 +157,12 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("book.id,book.title,installment,volume,page,isOriginal")
+    @XOrderBy("book.id,installment,volume,page,isOriginal")
+    private Collection<Booktypein> booktypeins;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("website.name,language.text,link")
     @XOrderBy("website.name,link")
     private Collection<Webref> webReferences;
@@ -177,14 +183,19 @@ public class Entry {
             for (Compilation compilation : compilations) {
                 if (compilation.getIsOriginal()) {
                     String firstPublisher = compilation.getCompilation().getFirstPublisher();
-                    if (!firstPublisher.isEmpty()) {
-                        return firstPublisher+" - within \""+compilation.getCompilation().getTitle()+"\"";
-                    }
+                    return (firstPublisher.isEmpty() ? "?" : firstPublisher)+" - within \""+compilation.getCompilation().getTitle()+"\"";
                 }
             }
             for (Magref magref : magReferences) {
                 if (magref.getIsOriginal()) {
-                    return magref.getIssue().getMagazine().getName() + " - within magazine";
+                    return magref.getIssue().getMagazine().getName()+" - magazine type-in";
+                }
+
+            }
+            for (Booktypein booktypein : booktypeins) {
+                if (booktypein.getIsOriginal()) {
+                    String firstPublisher = booktypein.getBook().getFirstPublisher();
+                    return (firstPublisher.isEmpty() ? "?" : firstPublisher)+" - book type-in from \""+booktypein.getBook().getTitle()+"\"";
                 }
 
             }

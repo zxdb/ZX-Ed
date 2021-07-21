@@ -10,6 +10,7 @@ import org.openxava.annotations.*;
 @Entity
 @IdClass(RelationKey.class)
 public class Relation {
+
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")

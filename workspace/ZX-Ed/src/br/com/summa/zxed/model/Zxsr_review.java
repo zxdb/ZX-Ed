@@ -9,13 +9,13 @@ import org.openxava.annotations.*;
 @Entity
 public class Zxsr_review {
 
-	@Id
-	@Column(length=11)
-	private Integer id;
+    @Id
+    @Column(length=11)
+    private Integer id;
 
     @Column
     @Stereotype("MEMO")
-	private String reviewText;
+    private String reviewText;
 
     @Column
     @Stereotype("MEMO")

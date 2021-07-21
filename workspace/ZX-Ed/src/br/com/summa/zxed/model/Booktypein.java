@@ -5,7 +5,7 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 import org.openxava.calculators.*;
 
-@Tab(properties="entry.id,entry.title,entry.firstPublisher,book.id,book.title,book.firstPublisher,installment,volume,page")
+@Tab(properties="entry.id,entry.title,entry.firstPublisher,book.id,book.title,book.firstPublisher,installment,volume,page,isOriginal")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -20,21 +20,25 @@ public class Booktypein {
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")
-	private Entry book;
+    private Entry book;
 
     @Id
     @Column(length=6)
     @DefaultValueCalculator(value=ZeroIntegerCalculator.class)
-	private Integer installment;
+    private Integer installment;
 
     @Id
     @Column(length=6)
     @DefaultValueCalculator(value=ZeroIntegerCalculator.class)
-	private Integer volume;
+    private Integer volume;
 
     @Id
     @Column(length=6)
-	private Integer page;
+    private Integer page;
+
+    @Column
+    @Required
+    private Boolean isOriginal;
 
     @lombok.ToString.Exclude
     @Version

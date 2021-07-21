@@ -9,13 +9,13 @@ import org.openxava.annotations.*;
 @Entity
 public class Zxsr_award {
 
-	@Id
-	@Column(length=4)
-	private Integer id;
+    @Id
+    @Column(length=4)
+    private Integer id;
 
-	@Column(length=50)
-	@Required
-	private String text;
+    @Column(length=50)
+    @Required
+    private String text;
 
     @lombok.ToString.Exclude
     @Version

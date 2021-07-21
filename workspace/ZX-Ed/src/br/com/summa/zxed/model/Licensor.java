@@ -9,6 +9,7 @@ import org.openxava.annotations.*;
 @Entity
 @IdClass(LicensorKey.class)
 public class Licensor {
+
     @Id
     @ManyToOne(optional=false)
     private License license;

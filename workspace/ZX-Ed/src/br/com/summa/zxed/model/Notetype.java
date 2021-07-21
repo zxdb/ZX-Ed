@@ -9,12 +9,12 @@ import org.openxava.annotations.*;
 @Entity
 public class Notetype {
 
-	@Id
-	@Column(length=1)
-	private String id;
+    @Id
+    @Column(length=1)
+    private String id;
 
-	@Column(length=100)
-	@Required
+    @Column(length=100)
+    @Required
     private String text;
 
     @lombok.ToString.Exclude

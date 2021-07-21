@@ -11,6 +11,7 @@ import org.openxava.annotations.*;
 @Entity
 @IdClass(PermissionKey.class)
 public class Permission {
+
     @Id
     @ManyToOne(optional=false)
     @DescriptionsList
