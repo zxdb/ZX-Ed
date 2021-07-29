@@ -9,7 +9,8 @@ alter table articletypes add column if not exists zxed int(11) not null default 
 alter table authors add column if not exists zxed int(11) not null default 0;
 alter table availabletypes add column if not exists zxed int(11) not null default 0;
 alter table booktypeins add column if not exists zxed int(11) not null default 0;
-alter table compilations add column if not exists zxed int(11) not null default 0;
+alter table contents add column if not exists zxed int(11) not null default 0;
+alter table contenttypes add column if not exists zxed int(11) not null default 0;
 alter table countries add column if not exists zxed int(11) not null default 0;
 alter table currencies add column if not exists zxed int(11) not null default 0;
 alter table downloads add column if not exists zxed int(11) not null default 0;
@@ -58,7 +59,6 @@ alter table tools add column if not exists zxed int(11) not null default 0;
 alter table tooltypes add column if not exists zxed int(11) not null default 0;
 alter table topics add column if not exists zxed int(11) not null default 0;
 alter table topictypes add column if not exists zxed int(11) not null default 0;
-alter table variationtypes add column if not exists zxed int(11) not null default 0;
 alter table webrefs add column if not exists zxed int(11) not null default 0;
 alter table websites add column if not exists zxed int(11) not null default 0;
 alter table zxsr_awards add column if not exists zxed int(11) not null default 0;

@@ -5,27 +5,27 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 import org.openxava.calculators.*;
 
-@Tab(properties="compilation.id,compilation.title,tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,isOriginal,variationtype.text",
-     defaultOrder="${compilation.id}, ${tapeSeq}, ${tapeSide}, ${progSeq}")
+@Tab(properties="container.id,container.title,mediaSeq,mediaSide,progSeq,entry.id,entry.title,label.id,label.name,alias,isOriginal,contenttype.text",
+     defaultOrder="${container.id}, ${mediaSeq}, ${mediaSide}, ${progSeq}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-@IdClass(CompilationKey.class)
-public class Compilation {
+@IdClass(ContentKey.class)
+public class Content {
 
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")
-    private Entry compilation;
+    private Entry container;
 
     @Id
     @DefaultValueCalculator(value=ZeroIntegerCalculator.class)
-    private Integer tapeSeq;
+    private Integer mediaSeq;
 
     @Id
     @Column(length=1)
     @DefaultValueCalculator(value=StringCalculator.class, properties=@PropertyValue(name="string", value="0"))
-    private String tapeSide;
+    private String mediaSide;
 
     @Id
     private Integer progSeq;
@@ -47,7 +47,7 @@ public class Compilation {
 
     @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
-    private Variationtype variationtype;
+    private Contenttype contenttype;
 
     @lombok.ToString.Exclude
     @Version

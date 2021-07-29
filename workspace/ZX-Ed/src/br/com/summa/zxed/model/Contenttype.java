@@ -7,7 +7,7 @@ import org.openxava.annotations.*;
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-public class Variationtype {
+public class Contenttype {
 
     @Id
     @Column(length=1)

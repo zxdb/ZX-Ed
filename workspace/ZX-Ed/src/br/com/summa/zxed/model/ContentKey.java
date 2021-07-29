@@ -4,11 +4,11 @@ import java.io.*;
 
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
-public class CompilationKey implements Serializable {
+public class ContentKey implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Entry compilation;
-    private Integer tapeSeq;
-    private String tapeSide;
+    private Entry container;
+    private Integer mediaSeq;
+    private String mediaSide;
     private Integer progSeq;
 }

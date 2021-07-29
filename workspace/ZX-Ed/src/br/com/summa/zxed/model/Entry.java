@@ -138,16 +138,16 @@ public class Entry {
     private Collection<Member> tagMembers;
 
     @lombok.ToString.Exclude
-    @OneToMany(mappedBy="compilation", cascade=CascadeType.REMOVE)
-    @ListProperties("tapeSeq,tapeSide,progSeq,entry.id,entry.title,label.id,label.name,alias,isOriginal,variationtype.text")
-    @XOrderBy("tapeSeq,tapeSide,progSeq,entry.id")
-    private Collection<Compilation> compilationContents;
+    @OneToMany(mappedBy="container", cascade=CascadeType.REMOVE)
+    @ListProperties("mediaSeq,mediaSide,progSeq,entry.id,entry.title,label.id,label.name,alias,isOriginal,contenttype.text")
+    @XOrderBy("mediaSeq,mediaSide,progSeq,entry.id")
+    private Collection<Content> contents;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("compilation.title,compilation.id,isOriginal,alias,variationtype.text")
-    @XOrderBy("compilation.libraryTitle,compilation.id")
-    private Collection<Compilation> compilations;
+    @ListProperties("container.title,container.id,isOriginal,alias,contenttype.text")
+    @XOrderBy("container.libraryTitle,container.id")
+    private Collection<Content> containers;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
@@ -180,24 +180,22 @@ public class Entry {
             .sorted(Comparator.comparingInt(Publisher::getPublisherSeq))
             .forEach(p -> sj.add(p.getLabel().getName()));
         if (sj.length() == 0) {
-            for (Compilation compilation : compilations) {
-                if (compilation.getIsOriginal()) {
-                    String firstPublisher = compilation.getCompilation().getFirstPublisher();
-                    return (firstPublisher.isEmpty() ? "?" : firstPublisher)+" - within \""+compilation.getCompilation().getTitle()+"\"";
+            for (Content content : containers) {
+                if (content.getIsOriginal()) {
+                    String firstPublisher = content.getContainer().getFirstPublisher();
+                    return (firstPublisher.isEmpty() ? "?" : firstPublisher)+" - within \""+content.getContainer().getTitle()+"\"";
                 }
             }
             for (Magref magref : magReferences) {
                 if (magref.getIsOriginal()) {
                     return magref.getIssue().getMagazine().getName()+" - magazine type-in";
                 }
-
             }
             for (Booktypein booktypein : booktypeins) {
                 if (booktypein.getIsOriginal()) {
                     String firstPublisher = booktypein.getBook().getFirstPublisher();
                     return (firstPublisher.isEmpty() ? "?" : firstPublisher)+" - book type-in from \""+booktypein.getBook().getTitle()+"\"";
                 }
-
             }
         }
         return sj.toString();
