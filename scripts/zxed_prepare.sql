@@ -41,7 +41,6 @@ alter table permissions add column if not exists zxed int(11) not null default 0
 alter table permissiontypes add column if not exists zxed int(11) not null default 0;
 alter table platforms add column if not exists zxed int(11) not null default 0;
 alter table ports add column if not exists zxed int(11) not null default 0;
-alter table publicationtypes add column if not exists zxed int(11) not null default 0;
 alter table publishers add column if not exists zxed int(11) not null default 0;
 alter table referencetypes add column if not exists zxed int(11) not null default 0;
 alter table relatedlicenses add column if not exists zxed int(11) not null default 0;

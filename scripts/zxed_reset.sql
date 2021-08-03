@@ -41,7 +41,6 @@ alter table permissions drop column if exists zxed;
 alter table permissiontypes drop column if exists zxed;
 alter table platforms drop column if exists zxed;
 alter table ports drop column if exists zxed;
-alter table publicationtypes drop column if exists zxed;
 alter table publishers drop column if exists zxed;
 alter table referencetypes drop column if exists zxed;
 alter table relatedlicenses drop column if exists zxed;

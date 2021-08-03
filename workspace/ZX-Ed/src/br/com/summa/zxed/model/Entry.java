@@ -9,7 +9,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,title,isXrated,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,publicationtype.text,availabletype.text,language.text,firstPublisher")
+@Tab(properties="id,title,isXrated,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,availabletype.text,language.text,firstPublisher")
 @View(name="Compact", members="id,title")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -57,10 +57,6 @@ public class Entry {
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
     private Availabletype availabletype;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    @DescriptionsList(descriptionProperties="text")
-    private Publicationtype publicationtype;
 
     @Column
     @Required
@@ -152,7 +148,7 @@ public class Entry {
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("referencetype.text,issue.magazine.name,issue.id,issue.number,page,isOriginal")
-    @XOrderBy("referencetype.text,issue.magazine.name,issue.id,issue.number,page")
+    @XOrderBy("issue.magazine.name,issue.id,issue.number,page,referencetype.text")
     private Collection<Magref> magReferences;
 
     @lombok.ToString.Exclude
@@ -160,6 +156,12 @@ public class Entry {
     @ListProperties("book.id,book.title,installment,volume,page,isOriginal")
     @XOrderBy("book.id,installment,volume,page,isOriginal")
     private Collection<Booktypein> booktypeins;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="book", cascade=CascadeType.REMOVE)
+    @ListProperties("installment,volume,page,entry.id,entry.title,isOriginal")
+    @XOrderBy("installment,volume,page,entry.id")
+    private Collection<Booktypein> booktypeinContents;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
