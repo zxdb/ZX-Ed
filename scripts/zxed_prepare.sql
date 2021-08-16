@@ -52,6 +52,8 @@ alter table roles add column if not exists zxed int(11) not null default 0;
 alter table roletypes add column if not exists zxed int(11) not null default 0;
 alter table schemetypes add column if not exists zxed int(11) not null default 0;
 alter table scores add column if not exists zxed int(11) not null default 0;
+alter table spex_authors add column if not exists zxed int(11) not null default 0;
+alter table spex_entries add column if not exists zxed int(11) not null default 0;
 alter table tags add column if not exists zxed int(11) not null default 0;
 alter table tagtypes add column if not exists zxed int(11) not null default 0;
 alter table tools add column if not exists zxed int(11) not null default 0;

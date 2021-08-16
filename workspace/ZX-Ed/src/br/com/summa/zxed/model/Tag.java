@@ -38,7 +38,7 @@ public class Tag {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="tag", cascade=CascadeType.REMOVE)
-    @ListProperties("entry.id,entry.title,entry.firstPublisher,seriesSeq")
+    @ListProperties("entry.id,entry.title,entry.originalPublisher,seriesSeq")
     @XOrderBy("seriesSeq,entry.libraryTitle,entry.id")
     private Collection<Member> members;
 

@@ -17,7 +17,7 @@ public class ZxdbNamingStrategy extends PhysicalNamingStrategyStandardImpl {
 
     @Override
     public Identifier toPhysicalTableName(Identifier name, JdbcEnvironment jdbcEnvironment) {
-        return new Identifier(plural(name.getText()), name.isQuoted());
+        return new Identifier(plural(ImprovedNamingStrategy.INSTANCE.tableName(name.getText())), name.isQuoted());
     }
 
     @Override

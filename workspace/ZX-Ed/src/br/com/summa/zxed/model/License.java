@@ -46,7 +46,7 @@ public class License {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="license", cascade=CascadeType.REMOVE)
-    @ListProperties("entry.id,entry.title,entry.firstPublisher,isOfficial")
+    @ListProperties("entry.id,entry.title,entry.originalPublisher,isOfficial")
     @XOrderBy("isOfficial desc,entry.title,entry.id")
     private Collection<Relatedlicense> relatedEntries;
 

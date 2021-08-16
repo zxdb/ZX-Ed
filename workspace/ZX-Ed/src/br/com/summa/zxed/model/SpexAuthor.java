@@ -7,17 +7,23 @@ import org.openxava.annotations.*;
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-public class Genretype {
-
-    public static final int COVERTAPE = 81;
+public class SpexAuthor {
 
     @Id
-    @Column(length=4)
+    @Column(length=11)
     private Integer id;
 
-    @Column(length=50)
+    @ManyToOne(optional=false)
+    @ReferenceView("Compact")
+    private Entry entry;
+
+    @Column(length=150)
     @Required
-    private String text;
+    private String name;
+
+    @ManyToOne
+    @ReferenceView("Compact")
+    private Label label;
 
     @lombok.ToString.Exclude
     @Version

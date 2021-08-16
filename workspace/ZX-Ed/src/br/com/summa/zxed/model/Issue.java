@@ -1,5 +1,7 @@
 package br.com.summa.zxed.model;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
@@ -66,4 +68,27 @@ public class Issue {
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;
+
+    @Transient
+    @Depends("volume,number,dateYear,dateMonth,dateDay,special,supplement")
+    public String getFancyName() {
+        StringJoiner sj = new StringJoiner(" ");
+        sj.setEmptyValue("?");
+        if (volume != null) {
+            sj.add("v."+volume);
+        }
+        if (number != null) {
+            sj.add("#"+number);
+        }
+        if (dateYear != null) {
+            sj.add(dateYear+(dateMonth != null ? "/"+dateMonth : "")+(dateDay != null ? "/"+dateDay : ""));
+        }
+        if (special != null) {
+            sj.add("special \""+special+"\"");
+        }
+        if (supplement != null) {
+            sj.add("supplement \""+supplement+"\"");
+        }
+        return sj.toString();
+    }
 }

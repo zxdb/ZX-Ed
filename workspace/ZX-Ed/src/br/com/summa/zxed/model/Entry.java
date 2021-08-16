@@ -9,7 +9,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,title,isXrated,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,availabletype.text,language.text,firstPublisher")
+@Tab(properties="id,title,isXrated,machinetype.text,maxPlayers,genretype.text,spotGenretype.text,availabletype.text,language.text,originalPublisher")
 @View(name="Compact", members="id,title")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -94,6 +94,11 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("id,name,label.id,label.name")
+    private Collection<SpexAuthor> spexAuthors;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("releaseSeq,releaseYear,releaseMonth,releaseDay,currency.symbol,releasePrice,budgetPrice,microdrivePrice,diskPrice,cartridgePrice,bookIsbn,bookPages")
     @XOrderBy("releaseSeq")
     private Collection<Release> releases;
@@ -124,7 +129,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("relationtype.text,original.id,original.title,original.firstPublisher")
+    @ListProperties("relationtype.text,original.id,original.title,original.originalPublisher")
     private Collection<Relation> relatedEntries;
 
     @lombok.ToString.Exclude
@@ -143,25 +148,25 @@ public class Entry {
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("container.title,container.id,isOriginal,alias,contenttype.text")
     @XOrderBy("container.libraryTitle,container.id")
-    private Collection<Content> containers;
+    private Collection<Content> compilations;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("referencetype.text,issue.magazine.name,issue.id,issue.number,page,isOriginal")
     @XOrderBy("issue.magazine.name,issue.id,issue.number,page,referencetype.text")
-    private Collection<Magref> magReferences;
-
-    @lombok.ToString.Exclude
-    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("book.id,book.title,installment,volume,page,isOriginal")
-    @XOrderBy("book.id,installment,volume,page,isOriginal")
-    private Collection<Booktypein> booktypeins;
+    private Collection<Magref> magazineReferences;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="book", cascade=CascadeType.REMOVE)
     @ListProperties("installment,volume,page,entry.id,entry.title,isOriginal")
     @XOrderBy("installment,volume,page,entry.id")
-    private Collection<Booktypein> booktypeinContents;
+    private Collection<Booktypein> bookTypeins;
+
+    @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("book.id,book.title,installment,volume,page,isOriginal")
+    @XOrderBy("book.id,installment,volume,page,isOriginal")
+    private Collection<Booktypein> books;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
@@ -174,29 +179,33 @@ public class Entry {
     private Integer zxed;
 
     @Transient
-    @Depends("publishers")
-    public String getFirstPublisher() {
+    @Depends("publishers,compilations,magazineReferences,books")
+    public String getOriginalPublisher() {
         StringJoiner sj = new StringJoiner("; ");
         publishers.stream()
             .filter(p -> p.getReleaseSeq() == 0)
             .sorted(Comparator.comparingInt(Publisher::getPublisherSeq))
             .forEach(p -> sj.add(p.getLabel().getName()));
         if (sj.length() == 0) {
-            for (Content content : containers) {
+            if (issue != null && genretype != null && genretype.getId() == Genretype.COVERTAPE) {
+                return issue.getMagazine().getName()+" - magazine covertape from issue "+issue.getFancyName();
+            }
+
+            for (Content content : compilations) {
                 if (content.getIsOriginal()) {
-                    String firstPublisher = content.getContainer().getFirstPublisher();
-                    return (firstPublisher.isEmpty() ? "?" : firstPublisher)+" - within \""+content.getContainer().getTitle()+"\"";
+                    String originalPublisher = content.getContainer().getOriginalPublisher();
+                    return (originalPublisher.isEmpty() ? "?" : originalPublisher)+" - within \""+content.getContainer().getTitle()+"\"";
                 }
             }
-            for (Magref magref : magReferences) {
+            for (Magref magref : magazineReferences) {
                 if (magref.getIsOriginal()) {
-                    return magref.getIssue().getMagazine().getName()+" - magazine type-in";
+                    return magref.getIssue().getMagazine().getName()+" - magazine type-in from issue "+magref.getIssue().getFancyName();
                 }
             }
-            for (Booktypein booktypein : booktypeins) {
+            for (Booktypein booktypein : books) {
                 if (booktypein.getIsOriginal()) {
-                    String firstPublisher = booktypein.getBook().getFirstPublisher();
-                    return (firstPublisher.isEmpty() ? "?" : firstPublisher)+" - book type-in from \""+booktypein.getBook().getTitle()+"\"";
+                    String originalPublisher = booktypein.getBook().getOriginalPublisher();
+                    return (originalPublisher.isEmpty() ? "?" : originalPublisher)+" - book type-in from \""+booktypein.getBook().getTitle()+"\"";
                 }
             }
         }

@@ -52,6 +52,8 @@ alter table roles drop column if exists zxed;
 alter table roletypes drop column if exists zxed;
 alter table schemetypes drop column if exists zxed;
 alter table scores drop column if exists zxed;
+alter table spex_authors drop column if exists zxed;
+alter table spex_entries drop column if exists zxed;
 alter table tags drop column if exists zxed;
 alter table tagtypes drop column if exists zxed;
 alter table tools drop column if exists zxed;

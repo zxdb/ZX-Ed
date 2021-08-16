@@ -14,7 +14,8 @@ public class SqlBuilder {
     public static final Set<String> excludedFields = Sets.asHashSet(
             "__MODEL_NAME__",
             "authorRoles",
-            "firstPublisher",
+            "originalPublisher",
+            "fancyName",
             "beginText");
 
     private final Map<String, String> allColumns = new TreeMap<String, String>();
