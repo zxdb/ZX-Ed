@@ -1,5 +1,7 @@
 package br.com.summa.zxed.model;
 
+import static br.com.summa.sol.util.Nullables.*;
+
 import java.util.*;
 
 import javax.persistence.*;
@@ -66,6 +68,12 @@ public class Issue {
     private String archiveMask;
 
     @lombok.ToString.Exclude
+    @OneToMany(mappedBy="issue", cascade=CascadeType.REMOVE)
+    @ListProperties("referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,page,isOriginal")
+    @XOrderBy("page,referencetype.text,entry.id,label.id,topic.id")
+    private Collection<Magref> magazineReferences;
+
+    @lombok.ToString.Exclude
     @Version
     private Integer zxed;
 
@@ -83,10 +91,10 @@ public class Issue {
         if (dateYear != null) {
             sj.add(dateYear+(dateMonth != null ? "/"+dateMonth : "")+(dateDay != null ? "/"+dateDay : ""));
         }
-        if (special != null) {
+        if (!isNullOrEmpty(special)) {
             sj.add("special \""+special+"\"");
         }
-        if (supplement != null) {
+        if (!isNullOrEmpty(supplement)) {
             sj.add("supplement \""+supplement+"\"");
         }
         return sj.toString();

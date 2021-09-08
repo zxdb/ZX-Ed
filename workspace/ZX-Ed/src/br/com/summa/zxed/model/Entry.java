@@ -152,8 +152,8 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("referencetype.text,issue.magazine.name,issue.id,issue.number,page,isOriginal")
-    @XOrderBy("issue.magazine.name,issue.id,issue.number,page,referencetype.text")
+    @ListProperties("referencetype.text,label.id,label.name,topic.id,topic.name,issue.magazine.name,issue.id,issue.fancyName,page,isOriginal")
+    @XOrderBy("referencetype.text,issue.magazine.name,issue.id,page")
     private Collection<Magref> magazineReferences;
 
     @lombok.ToString.Exclude
@@ -175,6 +175,12 @@ public class Entry {
     private Collection<Webref> webReferences;
 
     @lombok.ToString.Exclude
+    @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
+    @ListProperties("id,title,platform.text,isOfficial,linkSystem")
+    @XOrderBy("title,platform.text,id")
+    private Collection<Port> ports;
+
+    @lombok.ToString.Exclude
     @Version
     private Integer zxed;
 
@@ -187,19 +193,10 @@ public class Entry {
             .sorted(Comparator.comparingInt(Publisher::getPublisherSeq))
             .forEach(p -> sj.add(p.getLabel().getName()));
         if (sj.length() == 0) {
-            if (issue != null && genretype != null && genretype.getId() == Genretype.COVERTAPE) {
-                return issue.getMagazine().getName()+" - magazine covertape from issue "+issue.getFancyName();
-            }
-
             for (Content content : compilations) {
                 if (content.getIsOriginal()) {
                     String originalPublisher = content.getContainer().getOriginalPublisher();
                     return (originalPublisher.isEmpty() ? "?" : originalPublisher)+" - within \""+content.getContainer().getTitle()+"\"";
-                }
-            }
-            for (Magref magref : magazineReferences) {
-                if (magref.getIsOriginal()) {
-                    return magref.getIssue().getMagazine().getName()+" - magazine type-in from issue "+magref.getIssue().getFancyName();
                 }
             }
             for (Booktypein booktypein : books) {
@@ -207,6 +204,14 @@ public class Entry {
                     String originalPublisher = booktypein.getBook().getOriginalPublisher();
                     return (originalPublisher.isEmpty() ? "?" : originalPublisher)+" - book type-in from \""+booktypein.getBook().getTitle()+"\"";
                 }
+            }
+            for (Magref magref : magazineReferences) {
+                if (magref.getIsOriginal()) {
+                    return magref.getIssue().getMagazine().getName()+" - magazine type-in from issue "+magref.getIssue().getFancyName();
+                }
+            }
+            if (issue != null && genretype != null && "Covertape".equals(genretype.getText())) {
+                return issue.getMagazine().getName()+" - magazine covertape from issue "+issue.getFancyName();
             }
         }
         return sj.toString();

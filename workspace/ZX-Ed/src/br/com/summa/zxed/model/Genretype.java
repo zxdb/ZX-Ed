@@ -9,8 +9,6 @@ import org.openxava.annotations.*;
 @Entity
 public class Genretype {
 
-    public static final int COVERTAPE = 81;
-
     @Id
     @Column(length=4)
     private Integer id;
