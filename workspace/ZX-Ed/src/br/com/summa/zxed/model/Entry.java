@@ -82,7 +82,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("id,notetype.text,section,beginText")
+    @ListProperties("id,notetype.text,beginText")
     @XOrderBy("id")
     private Collection<Note> notes;
 

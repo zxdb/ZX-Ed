@@ -6,8 +6,8 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,entry.id,entry.title,label.id,label.name,notetype.text,section,beginText")
-@View(name="Compact", members="id,entry.id,entry.title,label.id,label.name,notetype.text,section,beginText")
+@Tab(properties="id,entry.id,entry.title,label.id,label.name,notetype.text,beginText")
+@View(name="Compact", members="id,entry.id,entry.title,label.id,label.name,notetype.text,beginText")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -30,9 +30,6 @@ public class Note {
     @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Notetype notetype;
-
-    @Column(length=100)
-    private String section;
 
     @Column(length=50000)
     @Required
