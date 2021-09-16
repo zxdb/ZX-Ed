@@ -61,7 +61,7 @@ public class Label {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="label", cascade=CascadeType.REMOVE)
-    @ListProperties("id,notetype.text,section,beginText")
+    @ListProperties("id,notetype.text,beginText")
     @XOrderBy("id")
     private Collection<Note> notes;
 
