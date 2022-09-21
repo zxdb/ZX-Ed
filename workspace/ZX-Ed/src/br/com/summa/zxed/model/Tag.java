@@ -36,6 +36,10 @@ public class Tag {
     @Stereotype("MEMO")
     private String comments;
 
+    @ManyToOne
+    @ReferenceView("Compact")
+    private Tool tool;
+
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="tag", cascade=CascadeType.REMOVE)
     @ListProperties("entry.id,entry.title,entry.originalPublisher,seriesSeq")

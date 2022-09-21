@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,topictype.text,name,label.id,label.name,comments")
+@Tab(properties="id,topictype.text,name,label.id,label.name,magazine.id,magazine.name,comments")
 @View(name="Compact", members="id,name")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -32,6 +32,9 @@ public class Topic {
     @ManyToOne
     @ReferenceView("Compact")
     private Label label;
+
+    @ManyToOne
+    private Magazine magazine;
 
     @Column(length=150)
     @Stereotype("MEMO")

@@ -17,6 +17,10 @@ public class Zxsr_award {
     @Required
     private String text;
 
+    @ManyToOne(optional=false)
+    @DescriptionsList
+    private Magazine magazine;
+
     @lombok.ToString.Exclude
     @Version
     private Integer zxed;
