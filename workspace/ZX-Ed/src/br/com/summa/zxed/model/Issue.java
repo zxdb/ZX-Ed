@@ -26,6 +26,16 @@ public class Issue {
     @DescriptionsList
     private Magazine magazine;
 
+    @ManyToOne
+    @ReferenceView("Compact")
+    @DefaultValueCalculator(value=ParentByPassCalculator.class, properties={@PropertyValue(name="source", from="parent.label.id"),@PropertyValue(name="parentId", from="parent.id")})
+    private Label label;
+
+    @ManyToOne
+    @ReferenceView("Compact")
+    @DefaultValueCalculator(value=ParentByPassCalculator.class, properties={@PropertyValue(name="source", from="parent.label2.id"),@PropertyValue(name="parentId", from="parent.id")})
+    private Label label2;
+
     @Column(length=4)
     @DefaultValueCalculator(value=ParentByPassCalculator.class, properties={@PropertyValue(name="source", from="parent.dateYear"),@PropertyValue(name="parentId", from="parent.id")})
     private Integer dateYear;

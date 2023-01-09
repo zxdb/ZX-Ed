@@ -37,6 +37,7 @@ alter table members drop column if exists zxed;
 alter table notes drop column if exists zxed;
 alter table notetypes drop column if exists zxed;
 alter table nvgs drop column if exists zxed;
+alter table origintypes drop column if exists zxed;
 alter table permissions drop column if exists zxed;
 alter table permissiontypes drop column if exists zxed;
 alter table platforms drop column if exists zxed;

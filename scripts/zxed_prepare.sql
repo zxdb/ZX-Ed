@@ -37,6 +37,7 @@ alter table members add column if not exists zxed int(11) not null default 0;
 alter table notes add column if not exists zxed int(11) not null default 0;
 alter table notetypes add column if not exists zxed int(11) not null default 0;
 alter table nvgs add column if not exists zxed int(11) not null default 0;
+alter table origintypes add column if not exists zxed int(11) not null default 0;
 alter table permissions add column if not exists zxed int(11) not null default 0;
 alter table permissiontypes add column if not exists zxed int(11) not null default 0;
 alter table platforms add column if not exists zxed int(11) not null default 0;
