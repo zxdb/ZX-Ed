@@ -1,6 +1,6 @@
 package br.com.summa.zxed.model;
 
-import static br.com.summa.sol.util.Nullables.*;
+import static br.com.summa.sol.util.Nullables.isNullOrEmpty;
 
 import java.util.*;
 
@@ -28,12 +28,14 @@ public class Issue {
 
     @ManyToOne
     @ReferenceView("Compact")
-    @DefaultValueCalculator(value=ParentByPassCalculator.class, properties={@PropertyValue(name="source", from="parent.label.id"),@PropertyValue(name="parentId", from="parent.id")})
+    // FIXME: OpenXava 6.6.3 assigns Issue.label to null whenever an existing Issue is edited, unless we remove this line below:
+    // @DefaultValueCalculator(value=ParentByPassCalculator.class, properties={@PropertyValue(name="source", from="parent.label.id"),@PropertyValue(name="parentId", from="parent.id")})
     private Label label;
 
     @ManyToOne
     @ReferenceView("Compact")
-    @DefaultValueCalculator(value=ParentByPassCalculator.class, properties={@PropertyValue(name="source", from="parent.label2.id"),@PropertyValue(name="parentId", from="parent.id")})
+    // FIXME: OpenXava 6.6.3 assigns Issue.label to null whenever an existing Issue is edited, unless we remove this line below:
+    // @DefaultValueCalculator(value=ParentByPassCalculator.class, properties={@PropertyValue(name="source", from="parent.label2.id"),@PropertyValue(name="parentId", from="parent.id")})
     private Label label2;
 
     @Column(length=4)
