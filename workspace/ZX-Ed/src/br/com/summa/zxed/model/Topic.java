@@ -33,6 +33,7 @@ public class Topic {
     @ReferenceView("Compact")
     private Label label;
 
+    @lombok.ToString.Exclude
     @ManyToOne
     private Magazine magazine;
 
