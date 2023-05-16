@@ -33,6 +33,7 @@ alter table magazines add column if not exists zxed int(11) not null default 0;
 alter table magreffeats add column if not exists zxed int(11) not null default 0;
 alter table magreflinks add column if not exists zxed int(11) not null default 0;
 alter table magrefs add column if not exists zxed int(11) not null default 0;
+alter table magtypes add column if not exists zxed int(11) not null default 0;
 alter table members add column if not exists zxed int(11) not null default 0;
 alter table notes add column if not exists zxed int(11) not null default 0;
 alter table notetypes add column if not exists zxed int(11) not null default 0;
@@ -42,6 +43,8 @@ alter table permissions add column if not exists zxed int(11) not null default 0
 alter table permissiontypes add column if not exists zxed int(11) not null default 0;
 alter table platforms add column if not exists zxed int(11) not null default 0;
 alter table ports add column if not exists zxed int(11) not null default 0;
+alter table prefixes add column if not exists zxed int(11) not null default 0;
+alter table prefixexempts add column if not exists zxed int(11) not null default 0;
 alter table publishers add column if not exists zxed int(11) not null default 0;
 alter table referencetypes add column if not exists zxed int(11) not null default 0;
 alter table relatedlicenses add column if not exists zxed int(11) not null default 0;
