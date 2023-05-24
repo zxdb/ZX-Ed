@@ -24,7 +24,7 @@ public class Magazine {
     @Required
     private String name;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Language language;
 

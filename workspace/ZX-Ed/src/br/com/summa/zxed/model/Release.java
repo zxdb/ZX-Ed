@@ -5,6 +5,7 @@ import java.math.*;
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
+import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
@@ -55,6 +56,8 @@ public class Release {
     private String bookIsbn;
 
     @Column
+    @Required
+    @DefaultValueCalculator(value=ZeroIntegerCalculator.class)
     private Integer bookPages;
 
     @lombok.ToString.Exclude

@@ -21,14 +21,14 @@ public class Article {
     @Column(length=200)
     private String link;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Articletype articletype;
 
     @Column(length=200)
     private String title;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Language language;
 
