@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,name,language.text,linkSite,magtype.text,originalPrice,republishPrice,topic.id,linkMask,archiveMask")
+@Tab(properties="id,name,language.text,linkSite,magtype.text,topic.id,linkMask,archiveMask")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -34,12 +34,6 @@ public class Magazine {
     @ManyToOne(optional=false)
     @DescriptionsList(descriptionProperties="text")
     private Magtype magtype;
-
-    @Column(length=80)
-    private String originalPrice;
-
-    @Column(length=80)
-    private String republishPrice;
 
     @ManyToOne
     @ReferenceView("Compact")
