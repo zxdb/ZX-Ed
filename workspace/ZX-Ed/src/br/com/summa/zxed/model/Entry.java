@@ -66,10 +66,6 @@ public class Entry {
     @Required
     private Boolean withoutInlay;
 
-    @Column
-    @Required
-    private Boolean hideFromStp;
-
     @ManyToOne(fetch=FetchType.LAZY)
     @DescriptionsList(descriptionProperties="text")
     private Language language;
