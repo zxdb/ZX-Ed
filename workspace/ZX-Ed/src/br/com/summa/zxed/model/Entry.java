@@ -70,9 +70,6 @@ public class Entry {
     @DescriptionsList(descriptionProperties="text")
     private Language language;
 
-    @Column(length=4)
-    private String magRatings;
-
     @ManyToOne(fetch=FetchType.LAZY)
     private Issue issue;
 
