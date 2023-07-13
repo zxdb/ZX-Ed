@@ -40,14 +40,10 @@ public class Tag {
     @ReferenceView("Compact")
     private Tool tool;
 
-    @ManyToOne
-    @ReferenceView("Compact")
-    private Entry device;
-
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="tag", cascade=CascadeType.REMOVE)
-    @ListProperties("entry.id,entry.title,entry.originalPublisher,seriesSeq")
-    @XOrderBy("seriesSeq,entry.libraryTitle,entry.id")
+    @ListProperties("entry.id,entry.title,entry.originalPublisher,memberSeq,category.text,variant")
+    @XOrderBy("category.text,memberSeq,variant,entry.libraryTitle,entry.id")
     private Collection<Member> members;
 
     @lombok.ToString.Exclude

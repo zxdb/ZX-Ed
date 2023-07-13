@@ -1,6 +1,6 @@
 package br.com.summa.zxed.calc;
 
-import static br.com.summa.sol.util.Nullables.*;
+import static br.com.summa.sol.util.Nullables.coalesce;
 
 import javax.persistence.*;
 
@@ -17,7 +17,7 @@ public class NextMemberSeq implements ICalculator {
     @Override
     public Object calculate() throws Exception {
         if ("S".equals(tagtypeId)) {
-            Query query = XPersistence.getManager().createQuery("select max(seriesSeq) from Member where tag.id = :tagId");
+            Query query = XPersistence.getManager().createQuery("select max(memberSeq) from Member where tag.id = :tagId");
             query.setParameter("tagId", tagId);
             return coalesce((Integer)query.getSingleResult(), 0)+1;
         }
