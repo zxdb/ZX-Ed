@@ -28,11 +28,6 @@ public class Entry {
     @Required
     private String title;
 
-    @Column(length=250)
-    @Required
-    @DefaultValueCalculator(value=LibTitle.class, properties=@PropertyValue(name="title"))
-    private String libraryTitle;
-
     @Column
     @Required
     private Boolean isXrated;
@@ -140,7 +135,7 @@ public class Entry {
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
     @ListProperties("container.title,container.id,isOriginal,alias,contenttype.text")
-    @XOrderBy("container.libraryTitle,container.id")
+    @XOrderBy("container.title,container.id")
     private Collection<Content> compilations;
 
     @lombok.ToString.Exclude

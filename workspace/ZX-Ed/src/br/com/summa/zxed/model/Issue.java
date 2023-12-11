@@ -86,6 +86,9 @@ public class Issue {
     @Column(length=250)
     private String archiveMask;
 
+    @Column(length=250)
+    private String englishMask;
+
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="issue", cascade=CascadeType.REMOVE)
     @ListProperties("referencetype.text,entry.id,entry.title,label.id,label.name,topic.id,topic.name,page,isOriginal")

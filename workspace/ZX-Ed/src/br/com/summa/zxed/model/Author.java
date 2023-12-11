@@ -10,7 +10,7 @@ import org.openxava.annotations.*;
 import br.com.summa.zxed.calc.*;
 
 @Tab(properties="entry.id,entry.title,authorSeq,label.id,label.name,team.id,team.name,authorRoles",
-     defaultOrder="${entry.libraryTitle}, ${entry.id}, ${authorSeq}")
+     defaultOrder="${entry.title}, ${entry.id}, ${authorSeq}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity

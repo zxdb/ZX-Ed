@@ -5,9 +5,7 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 import org.openxava.calculators.*;
 
-import br.com.summa.zxed.calc.*;
-
-@Tab(properties="entry.id,entry.title,releaseSeq,language.text,title,libraryTitle",
+@Tab(properties="entry.id,entry.title,releaseSeq,language.text,title",
      defaultOrder="${entry.id}, ${releaseSeq}")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
@@ -33,11 +31,6 @@ public class Alias {
     @Id
     @Column(length=250)
     private String title;
-
-    @Column(length=250)
-    @Required
-    @DefaultValueCalculator(value=LibTitle.class, properties=@PropertyValue(name="title"))
-    private String libraryTitle;
 
     @lombok.ToString.Exclude
     @Version

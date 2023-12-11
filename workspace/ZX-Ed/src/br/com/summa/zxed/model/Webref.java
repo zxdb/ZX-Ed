@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
-@Tab(properties="entry.id,entry.libraryTitle,language.text,link,website.name")
+@Tab(properties="entry.id,entry.title,language.text,link,website.name")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
