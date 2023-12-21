@@ -87,7 +87,7 @@ public class Issue {
     private String archiveMask;
 
     @Column(length=250)
-    private String englishMask;
+    private String translationMask;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="issue", cascade=CascadeType.REMOVE)

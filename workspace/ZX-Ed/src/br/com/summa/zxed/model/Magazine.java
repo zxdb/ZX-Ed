@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="id,name,country.text,language.text,linkSite,magtype.text,topic.id,linkMask,archiveMask,englishMask")
+@Tab(properties="id,name,country.text,language.text,linkSite,magtype.text,topic.id,linkMask,archiveMask,translationMask")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -50,11 +50,11 @@ public class Magazine {
     private String archiveMask;
 
     @Column(length=250)
-    private String englishMask;
+    private String translationMask;
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="magazine", cascade=CascadeType.REMOVE)
-    @ListProperties("id,dateYear,dateMonth,dateDay,volume,number,special,supplement,coverPage,label.id,label2.id,linkMask,archiveMask,englishMask")
+    @ListProperties("id,dateYear,dateMonth,dateDay,volume,number,special,supplement,coverPage,label.id,label2.id,linkMask,archiveMask,translationMask")
     @XOrderBy("volume,number,dateYear,dateMonth,dateDay,special,supplement,id")
     private Collection<Issue> issues;
 
