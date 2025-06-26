@@ -7,7 +7,7 @@ import org.openxava.calculators.*;
 
 import br.com.summa.zxed.calc.*;
 
-@Tab(properties="tag.tagtype.text,tag.id,tag.name,memberSeq,category.text,variant,entry.id,entry.title,entry.originalPublisher")
+@Tab(properties="tag.tagtype.text,tag.id,tag.name,memberSeq,category.text,entry.id,entry.title,entry.originalPublisher")
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
@@ -25,13 +25,7 @@ public class Member {
     private Entry entry;
 
     @Id
-    @Column(length=100)
-    @Required
-    // FIXME: There's a bug in OpenXava 6.6.3 that will go crazy if an empty string is part of composite primary key
-    @DefaultValueCalculator(value=StringCalculator.class, properties={ @PropertyValue(name="string", value="*")})
-    private String variant;
-
-    @ManyToOne
+    @ManyToOne(optional=false)
     @ReferenceView("Compact")
     private Category category;
 

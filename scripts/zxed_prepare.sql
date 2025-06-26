@@ -9,6 +9,7 @@ alter table articletypes add column if not exists zxed int(11) not null default 
 alter table authors add column if not exists zxed int(11) not null default 0;
 alter table availabletypes add column if not exists zxed int(11) not null default 0;
 alter table booktypeins add column if not exists zxed int(11) not null default 0;
+alter table casetypes add column if not exists zxed int(11) not null default 0;
 alter table categories add column if not exists zxed int(11) not null default 0;
 alter table contents add column if not exists zxed int(11) not null default 0;
 alter table contenttypes add column if not exists zxed int(11) not null default 0;

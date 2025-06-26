@@ -9,5 +9,5 @@ public class MemberKey implements Serializable {
 
     private Tag tag;
     private Entry entry;
-    private String variant;
+    private Category category;
 }

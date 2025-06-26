@@ -122,7 +122,7 @@ public class Entry {
 
     @lombok.ToString.Exclude
     @OneToMany(mappedBy="entry", cascade=CascadeType.REMOVE)
-    @ListProperties("tag.tagtype.text,tag.id,tag.name,memberSeq,category.text,variant")
+    @ListProperties("tag.tagtype.text,tag.id,tag.name,memberSeq,category.text")
     @XOrderBy("tag.tagtype.text,tag.name,category.text")
     private Collection<Member> tagMembers;
 

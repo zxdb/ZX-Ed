@@ -9,6 +9,7 @@ alter table articletypes drop column if exists zxed;
 alter table authors drop column if exists zxed;
 alter table availabletypes drop column if exists zxed;
 alter table booktypeins drop column if exists zxed;
+alter table casetypes drop column if exists zxed;
 alter table categories drop column if exists zxed;
 alter table contents drop column if exists zxed;
 alter table contenttypes drop column if exists zxed;
