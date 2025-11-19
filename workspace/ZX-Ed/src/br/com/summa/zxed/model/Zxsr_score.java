@@ -7,14 +7,15 @@ import org.openxava.annotations.*;
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-@IdClass(Zxsr_scoreKey.class)
 public class Zxsr_score {
 
     @Id
+    @Column(length=11)
+    private Integer id;
+
     @ManyToOne(optional=false)
     private Magref magref;
 
-    @Id
     @Column(length=4)
     private Integer scoreSeq;
 

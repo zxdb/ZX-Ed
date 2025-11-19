@@ -27,6 +27,7 @@ public class Member {
     @Id
     @ManyToOne(optional=false)
     @ReferenceView("Compact")
+    @DefaultValueCalculator(value=IntegerCalculator.class, properties={ @PropertyValue(name="value", value="1")})
     private Category category;
 
     @Column(length=6)

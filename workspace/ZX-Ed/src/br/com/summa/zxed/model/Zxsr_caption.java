@@ -7,23 +7,24 @@ import org.openxava.annotations.*;
 @lombok.Data
 @lombok.ToString(includeFieldNames=true)
 @Entity
-public class Zxsr_review {
+@IdClass(Zxsr_captionKey.class)
+public class Zxsr_caption {
 
     @Id
-    @Column(length=11)
-    private Integer id;
+    @ManyToOne(optional=false)
+    private Magref magref;
+
+    @Id
+    @Column(length=6)
+    private Integer captionSeq;
 
     @Column
     @Stereotype("MEMO")
-    private String introText;
+    private String text;
 
     @Column
-    @Stereotype("MEMO")
-    private String reviewText;
-
-    @Column
-    @Stereotype("MEMO")
-    private String reviewRating;
+    @Required
+    private Boolean isBanner;
 
     @lombok.ToString.Exclude
     @Version
